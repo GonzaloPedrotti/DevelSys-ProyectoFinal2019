@@ -1,5 +1,6 @@
 package pedrotti.gonzalo.proyecto.Clima;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,19 +14,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import pedrotti.gonzalo.proyecto.Login.Login;
 import pedrotti.gonzalo.proyecto.Lotes.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
@@ -35,8 +30,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     private List<ClimaActual> climaActualList;
     RecyclerView recyclerView;
     ClimaActualAdapter adapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +43,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
         lote = bundle.getParcelable("DATOS_LOTE");
 
         setTitle("Datos del lote: " + lote.getNombre());
-//        Toast.makeText(this, "lote: "  + lote.getLatitud()+ " / " + lote.getLongitud(), Toast.LENGTH_SHORT).show();
-
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewClima);
         recyclerView.setHasFixedSize(true);
@@ -133,7 +124,8 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     public void OnItemClick(int position) {
         ClimaActual climaActualSeleccionado = climaActualList.get(position);
         Toast.makeText(this, "Seleccioando:" + climaActualSeleccionado.getTemperatura(), Toast.LENGTH_SHORT).show();
-
+        AlertDialog.Builder alerta = new AlertDialog.Builder(InformacionClimatica.this);
+        alerta.setMessage("").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
     }
 }
 

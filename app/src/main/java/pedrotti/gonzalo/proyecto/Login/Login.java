@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity {
         this.setTitle(R.string.inicio);
 
         TextView registro = (TextView)findViewById(R.id.registroLogin);
-        Button btnlogin = (Button)findViewById(R.id.btnLogin);
+        final Button btnlogin = (Button)findViewById(R.id.btnLogin);
         etCorreo = (EditText)findViewById(R.id.usuarioLogin);
         etcontrasena= (EditText)findViewById(R.id.claveLogin);
 
@@ -54,6 +54,8 @@ public class Login extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//
                 final String correo = etCorreo.getText().toString().toLowerCase().trim();
                 final String contrasena = etcontrasena.getText().toString();
 
@@ -61,6 +63,8 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Complete su Correo o Contraseña", Toast.LENGTH_SHORT).show();
 
                 }else{
+                     btnlogin.setEnabled(false);
+                     btnlogin.setText("INICIANDO");
                     //Dentro del método se define la respuesta del LoginRequest
                     Response.Listener<String> respuesta = new Response.Listener<String>() {
                         @Override
@@ -88,8 +92,9 @@ public class Login extends AppCompatActivity {
                                 } else {
                                     AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
                                     alerta.setMessage("Usuario o Contraseña Incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
-//                                    etcorreo.setText("");
                                     etcontrasena.setText("");
+                                    btnlogin.setEnabled(true);
+                                    btnlogin.setText("INGRESAR");
                                 }
                             } catch (JSONException e) {
                                 e.getMessage();

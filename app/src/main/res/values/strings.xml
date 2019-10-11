@@ -35,6 +35,6 @@
     <string name="periodoDeCultivo">Periodo de Cultivo Recomendado:</string>
     <string name="registroactividades">Registro de Actividades</string>
     <string name="detalleProyecto">Detalle del Proyecto</string>
-
+    <string name="google_maps_api_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCfjDWQSywJ3PHrH9JAY1oyvS72ckVdwqE</string>
 
 </resources>

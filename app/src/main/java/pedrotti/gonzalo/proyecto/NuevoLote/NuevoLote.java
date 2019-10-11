@@ -53,14 +53,9 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
     private int param2=0;
     private int param3=0;
     private int param4=0;
-
     private Marker marker;
-    private Campo itemSeleccionado;
-
-    TextView tvLat1,tvLat2, tvLat3, tvLat4, tvLong1, tvLong2, tvLong3, tvLong4;
     EditText etNombre;
     EditText etTamano;
-
 
 
     public double getLat1() {
@@ -145,32 +140,12 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
         etNombre = (EditText)findViewById(R.id.txtNombreLote);
         etTamano = ((EditText)findViewById(R.id.txtTamano));
 
-        tvLat1= (TextView)findViewById(R.id.txtLat1);
-        tvLat2 = (TextView)findViewById(R.id.txtLat2);
-        tvLat3 = (TextView)findViewById(R.id.txtLat3);
-        tvLat4 = (TextView)findViewById(R.id.txtLat4);
-
-        tvLong1 = (TextView)findViewById(R.id.txtLong1);
-        tvLong2 = (TextView)findViewById(R.id.txtLong2);
-        tvLong3 = (TextView)findViewById(R.id.txtLong3);
-        tvLong4 = (TextView)findViewById(R.id.txtLong4);
-
-
-
         //Funciones del Boton Registrar al hacer Click
         btnRegistrarLote.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
 
                 if (param1==1 && param2==1 && param3==1 && param4==1  ){
-                     lat1 = Double.parseDouble(tvLat1.getText().toString());
-                     lat2 = Double.parseDouble(tvLat2.getText().toString());
-                     lat3 = Double.parseDouble(tvLat3.getText().toString());
-                     lat4 = Double.parseDouble(tvLat4.getText().toString());
-                    long1 = Double.parseDouble(tvLong1.getText().toString());
-                     long2 = Double.parseDouble(tvLong2.getText().toString());
-                     long3 = Double.parseDouble(tvLong3.getText().toString());
-                     long4 = Double.parseDouble(tvLong4.getText().toString());
                      j=1;
                 }else{
 
@@ -201,22 +176,13 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
 
                         Bundle verLotes  = getIntent().getExtras();
                         campo_id2 = verLotes.getInt("campo_id");
-
-
                         Response.Listener<String> respuesta = new Response.Listener<String>() {
-
                             @Override
                             public void onResponse(String response) {
                                 try{
                                     JSONObject jsonRespuesta = new JSONObject(response);
                                     boolean ok = jsonRespuesta.getBoolean("success");
                                     if(ok==true){
-
-//                                        AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoLote.this);
-//                                        alerta.setMessage("Lote Registrado con Éxito! Vuelva para ver su nuevo Lote o Continúe Registrando nuevos Lotes").setPositiveButton("Aceptar",null).create().show();
-//                                        etNombre.setText("");
-//                                        etTamano.setText("");
-//                                        marker.remove();
                                     Toast.makeText(getApplicationContext(), "Lote " + nombre + " Registrado con Éxito", Toast.LENGTH_LONG).show();
                                         finish();
                                     }else{
@@ -282,7 +248,6 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                 "Coordenadas Aquí: \n" + latLng.latitude + " : " + latLng.longitude,
                 Toast.LENGTH_SHORT).show();
     }
-
     public void setToque(int valor){
         toque = toque + valor;
     }
@@ -298,77 +263,45 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
         //Add marker on LongClick position
         if(getToque()<4){
 
-
             marker = mMap.addMarker(new MarkerOptions().position(latLng).draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)).title("Vertice " + (getToque() + 1)));
             setToque(1);
             if(getToque()==1){
                 setLat1(marker.getPosition().latitude);
                 setLong1(marker.getPosition().longitude);
                 Toast.makeText(this, "Punto 1: " + getLat1()+"," + getLong1(), Toast.LENGTH_SHORT).show();
-
-                //Pasamos de Double a String
-                String stringLat1 =String.valueOf(marker.getPosition().latitude);
-                String stringLong1 = String.valueOf(marker.getPosition().longitude);
+                lat1 = marker.getPosition().latitude;
+                long1 = marker.getPosition().longitude;
                 param1=1;
-
-                //Colocamos texto en el textView en formato String
-                tvLat1.setText(stringLat1);
-                tvLong1.setText(stringLong1);
-
             }
 
             if(getToque()==2){
                 setLat2(marker.getPosition().latitude);
                 setLong2(marker.getPosition().longitude);
                 Toast.makeText(this, "Punto 2: " + getLat2() + "," + getLong2(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "Long2: " + getLong2(), Toast.LENGTH_SHORT).show();
-
-                //Pasamos de Double a String
-                String stringLat2 =String.valueOf(marker.getPosition().latitude);
-                String stringLong2 = String.valueOf(marker.getPosition().longitude);
+                lat2 = marker.getPosition().latitude;
+                long2 = marker.getPosition().longitude;
                 param2=1;
 
-                //Colocamos texto en el textView en formato String
-                tvLat2.setText(stringLat2);
-                tvLong2.setText(stringLong2);
             }
 
             if(getToque()==3){
                 setLat3(marker.getPosition().latitude);
                 setLong3(marker.getPosition().longitude);
                 Toast.makeText(this, "Punto 3: " + getLat3() + ","+ getLong3(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "Long3: " + getLong3(), Toast.LENGTH_SHORT).show();
-
-                //Pasamos de Double a String
-                String stringLat3 =String.valueOf(marker.getPosition().latitude);
-                String stringLong3 = String.valueOf(marker.getPosition().longitude);
-
+                lat3 = marker.getPosition().latitude;
+                long3 = marker.getPosition().longitude;
                 param3=1;
-
-                //Colocamos texto en el textView en formato String
-                tvLat3.setText(stringLat3);
-                tvLong3.setText(stringLong3);
-
             }
 
             if(getToque()==4){
                 setLat4(marker.getPosition().latitude);
                 setLong4(marker.getPosition().longitude);
                 Toast.makeText(this, "Punto 4: " + getLat4()+"," + getLong4(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "Long4: " + getLong4(), Toast.LENGTH_SHORT).show();
-
-
-                //Pasamos de Double a String
-                String stringLat4 =String.valueOf(marker.getPosition().latitude);
-                String stringLong4 = String.valueOf(marker.getPosition().longitude);
-
+                lat4 = marker.getPosition().latitude;
+                long4 = marker.getPosition().longitude;
                 param4=1;
-                //Colocamos texto en el textView en formato String
-                tvLat4.setText(stringLat4);
-                tvLong4.setText(stringLong4);
 
             }
-
         }else{
             Toast.makeText(this, "Ya seleccionó los 4 Puntos disponibles", Toast.LENGTH_SHORT).show();
         }

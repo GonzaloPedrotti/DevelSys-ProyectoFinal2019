@@ -186,7 +186,6 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
                 Toast.LENGTH_SHORT).show();
     }
 
-
     //Este metodo agrega una marca en el mapa luego de mantener presionado el mismo
     @Override
     public void onMapLongClick(LatLng latLng) {
