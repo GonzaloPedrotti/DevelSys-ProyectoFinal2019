@@ -103,7 +103,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
                      try{
                          JSONObject rain = climaActual.getJSONObject("rain");
                          mmLluvia = rain.getDouble("3h");
-                         Toast.makeText(InformacionClimatica.this, "Lluvia para el momento "+(i+1)+": " + mmLluvia, Toast.LENGTH_SHORT).show();
                      }catch (Exception e){
                          mmLluvia=0;
                      }
