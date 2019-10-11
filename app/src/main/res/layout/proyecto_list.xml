@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProyectoCultivo.ItemProyecto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:background="#7B1FA2"
+            app:cardBackgroundColor="#818F02F8"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="#83CED6"
+                android:orientation="vertical"
+                android:textAlignment="center">
+
+                <TextView
+                    android:id="@+id/tvProyectoId"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Id del Proyecto"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvNombreProyecto"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Nombre del Proyecto"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvFechaRegistroDet"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Fecha de Registro"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvCultivoDet"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Cultivo"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvPeriodoCultivo"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#73DAC0"
+                    android:text="Periodo del Cultivo"
+                    android:textAlignment="center"
+                    android:textColor="#111111" />
+
+                <TextView
+                    android:id="@+id/tvEstadoProyecto"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#73DAC0"
+                    android:text="Estado de Proyecto"
+                    android:textAlignment="center"
+                    android:textColor="#111111" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</LinearLayout>

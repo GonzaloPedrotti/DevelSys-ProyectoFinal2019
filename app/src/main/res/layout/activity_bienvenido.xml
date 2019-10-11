@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202537"
+    tools:context=".Bienvenido.Bienvenido">
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtBienvenida"-->
+    <!--android:layout_width="351dp"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:layout_marginStart="16dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:textSize="14sp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <Button
+        android:id="@+id/btnVerCampos"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Ver Campos"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:background="@drawable/button_rounded2"/>
+
+    <Button
+        android:id="@+id/btnRegistrarLote"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        android:text="Registrar Campo"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerCampos"
+        android:background="@drawable/button_rounded2"/>
+
+    <Button
+        android:id="@+id/btnSitios"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="12dp"
+        android:text="Sitios"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarLote"
+        android:background="@drawable/button_rounded2"/>
+
+    <Button
+        android:id="@+id/btnTipos"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="12dp"
+        android:onClick="mapaTipos"
+        android:text="Tipos de Mapas"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSitios"
+        android:background="@drawable/button_rounded2"/>
+
+    <!--<Button-->
+    <!--android:id="@+id/btnNuevoCampo"-->
+    <!--android:layout_width="260dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_marginStart="50dp"-->
+    <!--android:layout_marginTop="68dp"-->
+    <!--android:text="Nuevo Campo"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--android:id="@+id/btnFlotante"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="244dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:clickable="true"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/btnTipos"-->
+    <!--app:srcCompat="@android:drawable/ic_input_add" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtNombreUsuario"-->
+    <!--android:layout_width="45dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="48dp"-->
+    <!--android:layout_marginTop="100dp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/btnTipos" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvCorreoUsuario"-->
+    <!--android:layout_width="63dp"-->
+    <!--android:layout_height="19dp"-->
+    <!--android:layout_marginStart="4dp"-->
+    <!--android:layout_marginTop="100dp"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/txtNombreUsuario"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/btnTipos" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtApellidoUsuario"-->
+    <!--android:layout_width="63dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="12dp"-->
+    <!--android:layout_marginTop="100dp"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/tvCorreoUsuario"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/btnTipos" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtUsuario_id"-->
+    <!--android:layout_width="102dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="60dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/txtNombreUsuario" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btnNuevoLote"-->
+    <!--android:layout_width="172dp"-->
+    <!--android:layout_height="49dp"-->
+    <!--android:layout_marginStart="48dp"-->
+    <!--android:layout_marginTop="12dp"-->
+    <!--android:text="nuevo Lote "-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/btnTipos" />-->
+
+    <Button
+        android:id="@+id/btnInformacionApp"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_rounded2"
+        android:text="Acerca de MiCampo Mobile"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTipos" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:text="Bienvenido a Mi Campo Mobile"
+        android:textColor="#FFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:id="@+id/tvNombreActividad"
+                    android:layout_width="65dp"
+                    android:layout_height="30dp"
+                    android:text="Actividad"
+                    android:textSize="10sp"
+                    android:background="@drawable/back"
+                    />
+
+                <TextView
+                    android:id="@+id/tvFechaInicio"
+                    android:layout_width="65dp"
+                    android:layout_height="30dp"
+                    android:text="FechaInicio"
+                    android:textSize="10sp"
+                    android:background="@drawable/back"    />
+
+                <TextView
+                    android:id="@+id/tvFechaFin"
+                    android:layout_width="65dp"
+                    android:layout_height="30dp"
+                    android:text="Fecha Fin"
+                    android:textSize="10sp"
+                    android:background="@drawable/back"    />
+
+                <TextView
+                    android:id="@+id/tvEstadoActividad"
+                    android:layout_width="65dp"
+                    android:layout_height="30dp"
+                    android:text="Estado"
+                    android:textSize="10sp"
+                    android:background="@drawable/back"    />
+
+                <TextView
+                    android:id="@+id/tvAccion"
+                    android:layout_width="65dp"
+                    android:layout_height="30dp"
+                    android:text="Eliminar"
+                    android:textSize="10sp"
+                    android:background="@drawable/back"    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</LinearLayout>

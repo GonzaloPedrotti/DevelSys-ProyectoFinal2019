@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202537"
+    tools:context=".Campo.DetalleCampo">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Información General del Campo"
+        android:textAlignment="center"
+        android:textColor="#FFFF"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvIdCampo"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="25dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:text="TextView"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textSize="16dp" />-->
+
+    <TextView
+        android:id="@+id/tvNombreCampo"
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFF"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+    <TextView
+        android:id="@+id/txtLatitud"
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFF"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreCampo" />
+
+    <TextView
+        android:id="@+id/tvLongitud"
+        android:layout_width="330dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFF"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLatitud" />
+
+    <Button
+        android:id="@+id/btnVerLotes"
+        android:layout_width="100dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:text="Ver Lotes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLongitud" />
+
+    <Button
+        android:id="@+id/btnVerUbicacion"
+        android:layout_width="100dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
+        android:text="Ver Ubicación"
+        app:layout_constraintStart_toEndOf="@+id/btnVerLotes"
+        app:layout_constraintTop_toBottomOf="@+id/tvLongitud" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvUsuarioId"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="25dp"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:text="TextView"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textSize="16dp" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

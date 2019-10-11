@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Lotes.ItemLote">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:background="#7B1FA2"
+            app:cardBackgroundColor="#818F02F8"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="#83CED6"
+                android:orientation="vertical"
+                android:textAlignment="center">
+
+                <TextView
+                    android:id="@+id/tvIdLote"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Id del Lote"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvNombreLote"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Nombre del Lote"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvTamanoLote"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Tamaño"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvCampoId"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="25dp"
+                    android:background="#73DAC0"
+                    android:text="Id del Campo"
+                    android:textAlignment="center"
+                    android:textColor="#0C0B0B" />
+
+                <TextView
+                    android:id="@+id/tvLatitudLote"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#73DAC0"
+                    android:text="Latitud"
+                    android:textAlignment="center"
+                    android:textColor="#111111" />
+
+                <TextView
+                    android:id="@+id/tvLongitudLote"
+                    android:layout_width="260dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#73DAC0"
+                    android:text="Longitud"
+                    android:textAlignment="center"
+                    android:textColor="#111111" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</LinearLayout>

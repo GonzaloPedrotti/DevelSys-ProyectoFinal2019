@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">MiCampo Mobile</string>
+    <string name="inicio">Inicio</string>
+    <string name="crearcuenta">Crear Cuenta</string>
+    <string name="micuenta">Administración de Campos</string>
+    <string name="crearCampo">Ubique su campo en el Mapa</string>
+    <string name="mapa">Busca tú Campo</string>
+    <string name="title_activity_mapa">Busque su Campo en el Mapa</string>
+    <string name="marker_detail_latlng">(%1$.2f,%2$.2f)</string>
+    <string name="marcadorInfo">Este cuadro de diálogo muestra un detalle mas extenso de la información</string>
+    <string name="title_activity_tipos_mapas">Tipos de Mapas</string>
+    <string name="title_activity_maps">Con Localizador</string>
+    <string name="ayuda">Ayuda al Usuario</string>
+    <string name="title_activity_nuevo_lote">Map</string>
+    <string name="crearLote">Ubique su lote en el Mapa</string>
+    <string name="detallelote">Información del Lote</string>
+    <string name="listaCampos">Campos Registrados</string>
+    <string name="detallecampo">Detalle del Campo</string>
+    <string name="listadoDeLotes">Lotes del Campo</string>
+    <string name="humedad">Humedad:</string>
+    <string name="estado_del_cielo">Estado del Cielo:</string>
+    <string name="fecha_actual">Fecha Actual:</string>
+    <string name="velocidad_viento">Velocidad Viento:</string>
+    <string name="km_h">Km/h</string>
+    <string name="c">C°</string>
+    <string name="porcentaje">%</string>
+    <string name="id_del_lote">Id Del Lote:</string>
+    <string name="latitud">Latitud:</string>
+    <string name="longitud">Longitud</string>
+    <string name="datos_actuales_del_tiempo_en_el_lote">Datos Actuales del Tiempo en el Lote</string>
+    <string name="temperatura_actual">Temperatura Actual:</string>
+    <string name="nuevo_proyecto_de_cultivo">Nuevo Proyecto de Cultivo</string>
+    <string name="ver_historial_de_proyectos">Ver Historial de Proyectos</string>
+    <string name="nuevoProyecto">Nuevo Proyecto de Cultivo</string>
+    <string name="periodoDeCultivo">Periodo de Cultivo Recomendado:</string>
+    <string name="registroactividades">Registro de Actividades</string>
+    <string name="detalleProyecto">Detalle del Proyecto</string>
+
+
+</resources>
