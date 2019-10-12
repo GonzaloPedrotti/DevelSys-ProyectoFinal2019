@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat;
 
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +24,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.InformacionDeApp;
-import pedrotti.gonzalo.proyecto.Lotes.InformacionDelLote;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.TiposMapas;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
@@ -109,7 +107,7 @@ private boolean mLocationPermissionGranted = false;
 
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("This application requires GPS to work properly, do you want to enable it?")
+        builder.setMessage("Esta aplicación requiere utilizar su ubicación para trabajar correctarmente. Desea Activarla?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
@@ -203,20 +201,7 @@ private boolean mLocationPermissionGranted = false;
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //Fin Solicitud de Permisos
+        //Fin Solicitud de Permisos
 
 
     public void mapaTipos (View view){

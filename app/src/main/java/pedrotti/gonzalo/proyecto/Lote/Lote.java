@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Lotes;
+package pedrotti.gonzalo.proyecto.Lote;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,6 +11,10 @@ public class Lote implements Parcelable {
     private double tamano;
     private double latitud;
     private double longitud;
+
+
+    public Lote() {
+    }
 
     public Lote(int campo_id, int lote_id, String nombre, double tamano, double latitud, double longitud) {
         this.campo_id = campo_id;

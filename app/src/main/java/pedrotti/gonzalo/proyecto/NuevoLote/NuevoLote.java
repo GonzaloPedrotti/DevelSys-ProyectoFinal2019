@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import pedrotti.gonzalo.proyecto.Campo.Campo;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
 public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
@@ -148,7 +149,6 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                 if (param1==1 && param2==1 && param3==1 && param4==1  ){
                      j=1;
                 }else{
-
                     j=0;
                 }
 
@@ -179,16 +179,22 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                         Response.Listener<String> respuesta = new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+
+                                Lote lote = new Lote();
+
                                 try{
                                     JSONObject jsonRespuesta = new JSONObject(response);
                                     boolean ok = jsonRespuesta.getBoolean("success");
                                     if(ok==true){
                                     Toast.makeText(getApplicationContext(), "Lote " + nombre + " Registrado con Éxito", Toast.LENGTH_LONG).show();
-                                        finish();
+//                                    mMap.clear();
+                                    finish();
                                     }else{
 
                                         AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoLote.this);
-                                        alerta.setMessage("Fallo en el Registro").setNegativeButton("Reintentar",null).create().show();
+                                        alerta.setMessage("Fallo en el Registro")
+                                                .setNegativeButton("Reintentar",null)
+                                                .create().show();
                                     }
                                 }
                                 catch(JSONException e){
@@ -201,7 +207,6 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                         RequestQueue cola = Volley.newRequestQueue(NuevoLote.this);
                         cola.add(req);
                     }
-
                 }
                 //fin del else
             }

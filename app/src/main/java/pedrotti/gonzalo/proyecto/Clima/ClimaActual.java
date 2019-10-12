@@ -4,12 +4,6 @@ import java.util.List;
 
 public class ClimaActual {
 
-//    public String cod;
-//    public double message;
-//    public int cnt ;
-//    public List<Lista> list ;
-//    public City city ;
-
     private double temperatura;
     private String imagen;
     private String fecha;

@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Lotes;
+package pedrotti.gonzalo.proyecto.Lote;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +28,6 @@ import pedrotti.gonzalo.proyecto.Campo.Campo;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.NuevoLote.NuevoLote;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnItemClickListener{
 

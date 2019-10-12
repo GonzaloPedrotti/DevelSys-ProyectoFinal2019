@@ -41,10 +41,10 @@
             android:name=".ProyectoCultivo.NuevoProyectoCultivo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Lotes.TodosLosLotes"
+            android:name=".Lote.TodosLosLotes"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Lotes.ItemLote"
+            android:name=".Lote.ItemLote"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Campo.DetalleCampo"
@@ -53,7 +53,7 @@
             android:name=".Campo.TodosLosCampos"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Lotes.InformacionDelLote"
+            android:name=".Lote.InformacionDelLote"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Bienvenido.Bienvenido"

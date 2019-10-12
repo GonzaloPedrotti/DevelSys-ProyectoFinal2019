@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Lotes;
+package pedrotti.gonzalo.proyecto.Lote;
 
 import android.content.Context;
 import android.view.LayoutInflater;

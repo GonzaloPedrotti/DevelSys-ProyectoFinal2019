@@ -20,8 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import pedrotti.gonzalo.proyecto.Login.Login;
-import pedrotti.gonzalo.proyecto.Lotes.Lote;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
 public class InformacionClimatica extends AppCompatActivity implements ClimaActualAdapter.OnItemClickListener {

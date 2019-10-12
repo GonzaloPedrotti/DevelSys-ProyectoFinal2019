@@ -43,6 +43,7 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
     private int param1=0;
     TextView tvLat1, tvLong1;
     EditText etNombre;
+    private int j =0;
 
 
     public double getLat1() {
@@ -105,11 +106,11 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
     * si no seleccionó un punto, la variable lat1 y long1 se definen como cero
     * Entonces: Si es cero, entra al if y muestra el mensaje de completar los campos*/
                 if (param1==1){
-                    lat1 = Double.parseDouble(tvLat1.getText().toString());
-                    long1 = Double.parseDouble(tvLong1.getText().toString());
+                 j=1;
                 }else{
                     lat1=0;
                     long1=0;
+                    j=0;
                 }
 
                 //El trim elimina espacios al principio y al fin
@@ -117,7 +118,7 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
 
                 //Controles
                 if (nombre.isEmpty() || lat1==0 || long1==0 ) {
-                    Toast.makeText(getApplicationContext(), "Complete Todos los Campos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Asegúrese de Que Seleccionó un punto y Completó el nombre", Toast.LENGTH_LONG).show();
                 }
 
                 //inicio else
@@ -198,14 +199,16 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
                     Toast.makeText(this, "Punto 1: " + getLat1()+"," + getLong1(), Toast.LENGTH_SHORT).show();
 
                     //Pasamos de Double a String
-                    String stringLat1 =String.valueOf(marker.getPosition().latitude);
-                    String stringLong1 = String.valueOf(marker.getPosition().longitude);
+//                    String stringLat1 =String.valueOf(marker.getPosition().latitude);
+//                    String stringLong1 = String.valueOf(marker.getPosition().longitude);
 
+                    lat1= marker.getPosition().latitude;
+                    long1=marker.getPosition().longitude;
                     param1=1;
 
                     //Colocamos texto en el textView en formato String
-                    tvLat1.setText(stringLat1);
-                    tvLong1.setText(stringLong1);
+//                    tvLat1.setText(stringLat1);
+//                    tvLong1.setText(stringLong1);
                 }
         }else{
             Toast.makeText(this, "Ya seleccionó una Ubicación para su Campo.", Toast.LENGTH_SHORT).show();

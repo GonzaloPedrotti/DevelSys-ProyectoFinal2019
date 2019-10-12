@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pedrotti.gonzalo.proyecto.Constantes;
-import pedrotti.gonzalo.proyecto.Lotes.Lote;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
 public class TodosLosProyectos extends AppCompatActivity implements  ProyectoCultivoAdapter.OnItemClickListener{

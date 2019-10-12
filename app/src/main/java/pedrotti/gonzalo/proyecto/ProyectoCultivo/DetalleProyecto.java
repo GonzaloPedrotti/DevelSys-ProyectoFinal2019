@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +27,7 @@ import java.util.List;
 
 import pedrotti.gonzalo.proyecto.Actividad.NuevaActividad;
 import pedrotti.gonzalo.proyecto.Constantes;
-import pedrotti.gonzalo.proyecto.Lotes.Lote;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
 public class DetalleProyecto extends AppCompatActivity implements DetalleActividadAdapter.OnItemClickListener {

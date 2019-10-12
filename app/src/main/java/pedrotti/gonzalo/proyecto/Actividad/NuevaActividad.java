@@ -27,7 +27,7 @@ import java.util.Calendar;
 import cz.msebera.android.httpclient.Header;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Clima.InformacionClimatica;
-import pedrotti.gonzalo.proyecto.Lotes.Lote;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Variedad.Variedad;
