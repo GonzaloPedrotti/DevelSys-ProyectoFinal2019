@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -29,13 +34,12 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     private List<ClimaActual> climaActualList;
     RecyclerView recyclerView;
     ClimaActualAdapter adapter;
+    private TextView tvRecomendacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_climatica);
-
-
 
         //Se recibe desde TodosLosLotes
         Bundle bundle = getIntent().getExtras();
@@ -43,12 +47,17 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
         setTitle("Datos del lote: " + lote.getNombre());
 
+        tvRecomendacion=(TextView)findViewById(R.id.tvRecomendacion);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewClima);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         climaActualList = new ArrayList<>();
         findweather();
 
+    }
+    public void mostrarReferencia(){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(InformacionClimatica.this);
+        alerta.setMessage(R.drawable.verde+": Permitido Realizar \n" +  R.drawable.verde+ ": Permitido Realizar \n").setPositiveButton("Entendido", null).setTitle("Recomendación").setIcon(R.drawable.logo).create().show();
     }
 
     public void findweather(){
@@ -99,6 +108,7 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
                      ClimaActual ca = new ClimaActual(temperatura,icon,txt_date,descripcion,humedad,speed_metrico,mmLluvia);
                      climaActualList.add(ca);
+
                  }
                  adapter = new ClimaActualAdapter(InformacionClimatica.this,climaActualList);
                  recyclerView.setAdapter(adapter);
@@ -106,7 +116,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-
                 }
             }
         }, new Response.ErrorListener() {
@@ -121,11 +130,25 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
     @Override
     public void OnItemClick(int position) {
-        ClimaActual climaActualSeleccionado = climaActualList.get(position);
-        Toast.makeText(this, "Seleccioando:" + climaActualSeleccionado.getTemperatura(), Toast.LENGTH_SHORT).show();
-        AlertDialog.Builder alerta = new AlertDialog.Builder(InformacionClimatica.this);
-        alerta.setMessage("").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
+        final ClimaActual climaActualSeleccionado = climaActualList.get(position);
+        final AlertDialog.Builder alerta = new AlertDialog.Builder(InformacionClimatica.this);
+        alerta.setMessage("Verde: Aplicación Segura \n" + "Amarillo: Precaución al Aplicar \n"+ "Rojo: No es Recomendable Aplicar \n" + "\n" +"¿Desea Seleccionar este momento como inicio de la nueva actividad?").setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(InformacionClimatica.this, "Se selecciona", Toast.LENGTH_SHORT).show();
+            }
+        }).setTitle("Recomendación").setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(InformacionClimatica.this, "Salir", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        }).setIcon(R.drawable.logo).create().show();
     }
+
+
+
+
 }
 
 

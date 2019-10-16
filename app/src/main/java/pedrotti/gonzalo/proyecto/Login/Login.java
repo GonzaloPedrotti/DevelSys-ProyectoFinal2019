@@ -119,11 +119,7 @@ public class Login extends AppCompatActivity {
                         btnlogin.setEnabled(true);
                         btnlogin.setText("INGRESAR");
                     }
-
-
                 }
-
-
             }
         });
     }

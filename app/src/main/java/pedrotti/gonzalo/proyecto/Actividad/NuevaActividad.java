@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -44,8 +45,9 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
     ArrayList<Actividad> actividadesList;
     ArrayList<Variedad> variedadesList;
 
-    private Button btnRegistrarActividad, btnHora, btnFecha, btnVerClima;
+    private Button btnRegistrarActividad, btnVerClima;
     private TextView tvVar;
+    ImageButton  btnHora, btnFecha;
     private EditText etFecha, etHora;
 
     private int mes, dia , anio, hora , minutos;
@@ -83,8 +85,8 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
 
         spActividad.setOnItemSelectedListener(this);
 
-        btnFecha = (Button) findViewById(R.id.btnFecha);
-        btnHora = (Button) findViewById(R.id.btnHora);
+        btnFecha = (ImageButton) findViewById(R.id.btnFecha);
+        btnHora = (ImageButton) findViewById(R.id.btnHora);
         etFecha = (EditText) findViewById(R.id.etFecha);
         etHora = (EditText) findViewById(R.id.etHora);
         btnVerClima = (Button)findViewById(R.id.btnInformacionApp);
@@ -105,9 +107,6 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
         });
 
     }
-
-
-
 
 
     //Spinner de Actividades
@@ -216,27 +215,40 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
         if(v==btnFecha){
             final Calendar c = Calendar.getInstance();
             dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
+            mes = c.get(Calendar.MONTH) ;
             anio = c.get(Calendar.YEAR);
 
+            //Picker de Fecha
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    etFecha.setText(dayOfMonth+"/"+month+"/"+year);
+                    etFecha.setText(dayOfMonth+"/"+ (month+1) +"/"+year);
                 }
             },anio,mes,dia);
+
+            //Seteamos fecha mínima al día actual
+            datePickerDialog.setTitle("Fecha Estimada de Inicio");
+            datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+//            datePickerDialog.getDatePicker().setMaxDate();
             datePickerDialog.show();
         }
+
+
         if(v==btnHora){
             final Calendar c= Calendar.getInstance();
             hora =c.get(Calendar.HOUR_OF_DAY);
             minutos =c.get(Calendar.MINUTE);
+
+            //Picker de Hora
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    etHora.setText(hourOfDay+":"+minute);
+                    etHora.setText(hourOfDay+":"+minute + " hs");
                 }
             },hora,minutos,false);
+
+
+            timePickerDialog.setTitle("Hora Estimada de Inicio");
             timePickerDialog.show();
         }
     }

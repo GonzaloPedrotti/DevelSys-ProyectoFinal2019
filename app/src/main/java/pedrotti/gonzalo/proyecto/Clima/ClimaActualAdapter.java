@@ -1,11 +1,13 @@
 package pedrotti.gonzalo.proyecto.Clima;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,8 +22,6 @@ import java.util.List;
 import pedrotti.gonzalo.proyecto.R;
 
 public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.InformacionClimaticaViewHolder> {
-
-    private Picasso picasso;
 
     private Context mCtx;
     private List<ClimaActual> climaActualList;
@@ -94,13 +94,24 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
         holder.tvVelocidadViento.setText(""+climaActual.getViento());
         holder.tvLluvia.setText(""+climaActual.getLluvia());
 
+       if(climaActual.getViento()>=0 && climaActual.getViento()<5){
+           holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
+       }
+
+       if(climaActual.getViento()>=5 && climaActual.getViento()<20){
+               holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
+       }
+
+       if(climaActual.getViento()>=20){
+           holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
+       }
         Picasso.with(mCtx).load( "https://openweathermap.org/img/wn/"+climaActual.getImagen()+".png").into(holder.ivIcono);
 
     }
 
     class InformacionClimaticaViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvTemperatura, tvFecha, tvDescripcion, tvHumedad, tvVelocidadViento, tvLluvia;
+        TextView tvTemperatura, tvFecha, tvDescripcion, tvHumedad, tvVelocidadViento, tvLluvia, tvRecomendacion;
         ImageView ivIcono;
 
 
@@ -114,6 +125,7 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
             tvHumedad=itemView.findViewById(R.id.tvHumedad);
             tvVelocidadViento=itemView.findViewById(R.id.tvVelocidadViento);
             tvLluvia = itemView.findViewById(R.id.tvLluvia);
+            tvRecomendacion = itemView.findViewById(R.id.tvRecomendacion);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -123,12 +135,10 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
                         int position  = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
                             mlistener.OnItemClick(position);
-
                         }
                     }
                 }
             });
-
         }
     }
 
