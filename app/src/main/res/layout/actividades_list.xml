@@ -18,44 +18,48 @@
 
                 <TextView
                     android:id="@+id/tvNombreActividad"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="30dp"
-                    android:text="Actividad"
-                    android:textSize="10sp"
                     android:background="@drawable/back"
-                    />
+                    android:text="Actividad"
+                    android:textAlignment="center"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tvFechaInicio"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="30dp"
+                    android:background="@drawable/back"
                     android:text="FechaInicio"
-                    android:textSize="10sp"
-                    android:background="@drawable/back"    />
+                    android:textAlignment="center"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tvFechaFin"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="30dp"
+                    android:background="@drawable/back"
                     android:text="Fecha Fin"
-                    android:textSize="10sp"
-                    android:background="@drawable/back"    />
+                    android:textAlignment="center"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tvEstadoActividad"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="30dp"
+                    android:background="@drawable/back"
                     android:text="Estado"
-                    android:textSize="10sp"
-                    android:background="@drawable/back"    />
+                    android:textAlignment="center"
+                    android:textSize="10sp" />
 
-                <TextView
-                    android:id="@+id/tvAccion"
-                    android:layout_width="65dp"
-                    android:layout_height="30dp"
-                    android:text="Eliminar"
-                    android:textSize="10sp"
-                    android:background="@drawable/back"    />
+                <!--<TextView-->
+                    <!--android:id="@+id/tvAccion"-->
+                    <!--android:layout_width="65dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:background="@drawable/back"-->
+                    <!--android:text="ACCIÓN"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textSize="10sp" />-->
 
             </LinearLayout>
 

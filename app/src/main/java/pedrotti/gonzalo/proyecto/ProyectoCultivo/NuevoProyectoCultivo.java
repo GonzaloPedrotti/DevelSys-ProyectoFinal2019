@@ -89,7 +89,6 @@ public class NuevoProyectoCultivo extends AppCompatActivity implements AdapterVi
                                             Toast.makeText(getApplicationContext(), "Proyecto Registrado. Ya puedes Comenzar a Trabajar!", Toast.LENGTH_LONG).show();
                                             NuevoProyectoCultivo.this.finish();
                                         } else {
-
                                                 AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoProyectoCultivo.this);
                                                 alerta.setMessage("Ya existe un Proyecto para este Lote").setNegativeButton("Entendido", null).setTitle("Información de Registro").setIcon(R.drawable.logo).create().show();
                                         }

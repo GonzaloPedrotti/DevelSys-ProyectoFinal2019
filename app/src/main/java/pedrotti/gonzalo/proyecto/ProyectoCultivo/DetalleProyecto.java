@@ -32,8 +32,6 @@ import pedrotti.gonzalo.proyecto.R;
 
 public class DetalleProyecto extends AppCompatActivity implements DetalleActividadAdapter.OnItemClickListener {
 
-
-
     private ProyectoCultivo proyecto;
     private TextView tvEstado, tvNombreProyecto, tvFechaRegistro, tvCultivo, tvPeriodo;
     private Button btnNuevaActividad;
@@ -50,23 +48,27 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_proyecto);
+    }
 
-       setTitle(R.string.detalleProyecto);
 
-       //Se recibe desde TodosLosProyectos
+    protected void onResume() {
+        super.onResume();
+
+
+        setTitle(R.string.detalleProyecto);
+
+        //Se recibe desde TodosLosProyectos
         Bundle bundle = getIntent().getExtras();
         proyecto = bundle.getParcelable("DATOS_PROYECTO");
 
         //Se recibe desde Información del Lote
         Bundle bundle2 = getIntent().getExtras();
-        lote = bundle.getParcelable("DATOS_LOTE");
-
-
+        lote = bundle2.getParcelable("DATOS_LOTE");
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewActividades);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-       detalleActividadList = new ArrayList<>();
+        detalleActividadList = new ArrayList<>();
 
 
         tvEstado = (TextView)findViewById(R.id.tvEstadoActual);
@@ -90,6 +92,7 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
                 abrirNuevaActividad();
             }
         });
+
     }
 
 
@@ -156,4 +159,5 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
         AlertDialog.Builder alerta = new AlertDialog.Builder(DetalleProyecto.this);
         alerta.setMessage("La Actividad " + itemSeleccionado.getActividad() + " comienza el día " + itemSeleccionado.getInicio() + " y finaliza el día " + itemSeleccionado.getFin()).setPositiveButton("Entendido",null).setTitle("Detalle de Actividad").setIcon(R.drawable.logo).create().show();
     }
+
 }

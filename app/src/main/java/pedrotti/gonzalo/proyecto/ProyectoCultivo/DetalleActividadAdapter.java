@@ -17,8 +17,6 @@ import pedrotti.gonzalo.proyecto.R;
 
 public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActividadAdapter.DetalleProyectoViewHolder> {
 
-
-
     private Context mCtx;
     private List<DetalleActividad> detalleActividadList;
     private View.OnClickListener listener;
@@ -69,28 +67,30 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
         holder.tvFechaFin.setText(detalleActividad.getFin());
         holder.tvEstadoActividad.setText(detalleActividad.getEstado());
 
-        if(pos== 0 && (holder.tvEstadoActividad.getText().toString())=="FINALIZADA"){
-            holder.tvAccion.setText("Eliminar");
-
+        if(pos== 0){
             holder.tvActividad.setBackgroundColor(Color.parseColor("#FFFFFF"));
             holder.tvFechaInicio.setBackgroundColor(Color.parseColor("#FFFFFF"));
             holder.tvFechaFin.setBackgroundColor(Color.parseColor("#FFFFFF"));
             holder.tvEstadoActividad.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            holder.tvAccion.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//            holder.tvAccion.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//            if ((holder.tvEstadoActividad.getText().toString())=="FINALIZADA") {
+//                holder.tvAccion.setText("Eliminar");
+//            }else{
+//                holder.tvAccion.setText("Editar");
+//            }
+
         }else{
-            holder.tvAccion.setText("Editar");
             holder.tvActividad.setBackgroundColor(Color.parseColor("#00C3FF"));
             holder.tvFechaInicio.setBackgroundColor(Color.parseColor("#00C3FF"));
             holder.tvFechaFin.setBackgroundColor(Color.parseColor("#00C3FF"));
             holder.tvEstadoActividad.setBackgroundColor(Color.parseColor("#00C3FF"));
-            holder.tvAccion.setBackgroundColor(Color.parseColor("#00C3FF"));
-
+//            holder.tvAccion.setBackgroundColor(Color.parseColor("#00C3FF"));s
         }
     }
 
     class DetalleProyectoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvActividad, tvFechaInicio,tvFechaFin,tvEstadoActividad, tvAccion;
+        TextView tvActividad, tvFechaInicio,tvFechaFin,tvEstadoActividad;
 
         public DetalleProyectoViewHolder(View itemView){
             super(itemView);
@@ -99,7 +99,7 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
             tvFechaInicio = itemView.findViewById(R.id.tvFechaInicio);
             tvFechaFin = itemView.findViewById(R.id.tvFechaFin);
             tvEstadoActividad = itemView.findViewById(R.id.tvEstadoActividad);
-            tvAccion = itemView.findViewById(R.id.tvAccion);
+//            tvAccion = itemView.findViewById(R.id.tvAccion);
 
 
 
