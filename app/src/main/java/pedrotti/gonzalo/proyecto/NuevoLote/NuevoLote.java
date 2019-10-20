@@ -57,6 +57,8 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
     private Marker marker;
     EditText etNombre;
     EditText etTamano;
+    private Campo campoSeleccionado;
+
 
 
     public double getLat1() {
@@ -134,9 +136,11 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
 
         this.setTitle(R.string.crearLote);
 
+        Bundle bundle = getIntent().getExtras();
+        campoSeleccionado = bundle.getParcelable("DATOS_CAMPO_SEL");
+
         Button btnAyuda = (Button)findViewById(R.id.btnAyuda);
         Button btnRegistrarLote = (Button)findViewById(R.id.btnRegistrarLote);
-        final TextView mensaje = (TextView)findViewById((R.id.txtDatos));
 
         etNombre = (EditText)findViewById(R.id.txtNombreLote);
         etTamano = ((EditText)findViewById(R.id.txtTamano));
@@ -174,8 +178,6 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                         Toast.makeText(NuevoLote.this, "Asegúrese de haber ingresado un Nombre y un Tamaño", Toast.LENGTH_SHORT).show();
                     }else{
 
-                        Bundle verLotes  = getIntent().getExtras();
-                        campo_id2 = verLotes.getInt("campo_id");
                         Response.Listener<String> respuesta = new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -186,7 +188,7 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                                     JSONObject jsonRespuesta = new JSONObject(response);
                                     boolean ok = jsonRespuesta.getBoolean("success");
                                     if(ok==true){
-                                    Toast.makeText(getApplicationContext(), "Lote " + nombre + " Registrado con Éxito", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),  nombre + " Registrado con Éxito", Toast.LENGTH_LONG).show();
 //                                    mMap.clear();
                                     finish();
                                     }else{
@@ -203,7 +205,7 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                                 }
                             }
                         };
-                        NuevoLoteRequest req = new NuevoLoteRequest(campo_id2,nombre,tamano,lat1,lat2,lat3,lat4,long1,long2,long3,long4, respuesta);
+                        NuevoLoteRequest req = new NuevoLoteRequest(campoSeleccionado.getCampo_id(),nombre,tamano,lat1,lat2,lat3,lat4,long1,long2,long3,long4, respuesta);
                         RequestQueue cola = Volley.newRequestQueue(NuevoLote.this);
                         cola.add(req);
                     }
@@ -219,7 +221,6 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
                 startActivity(ayuda);
             }
         });
-
     }
 
     @Override
@@ -229,9 +230,8 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
         mMap.setOnMapLongClickListener(this);
         mMap.setOnMapClickListener(this);
 
-        Bundle verLotes  = getIntent().getExtras();
-       double latitud = verLotes.getDouble("campo_latitud");
-       double longitud = verLotes.getDouble("campo_longitud");
+        double latitud = campoSeleccionado.getLat();
+        double longitud =campoSeleccionado.getLon();
 
         //Se agrega para ubicar el campo en el mapa
         LatLng campo = new LatLng(latitud,longitud);

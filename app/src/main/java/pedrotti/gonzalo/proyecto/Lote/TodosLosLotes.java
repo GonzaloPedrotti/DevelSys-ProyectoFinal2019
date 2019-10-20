@@ -33,12 +33,6 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
 
     private static final String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/obtenerLotesDeCampo.php?campo_id=";
 
-//    public static final String EXTRA_CAMPO_ID="campo_id" ;
-//    public static  final String EXTRA_LOTE_ID="lote_id";
-//    public static final String EXTRA_NOMBRE_LOTE = "nombre";
-//    public static final String EXTRA_TAMANO_LOTE = "tamano";
-//    public static final String EXTRA_LAT_LOTE = "lat1";
-//    public static final String EXTRA_LONG_LOTE = "long1";
 
     private int campo_id;
     private double latitud;
@@ -46,6 +40,7 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
     RecyclerView recyclerView;
     List<Lote> loteList;
     LoteAdapter adapter;
+    private FloatingActionButton btnFlotanteNuevoLote;
 
     Campo itemSeleccionado;
 
@@ -61,13 +56,13 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         loteList = new ArrayList<>();
 
+        //Se recibe desde  DetalleCampo
         Bundle bundle = getIntent().getExtras();
         itemSeleccionado = bundle.getParcelable("DATOS_CAMPO_SEL");
 
         loadLotes();
 
-
-        FloatingActionButton btnFlotanteNuevoLote = (FloatingActionButton)findViewById(R.id.btnFlotanteNuevoLote);
+        btnFlotanteNuevoLote = (FloatingActionButton)findViewById(R.id.btnFlotanteNuevoLote);
 
       btnFlotanteNuevoLote.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -75,12 +70,6 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
               Intent nuevoLote = new Intent(TodosLosLotes.this, NuevoLote.class);
 
               nuevoLote.putExtra("DATOS_CAMPO_SEL",itemSeleccionado);
-              nuevoLote.putExtra("campo_id_sel", itemSeleccionado.getCampo_id());
-
-              nuevoLote.putExtra("campo_id",campo_id);
-              nuevoLote.putExtra("campo_latitud",latitud);
-              nuevoLote.putExtra("campo_longitud",longitud);
-
               startActivity(nuevoLote);
               //Este finish se puso para que vuelva a DetalleCampo
               finish();
@@ -90,13 +79,7 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
 
     private void loadLotes() {
 
-        Bundle verLotes  = getIntent().getExtras();
-         campo_id = verLotes.getInt("campo_id");
-         latitud = verLotes.getDouble("campo_latitud");
-        longitud = verLotes.getDouble("campo_longitud");
-        
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+ campo_id,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+ itemSeleccionado.getCampo_id(),
                 new Response.Listener<String>() {
 
                     @Override
@@ -162,6 +145,8 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
     public void OnItemClick(int position) {
         Intent detalleLote = new Intent(this, InformacionDelLote.class);
         Lote loteSeleccionado = loteList.get(position);
+
+
         detalleLote.putExtra("DATOS_LOTE",loteSeleccionado);
         startActivity(detalleLote);
     }

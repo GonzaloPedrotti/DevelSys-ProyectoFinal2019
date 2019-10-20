@@ -18,7 +18,7 @@
 
                 <TextView
                     android:id="@+id/tvNombreActividad"
-                    android:layout_width="75dp"
+                    android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:background="@drawable/back"
                     android:text="Actividad"
@@ -27,7 +27,7 @@
 
                 <TextView
                     android:id="@+id/tvFechaInicio"
-                    android:layout_width="75dp"
+                    android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:background="@drawable/back"
                     android:text="FechaInicio"
@@ -36,7 +36,7 @@
 
                 <TextView
                     android:id="@+id/tvFechaFin"
-                    android:layout_width="75dp"
+                    android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:background="@drawable/back"
                     android:text="Fecha Fin"
@@ -45,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/tvEstadoActividad"
-                    android:layout_width="75dp"
+                    android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:background="@drawable/back"
                     android:text="Estado"

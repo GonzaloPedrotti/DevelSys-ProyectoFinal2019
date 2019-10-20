@@ -43,10 +43,7 @@ public class TodosLosProyectos extends AppCompatActivity implements  ProyectoCul
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todos_los_proyectos);
 
-        Intent intent = getIntent();
-        lote_id = intent.getIntExtra("lote_id",0);
-
-        //Se recibe desde Información del Lote
+        //Se recibe desde Información desde InformacionDelLote
         Bundle bundle = getIntent().getExtras();
         lote = bundle.getParcelable("DATOS_LOTE");
 

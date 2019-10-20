@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
@@ -10,94 +11,102 @@
 
     <RelativeLayout
         android:layout_width="360dp"
-        android:layout_height="160dp">
+        android:layout_height="180dp"
+        android:background="#202537">
 
 
         <androidx.cardview.widget.CardView
-            android:layout_width="320dp"
-            android:layout_height="128dp"
+            android:layout_width="330dp"
+            android:layout_height="160dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:background="#7B1FA2"
-            app:cardBackgroundColor="#818F02F8"
+            android:background="#90F59A"
+            app:cardBackgroundColor="#90F59A"
             app:cardCornerRadius="8dp">
 
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
-                android:background="#83CED6"
-                android:orientation="vertical"
+                android:background="#90F59A"
                 android:textAlignment="center">
 
-                <TextView
-                    android:id="@+id/tvIdCampo"
-                    android:layout_width="260dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:autoText="false"
-                    android:background="#3C3D8183"
-                    android:freezesText="false"
-                    android:maxLength="25"
-                    android:text="Id "
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#0C0C0C"
-                    android:textSize="14sp" />
+                <!--<TextView-->
+                <!--android:id="@+id/tvIdCampo"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:autoText="false"-->
+                <!--android:background="#3C3D8183"-->
+                <!--android:freezesText="false"-->
+                <!--android:maxLength="25"-->
+                <!--android:text="Id "-->
+                <!--android:textAlignment="center"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="#0C0C0C"-->
+                <!--android:textSize="16sp"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
 
                 <TextView
                     android:id="@+id/tvNombre"
-                    android:layout_width="260dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#3C3D8183"
+                    android:layout_width="265dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#90F59A"
+                    android:fontFamily="sans-serif-black"
                     android:maxLength="25"
                     android:text="Nombre"
                     android:textAlignment="center"
                     android:textAllCaps="false"
-                    android:textColor="#0C0C0C"
-                    android:textSize="14sp" />
+                    android:textColor="#0F0606"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvLat"
-                    android:layout_width="260dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#3C3D8183"
+                    android:layout_width="265dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#90F59A"
+                    android:fontFamily="sans-serif-black"
                     android:maxLength="25"
                     android:text="Latitud"
                     android:textAlignment="center"
                     android:textAllCaps="false"
-                    android:textColor="#0C0C0C"
-                    android:textSize="14sp" />
+                    android:textColor="#0F0606"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
                 <TextView
                     android:id="@+id/tvLong"
-                    android:layout_width="260dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="2dp"
-                    android:background="#3C3D8183"
+                    android:layout_width="265dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#90F59A"
+                    android:fontFamily="sans-serif-black"
                     android:maxLength="25"
                     android:text="Longitud"
                     android:textAlignment="center"
                     android:textAllCaps="false"
-                    android:textColor="#0C0C0C"
-                    android:textSize="14sp" />
+                    android:textColor="#0F0606"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLat" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 

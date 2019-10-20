@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Cultivo.Cultivo;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
 
@@ -41,7 +42,7 @@ public class NuevoProyectoCultivo extends AppCompatActivity implements AdapterVi
     private int cultivo_id;
     private int lote_id;
     private String nombre;
-
+    private Lote loteSelecionado;
 
 
     @Override
@@ -57,9 +58,13 @@ public class NuevoProyectoCultivo extends AppCompatActivity implements AdapterVi
         btnRegistrarProyecto = (Button)findViewById(R.id.btnRegistrarProyectoCultivo);
         spCultivo.setOnItemSelectedListener(this);
 
+        //Se recibe desde InformaciónDelLote
+        Bundle bundle = getIntent().getExtras();
+        loteSelecionado = bundle.getParcelable("DATOS_LOTE");
 
-        Intent intent = getIntent();
-        lote_id = intent.getIntExtra("lote_id",0);
+//
+//        Intent intent = getIntent();
+//        lote_id = intent.getIntExtra("lote_id",0);
 
         cultivoList = new ArrayList<>();
 
@@ -98,15 +103,13 @@ public class NuevoProyectoCultivo extends AppCompatActivity implements AdapterVi
                                     }
                                 }
                             };
-                          ProyectoCultivoRequest r = new ProyectoCultivoRequest(nombre, cultivoSel, lote_id, respuesta);
+                          ProyectoCultivoRequest r = new ProyectoCultivoRequest(nombre, cultivoSel, loteSelecionado.getLote_id(), respuesta);
                             RequestQueue cola = Volley.newRequestQueue(NuevoProyectoCultivo.this);
                             cola.add(r);
                         }//else del Response
-
             }
         });
     }
-
 
     private void llenarSpinner(){
         String url ="http://"+ Constantes.ip+"/miCampoWeb/mobile/getCultivo.php";
@@ -169,7 +172,6 @@ public class NuevoProyectoCultivo extends AppCompatActivity implements AdapterVi
 //        Toast.makeText(this, "Cultivo id " + getCultivoId(), Toast.LENGTH_SHORT).show();
 
     }
-
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

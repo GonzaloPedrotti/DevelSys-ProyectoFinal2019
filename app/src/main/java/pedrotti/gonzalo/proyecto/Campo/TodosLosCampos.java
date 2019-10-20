@@ -33,11 +33,11 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
 
     private static final String url = "http://"+Constantes.ip+"/miCampoWeb/mobile/obtenerCamposDelUsuario.php?usuario_id=";
 
-    public static final String EXTRA_USUARIO_ID="usuario_id" ;
-    public static  final String EXTRA_ID="campo_id";
-    public static final String EXTRA_NOMBRE = "nombre";
-    public static final String EXTRA_LAT = "lat";
-    public static final String EXTRA_LONG = "long";
+//    public static final String EXTRA_USUARIO_ID="usuario_id" ;
+//    public static  final String EXTRA_ID="campo_id";
+//    public static final String EXTRA_NOMBRE = "nombre";
+//    public static final String EXTRA_LAT = "lat";
+//    public static final String EXTRA_LONG = "long";
 
     private Usuario user;
     private Campo camponuevo;
@@ -59,6 +59,8 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         campoList = new ArrayList<>();
 
+
+        //Se recibe desde el Bienvenido
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
 
@@ -143,18 +145,7 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
     public void OnItemClick(int position) {
         Intent detalleCampo = new Intent(this, DetalleCampo.class);
         Campo itemSeleccionado = campoList.get(position);
-
-        //Estas dos lineas se agregan para pasarla al DetalleCampo 29/09
         detalleCampo.putExtra("DATOS_CAMPO_SEL",itemSeleccionado);
-        detalleCampo.putExtra("campo_id_sel",itemSeleccionado.getCampo_id());
-
-        //Estas lineas se pasan al DetalleCampo. Es la información del campo seleccionado.
-        detalleCampo.putExtra(EXTRA_USUARIO_ID,itemSeleccionado.getUsuario_id());
-        detalleCampo.putExtra(EXTRA_ID,itemSeleccionado.getCampo_id());
-        detalleCampo.putExtra(EXTRA_NOMBRE, itemSeleccionado.getNombre());
-        detalleCampo.putExtra(EXTRA_LAT, itemSeleccionado.getLat());
-        detalleCampo.putExtra(EXTRA_LONG, itemSeleccionado.getLon());
-
         startActivity(detalleCampo);
     }
 }

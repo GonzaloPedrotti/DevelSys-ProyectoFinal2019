@@ -61,7 +61,6 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
             Toast.makeText(mCtx, "Error", Toast.LENGTH_SHORT).show();
         }
 
-
         holder.tvActividad.setText(detalleActividad.getActividad());
         holder.tvFechaInicio.setText(detalleActividad.getInicio());
         holder.tvFechaFin.setText(detalleActividad.getFin());
@@ -101,9 +100,6 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
             tvEstadoActividad = itemView.findViewById(R.id.tvEstadoActividad);
 //            tvAccion = itemView.findViewById(R.id.tvAccion);
 
-
-
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,12 +107,10 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
                         int position  = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
                             mlistener.OnItemClick(position);
-
                         }
                     }
                 }
             });
-
         }
     }
 

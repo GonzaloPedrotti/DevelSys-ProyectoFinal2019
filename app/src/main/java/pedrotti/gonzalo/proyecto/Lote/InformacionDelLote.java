@@ -43,7 +43,7 @@ public class InformacionDelLote extends AppCompatActivity {
     double latitudlote;
     double longitudlote;
 
-    private Lote lote;
+    private Lote loteSeleccionado;
 
     ImageView ivIcono;
 
@@ -54,14 +54,7 @@ public class InformacionDelLote extends AppCompatActivity {
 
         //Se recibe desde TodosLosLotes
         Bundle bundle = getIntent().getExtras();
-        lote = bundle.getParcelable("DATOS_LOTE");
-
-        campo_id = lote.getCampo_id();
-        lote_id=lote.getLote_id();
-        nombrelote = lote.getNombre();
-        latitudlote = lote.getLatitud();
-        longitudlote = lote.getLongitud();
-
+        loteSeleccionado = bundle.getParcelable("DATOS_LOTE");
 
         setTitle(nombrelote);
 
@@ -79,15 +72,14 @@ public class InformacionDelLote extends AppCompatActivity {
         btnNuevoProyectoCultivo=(Button)findViewById(R.id.btnNuevoProyectoCultivo);
         btnVerHistorial = (Button)findViewById(R.id.btnVerHistorial);
 
-        tvNombre.setText(nombrelote);
-        tvLoteId.setText("" +lote_id);
-        tvLatitud.setText(""+latitudlote);
-        tvLongitud.setText(""+longitudlote);
+        tvNombre.setText(loteSeleccionado.getNombre());
+        tvLoteId.setText(""+loteSeleccionado.getLote_id());
+        tvLatitud.setText(""+loteSeleccionado.getLatitud());
+        tvLongitud.setText(""+loteSeleccionado.getLongitud());
 
         DateFormat fecha = new SimpleDateFormat("dd/MM/YYYY");
         Date date = new Date();
         tvDate.setText(fecha.format(date));
-
 
         Calendar horaActual = new GregorianCalendar();
         int hora = horaActual.get(Calendar.HOUR_OF_DAY);
@@ -96,7 +88,6 @@ public class InformacionDelLote extends AppCompatActivity {
         tvHora.setText(hora +":"+ minutos);
 
         find_weather();
-
 
         btnNuevoProyectoCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,8 +105,10 @@ public class InformacionDelLote extends AppCompatActivity {
     }
 
     public void find_weather(){
+        double latitud = loteSeleccionado.getLatitud();
+        double longitud = loteSeleccionado.getLongitud();
 
-        String url="https://api.openweathermap.org/data/2.5/weather?lat="+latitudlote+"&lon="+longitudlote+"&appid=16fd3d6923010b36f5a362fc5695fd9f&units=metric&lang=es";
+        String url="https://api.openweathermap.org/data/2.5/weather?lat="+latitud+"&lon="+longitud+"&appid=16fd3d6923010b36f5a362fc5695fd9f&units=metric&lang=es";
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -183,17 +176,15 @@ public class InformacionDelLote extends AppCompatActivity {
         queue.add(jor);
     }
 
-
     public void nuevoProyectoCultivo(){
         Intent nuevoProyecto = new Intent(getApplicationContext(), NuevoProyectoCultivo.class);
-        nuevoProyecto.putExtra("lote_id",lote_id);
+        nuevoProyecto.putExtra("DATOS_LOTE",loteSeleccionado);
         startActivity(nuevoProyecto);
     }
 
     public void verHistorialProyectos(){
         Intent verProyectos = new Intent(getApplicationContext(), TodosLosProyectos.class);
-        verProyectos.putExtra("DATOS_LOTE",lote);
-//        verProyectos.putExtra("lote_id",lote_id);
+        verProyectos.putExtra("DATOS_LOTE",loteSeleccionado);
         startActivity(verProyectos);
     }
 }

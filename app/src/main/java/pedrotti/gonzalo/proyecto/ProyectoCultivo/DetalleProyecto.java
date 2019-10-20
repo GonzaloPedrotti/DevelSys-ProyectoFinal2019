@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import pedrotti.gonzalo.proyecto.Actividad.ItemActividad;
 import pedrotti.gonzalo.proyecto.Actividad.NuevaActividad;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
@@ -36,6 +38,8 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
     private TextView tvEstado, tvNombreProyecto, tvFechaRegistro, tvCultivo, tvPeriodo;
     private Button btnNuevaActividad;
     private DetalleActividad detalleActividad;
+    private DetalleActividad detalleSeleccionado;
+
 
     //Para la obtencion de las actividades realizadas:
     RecyclerView recyclerView;
@@ -118,12 +122,14 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
                         JSONObject detalle = array.getJSONObject(i);
 
                         String proyecto = detalle.getString("proyecto");
+                        int detalle_actividad_id = detalle.getInt("iddetalle");
                         String actividad = detalle.getString("actividad");
+                        int actividad_id = detalle.getInt("idactividad");
                         String fecha_inicio = detalle.getString("inicio");
                         String fecha_fin = detalle.getString("fin");
                         String estado = detalle.getString("estado");
 
-                        DetalleActividad detalleActividad = new DetalleActividad(actividad, fecha_inicio, fecha_fin, estado);
+                        DetalleActividad detalleActividad = new DetalleActividad(actividad,detalle_actividad_id,actividad_id, fecha_inicio, fecha_fin, estado);
 
                         detalleActividadList.add(detalleActividad);
                     }
@@ -151,13 +157,34 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
         startActivity(nuevaactividad);
     }
 
+    public void eliminar(int id){
+        Toast.makeText(this, "Se Borró  con éxito el detalle: " + id , Toast.LENGTH_SHORT).show();
+        onResume();
+    }
 
     @Override
     public void OnItemClick(int position) {
-        DetalleActividad itemSeleccionado  = detalleActividadList.get(position);
-        Toast.makeText(this, "Actividad: " + itemSeleccionado.getActividad(), Toast.LENGTH_SHORT).show();
+        detalleSeleccionado  = detalleActividadList.get(position);
+        Toast.makeText(this, "Actividad: " + detalleSeleccionado.getActividad(), Toast.LENGTH_SHORT).show();
+
         AlertDialog.Builder alerta = new AlertDialog.Builder(DetalleProyecto.this);
-        alerta.setMessage("La Actividad " + itemSeleccionado.getActividad() + " comienza el día " + itemSeleccionado.getInicio() + " y finaliza el día " + itemSeleccionado.getFin()).setPositiveButton("Entendido",null).setTitle("Detalle de Actividad").setIcon(R.drawable.logo).create().show();
+        alerta.setMessage("La Actividad " + detalleSeleccionado.getActividad() + " comienza el día " + detalleSeleccionado.getInicio() + " y finaliza el día " + detalleSeleccionado.getFin())
+                .setNegativeButton("Modificar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent detalleActividad = new Intent(DetalleProyecto.this, ItemActividad.class);
+                        detalleActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                        startActivity(detalleActividad);
+                    }
+                })
+                .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminar(detalleSeleccionado.getDetalle_actividad_id());
+                    }
+                })
+                .setTitle("Detalle de Actividad")
+                .setIcon(R.drawable.logo).create().show();
     }
 
 }

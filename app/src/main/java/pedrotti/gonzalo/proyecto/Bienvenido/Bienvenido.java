@@ -36,6 +36,10 @@ public class Bienvenido extends AppCompatActivity {
 
 private Usuario user;
 private boolean mLocationPermissionGranted = false;
+private Button btnVerCampos;
+private Button btnTiposMapa;
+private Button btnSitios;
+private Button btnVerInfo;
     private static final String TAG = "Bienvenido";
 
 
@@ -49,10 +53,10 @@ private boolean mLocationPermissionGranted = false;
 
 
         //Declaración de Botones
-        Button btnVerCampos = (Button)findViewById(R.id.btnVerCampos);
-        Button btnTiposMapa =(Button)findViewById(R.id.btnTipos);
-        Button btnSitios =(Button)findViewById(R.id.btnSitios);
-        Button btnVerInfo = (Button)findViewById(R.id.btnInformacionApp);
+        btnVerCampos = (Button)findViewById(R.id.btnVerCampos);
+        btnTiposMapa =(Button)findViewById(R.id.btnTipos);
+        btnSitios =(Button)findViewById(R.id.btnSitios);
+        btnVerInfo = (Button)findViewById(R.id.btnInformacionApp);
 
 
 //        Se recibe en el Bienvenido lo enviado desde el Login se comenta para probar el registro de un campo
@@ -74,14 +78,6 @@ private boolean mLocationPermissionGranted = false;
             }
         });
 
-        btnSitios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(),Mapa.class);
-////                Bienvenido.this.finish();
-//                startActivity(intent);
-            }
-        });
 
 
         btnVerInfo.setOnClickListener(new View.OnClickListener() {

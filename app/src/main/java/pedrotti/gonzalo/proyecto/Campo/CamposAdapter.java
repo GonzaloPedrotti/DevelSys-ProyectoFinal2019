@@ -52,10 +52,10 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
     public void onBindViewHolder(CampoViewHolder holder, int position) {
         Campo campo = campoList.get(position);
 
-        holder.tvid.setText( "Id del Campo:" + campo.getCampo_id());
+//        holder.tvid.setText( "Id del Campo:" + campo.getCampo_id());
         holder.tvnombre.setText("Nombre: " + campo.getNombre());
         holder.tvlon.setText( "Longitud: " + (campo.getLon()));
-        holder.tvlat.setText("Latitud" + (campo.getLat()));
+        holder.tvlat.setText("Latitud: " + (campo.getLat()));
     }
 
 
@@ -67,7 +67,7 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
         public CampoViewHolder(View itemView){
             super(itemView);
 
-            tvid = itemView.findViewById(R.id.tvIdCampo);
+//            tvid = itemView.findViewById(R.id.tvIdCampo);
             tvnombre = itemView.findViewById(R.id.tvNombre);
             tvlat = itemView.findViewById(R.id.tvLat);
             tvlon = itemView.findViewById(R.id.tvLong);
