@@ -44,11 +44,10 @@ public class ProyectoCultivoAdapter extends RecyclerView.Adapter<ProyectoCultivo
     @Override
     public void onBindViewHolder(ProyectoCultivoAdapter.ProyectoCultivoViewHolder holder, int position) {
         ProyectoCultivo proyectoCultivo = proyectoCultivoList.get(position);
-        holder.tvidProyecto.setText("Id del Proyecto: " + proyectoCultivo.getId());
+
+//        holder.tvidProyecto.setText("Id del Proyecto: " + proyectoCultivo.getId());
         holder.tvNombreProyecto.setText("Nombre: " + proyectoCultivo.getNombre());
         holder.tvFechaRegistro.setText(proyectoCultivo.getFechaRegistro());
-
-
         holder.tvCultivo.setText("Cultivo: " + proyectoCultivo.getCultivo());
         holder.tvPeriodoCultivo.setText("Periodo: " + proyectoCultivo.getPeriodo());
         holder.tvEstadoProyecto.setText("Estado: " + proyectoCultivo.getEstado());
@@ -62,7 +61,7 @@ public class ProyectoCultivoAdapter extends RecyclerView.Adapter<ProyectoCultivo
         public ProyectoCultivoViewHolder(View itemView){
             super(itemView);
 
-            tvidProyecto = itemView.findViewById(R.id.tvProyectoId);
+//            tvidProyecto = itemView.findViewById(R.id.tvProyectoId);
             tvNombreProyecto = itemView.findViewById(R.id.tvNombreProyecto);
             tvFechaRegistro = itemView.findViewById(R.id.tvFechaRegistroDet);
             tvCultivo = itemView.findViewById(R.id.tvCultivoDet);

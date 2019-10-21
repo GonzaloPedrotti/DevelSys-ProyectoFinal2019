@@ -10,12 +10,7 @@ import android.widget.TextView;
 import pedrotti.gonzalo.proyecto.Lote.TodosLosLotes;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
-//
-//import static pedrotti.gonzalo.proyecto.Campo.TodosLosCampos.EXTRA_ID;
-//import static pedrotti.gonzalo.proyecto.Campo.TodosLosCampos.EXTRA_LAT;
-//import static pedrotti.gonzalo.proyecto.Campo.TodosLosCampos.EXTRA_LONG;
-//import static pedrotti.gonzalo.proyecto.Campo.TodosLosCampos.EXTRA_NOMBRE;
-//import static pedrotti.gonzalo.proyecto.Campo.TodosLosCampos.EXTRA_USUARIO_ID;
+
 
 public class DetalleCampo extends AppCompatActivity {
 

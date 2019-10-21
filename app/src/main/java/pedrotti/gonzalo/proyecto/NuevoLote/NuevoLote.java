@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -140,7 +139,7 @@ public class NuevoLote extends FragmentActivity implements OnMapReadyCallback, G
         campoSeleccionado = bundle.getParcelable("DATOS_CAMPO_SEL");
 
         Button btnAyuda = (Button)findViewById(R.id.btnAyuda);
-        Button btnRegistrarLote = (Button)findViewById(R.id.btnRegistrarLote);
+        Button btnRegistrarLote = (Button)findViewById(R.id.btnProyectosActuales);
 
         etNombre = (EditText)findViewById(R.id.txtNombreLote);
         etTamano = ((EditText)findViewById(R.id.txtTamano));

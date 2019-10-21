@@ -34,6 +34,7 @@ public class Login extends AppCompatActivity {
     private String correo, contrasena;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -88,6 +89,16 @@ public class Login extends AppCompatActivity {
 
                                         int usuario_id = jsonrespuesta.getInt("usuario_id");
                                         user.setUsuario_id(usuario_id);
+
+                                        String nombre = jsonrespuesta.getString("nombre");
+                                        user.setNombre(nombre);
+
+                                        String apellido = jsonrespuesta.getString("apellido");
+                                        user.setApellido(apellido);
+
+
+                                        String correo = jsonrespuesta.getString("correo");
+                                        user.setApellido(correo);
 
                                         Intent irABienvenido = new Intent(Login.this,Bienvenido.class);
                                         irABienvenido.putExtra("DATOS_USER",user);

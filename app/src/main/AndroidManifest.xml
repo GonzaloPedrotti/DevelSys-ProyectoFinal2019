@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <!--<activity android:name=".Actividad.ItemActividad"></activity>-->
+        <activity android:name=".Cuenta"></activity>
+        <!-- <activity android:name=".Actividad.ItemActividad"></activity> -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -36,23 +37,18 @@
         <activity
             android:name=".Campo.UbicacionCampo"
             android:label="@string/title_activity_ubicacion_campo" />
-
-        <activity android:name=".Actividad.ItemActividad"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
+        <activity
+            android:name=".Actividad.ItemActividad"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".InformacionDeApp"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Clima.InformacionClimatica"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actividad.NuevaActividad"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".ProyectoCultivo.DetalleProyecto"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -107,13 +103,11 @@
         <activity
             android:name=".Login.SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity> <!-- android:value="@string/google_maps_key" -->
         <meta-data
             android:name="preloaded_fonts"

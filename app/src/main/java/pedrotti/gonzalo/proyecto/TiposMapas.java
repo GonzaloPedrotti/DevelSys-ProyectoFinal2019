@@ -37,7 +37,7 @@ public class TiposMapas extends FragmentActivity implements OnMapReadyCallback,G
         mapFragment.getMapAsync(this);
 
         btnHibrido = (Button)findViewById(R.id.btnAyuda);
-        btnSatelital = (Button)findViewById(R.id.btnRegistrarLote);
+        btnSatelital = (Button)findViewById(R.id.btnProyectosActuales);
 //        btnTereno = (Button)findViewById(R.id.btnTerreno);
         btnNormal = (Button)findViewById(R.id.btnNormal);
 

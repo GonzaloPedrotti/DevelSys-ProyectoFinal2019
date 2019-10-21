@@ -103,7 +103,7 @@
 
     <TextView
         android:id="@+id/tvViento"
-        android:layout_width="81dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
@@ -115,7 +115,7 @@
         android:id="@+id/textView15"
         android:layout_width="50dp"
         android:layout_height="25sp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="@string/km_h"
         app:layout_constraintStart_toEndOf="@+id/tvViento"
@@ -125,7 +125,7 @@
         android:id="@+id/textView16"
         android:layout_width="20dp"
         android:layout_height="25sp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:text="@string/c"
         app:layout_constraintStart_toEndOf="@+id/tvTemperatura"
@@ -162,25 +162,25 @@
         app:layout_constraintStart_toEndOf="@+id/tvHumedad"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-    <TextView
-        android:id="@+id/asd"
-        android:layout_width="wrap_content"
-        android:layout_height="25sp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/id_del_lote"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+    <!--<TextView-->
+        <!--android:id="@+id/asd"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="25sp"-->
+        <!--android:layout_marginStart="40dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:fontFamily="sans-serif"-->
+        <!--android:text="@string/id_del_lote"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/nombre" />-->
 
-    <TextView
-        android:id="@+id/tvLoteId"
-        android:layout_width="80dp"
-        android:layout_height="25sp"
-        android:layout_marginStart="28dp"
-        android:fontFamily="sans-serif"
-        app:layout_constraintStart_toEndOf="@+id/asd"
-        app:layout_constraintTop_toTopOf="@+id/asd" />
+    <!--<TextView-->
+        <!--android:id="@+id/tvLoteId"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="25sp"-->
+        <!--android:layout_marginStart="28dp"-->
+        <!--android:fontFamily="sans-serif"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/asd"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/asd" />-->
 
     <TextView
         android:id="@+id/txtLatitud"
@@ -191,7 +191,7 @@
         android:fontFamily="sans-serif"
         android:text="@string/latitud"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/asd" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
     <TextView
         android:id="@+id/textView6"
@@ -225,21 +225,27 @@
 
     <Button
         android:id="@+id/btnNuevoProyectoCultivo"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/nuevo_proyecto_de_cultivo"
+        android:layout_width="225dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_rounded"
+        android:text="Nuevo Proyecto de Cultivo"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHumedad" />
 
     <Button
         android:id="@+id/btnVerHistorial"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/ver_historial_de_proyectos"
+        android:layout_width="225dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded"
+        android:text="Proyectos Registrados"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNuevoProyectoCultivo" />
 
@@ -247,9 +253,10 @@
         android:id="@+id/nombre"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:text="Nombre:"
-        app:layout_constraintStart_toStartOf="@+id/asd"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView

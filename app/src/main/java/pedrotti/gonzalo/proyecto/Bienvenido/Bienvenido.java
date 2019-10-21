@@ -22,8 +22,12 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.util.Calendar;
+
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
+import pedrotti.gonzalo.proyecto.Cuenta;
 import pedrotti.gonzalo.proyecto.InformacionDeApp;
+import pedrotti.gonzalo.proyecto.Login.Login;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.TiposMapas;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
@@ -36,10 +40,14 @@ public class Bienvenido extends AppCompatActivity {
 
 private Usuario user;
 private boolean mLocationPermissionGranted = false;
+
 private Button btnVerCampos;
-private Button btnTiposMapa;
-private Button btnSitios;
+private Button btnProyectosActuales;
+private Button btnMiCuenta;
+private Button btnServicios;
 private Button btnVerInfo;
+private Button btnEstadísticas;
+
     private static final String TAG = "Bienvenido";
 
 
@@ -54,9 +62,11 @@ private Button btnVerInfo;
 
         //Declaración de Botones
         btnVerCampos = (Button)findViewById(R.id.btnVerCampos);
-        btnTiposMapa =(Button)findViewById(R.id.btnTipos);
-        btnSitios =(Button)findViewById(R.id.btnSitios);
+        btnProyectosActuales =(Button)findViewById(R.id.btnProyectosActuales);
+        btnMiCuenta =(Button)findViewById(R.id.btnMiCuenta);
+        btnServicios = (Button)findViewById(R.id.btnServicios);
         btnVerInfo = (Button)findViewById(R.id.btnInformacionApp);
+        btnEstadísticas = (Button)findViewById(R.id.btnEstadisticas);
 
 
 //        Se recibe en el Bienvenido lo enviado desde el Login se comenta para probar el registro de un campo
@@ -68,7 +78,6 @@ private Button btnVerInfo;
         btnVerCampos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //Se reenvian a la pantalla de TodosLosCampos
                 Intent verCampos = new Intent(getApplicationContext(), TodosLosCampos.class);
                 //Se comenta para el registro de un campo
@@ -78,13 +87,44 @@ private Button btnVerInfo;
             }
         });
 
-
-
         btnVerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent verClima = new Intent(getApplicationContext(), InformacionDeApp.class);
-                startActivity(verClima);
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Bienvenido.this);
+                alerta.setMessage("La App Número 1 para obtener Recomendaciones de Momento de Aplicación \n" + " \n" + "Obtenga Información Climática Actual y Extendida de sus Lotes" ).setPositiveButton("Aceptar", null).setTitle("Acerca de MiCampo Mobile").setIcon(R.drawable.logo).create().show();
+            }
+        });
+
+        btnMiCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent cuenta = new Intent(getApplicationContext(), Cuenta.class);
+                cuenta.putExtra("DATOS_USER",user);
+                startActivity(cuenta);
+            }
+        });
+
+        btnProyectosActuales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Bienvenido.this, "Se muestran Proyectos Actuales del Usuario", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnServicios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Bienvenido.this);
+                alerta.setMessage("Compra de Granos e Insumos \n " + " \n" + "Contratistas de Servicios ").setNegativeButton("Entendido", null).setTitle("MiCampo Mercado").setIcon(R.drawable.logo).create().show();
+            }
+        });
+
+        btnEstadísticas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder estadisticas = new AlertDialog.Builder(Bienvenido.this);
+                estadisticas.setMessage("Proximamente Podrá: \n " + " \n" + "-Ver y Comparar Actividades Realizadas "+"\n" + "-Comparar Dosis Recomendadas Vs Utilizadas" + "\n" + "-Generar Estadísticas e Informes" ).setNegativeButton("Aceptar", null).setTitle("MiCampo Estadísticas").setIcon(R.drawable.logo).create().show();
             }
         });
         checkMapServices();

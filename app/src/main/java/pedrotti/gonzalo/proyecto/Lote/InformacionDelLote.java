@@ -58,7 +58,7 @@ public class InformacionDelLote extends AppCompatActivity {
 
         setTitle(nombrelote);
 
-        tvLoteId=(TextView)findViewById(R.id.tvLoteId);
+//        tvLoteId=(TextView)findViewById(R.id.tvLoteId);
         tvLatitud =(TextView)findViewById(R.id.tvLatitud);
         tvLongitud = (TextView)findViewById(R.id.tvLongitud);
         tvTemp = (TextView)findViewById(R.id.tvTemperatura);
@@ -73,7 +73,7 @@ public class InformacionDelLote extends AppCompatActivity {
         btnVerHistorial = (Button)findViewById(R.id.btnVerHistorial);
 
         tvNombre.setText(loteSeleccionado.getNombre());
-        tvLoteId.setText(""+loteSeleccionado.getLote_id());
+//        tvLoteId.setText(""+loteSeleccionado.getLote_id());
         tvLatitud.setText(""+loteSeleccionado.getLatitud());
         tvLongitud.setText(""+loteSeleccionado.getLongitud());
 

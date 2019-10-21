@@ -87,7 +87,7 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
        user = bundle.getParcelable("DATOS_USER");
 
        Button btnAyuda = (Button)findViewById(R.id.btnAyuda);
-       Button btnRegistrarCampo = (Button)findViewById(R.id.btnRegistrarLote);
+       Button btnRegistrarCampo = (Button)findViewById(R.id.btnProyectosActuales);
 
        etNombre = (EditText)findViewById(R.id.txtNombreLote);
 
