@@ -20,6 +20,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
+
 import pedrotti.gonzalo.proyecto.Bienvenido.Bienvenido;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.NuevoUsuario.Registro;
@@ -96,9 +98,12 @@ public class Login extends AppCompatActivity {
                                         String apellido = jsonrespuesta.getString("apellido");
                                         user.setApellido(apellido);
 
-
                                         String correo = jsonrespuesta.getString("correo");
-                                        user.setApellido(correo);
+                                        user.setCorreo(correo);
+
+                                        String telefonoString = jsonrespuesta.getString("telefono");
+                                        int telefono = Integer.parseInt(telefonoString);
+                                        user.setTelefono(telefono);
 
                                         Intent irABienvenido = new Intent(Login.this,Bienvenido.class);
                                         irABienvenido.putExtra("DATOS_USER",user);

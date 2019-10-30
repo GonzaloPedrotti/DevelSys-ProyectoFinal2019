@@ -45,23 +45,20 @@ public class ProyectoCultivoAdapter extends RecyclerView.Adapter<ProyectoCultivo
     public void onBindViewHolder(ProyectoCultivoAdapter.ProyectoCultivoViewHolder holder, int position) {
         ProyectoCultivo proyectoCultivo = proyectoCultivoList.get(position);
 
-//        holder.tvidProyecto.setText("Id del Proyecto: " + proyectoCultivo.getId());
         holder.tvNombreProyecto.setText("Nombre: " + proyectoCultivo.getNombre());
         holder.tvFechaRegistro.setText(proyectoCultivo.getFechaRegistro());
         holder.tvCultivo.setText("Cultivo: " + proyectoCultivo.getCultivo());
         holder.tvPeriodoCultivo.setText("Periodo: " + proyectoCultivo.getPeriodo());
         holder.tvEstadoProyecto.setText("Estado: " + proyectoCultivo.getEstado());
-
     }
 
     class ProyectoCultivoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvidProyecto , tvNombreProyecto, tvFechaRegistro,tvCultivo,tvPeriodoCultivo,tvEstadoProyecto;
+        TextView tvNombreProyecto, tvFechaRegistro,tvCultivo,tvPeriodoCultivo,tvEstadoProyecto;
 
         public ProyectoCultivoViewHolder(View itemView){
             super(itemView);
 
-//            tvidProyecto = itemView.findViewById(R.id.tvProyectoId);
             tvNombreProyecto = itemView.findViewById(R.id.tvNombreProyecto);
             tvFechaRegistro = itemView.findViewById(R.id.tvFechaRegistroDet);
             tvCultivo = itemView.findViewById(R.id.tvCultivoDet);
@@ -76,7 +73,6 @@ public class ProyectoCultivoAdapter extends RecyclerView.Adapter<ProyectoCultivo
                         int position  = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
                             mlistener.OnItemClick(position);
-
                         }
                     }
                 }

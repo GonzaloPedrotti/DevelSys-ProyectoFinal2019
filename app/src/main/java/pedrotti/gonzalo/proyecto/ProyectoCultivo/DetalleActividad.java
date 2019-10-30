@@ -11,7 +11,7 @@ public class DetalleActividad implements Parcelable {
     private String fin;
     private String estado;
     private int detalle_actividad_id;
-
+    private int proyecto_cultivo_id;
 
 
     protected DetalleActividad(Parcel in) {
@@ -21,14 +21,7 @@ public class DetalleActividad implements Parcelable {
         fin = in.readString();
         estado = in.readString();
         detalle_actividad_id = in.readInt();
-    }
-
-    public int getDetalle_actividad_id() {
-        return detalle_actividad_id;
-    }
-
-    public void setDetalle_actividad_id(int detalle_actividad_id) {
-        this.detalle_actividad_id = detalle_actividad_id;
+        proyecto_cultivo_id = in.readInt();
     }
 
     public static final Creator<DetalleActividad> CREATOR = new Creator<DetalleActividad>() {
@@ -43,12 +36,36 @@ public class DetalleActividad implements Parcelable {
         }
     };
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(actividad);
+        dest.writeInt(actividad_id);
+        dest.writeString(inicio);
+        dest.writeString(fin);
+        dest.writeString(estado);
+        dest.writeInt(detalle_actividad_id);
+        dest.writeInt(proyecto_cultivo_id);
+    }
+
     public String getActividad() {
         return actividad;
     }
 
     public void setActividad(String actividad) {
         this.actividad = actividad;
+    }
+
+    public int getActividad_id() {
+        return actividad_id;
+    }
+
+    public void setActividad_id(int actividad_id) {
+        this.actividad_id = actividad_id;
     }
 
     public String getInicio() {
@@ -75,38 +92,32 @@ public class DetalleActividad implements Parcelable {
         this.estado = estado;
     }
 
-    public int getActividad_id() {
-        return actividad_id;
+    public int getDetalle_actividad_id() {
+        return detalle_actividad_id;
     }
 
-    public void setActividad_id(int actividad_id) {
-        this.actividad_id = actividad_id;
-    }
-
-    public DetalleActividad(String actividad, int detalle_actividad_id,int actividad_id, String inicio, String fin, String estado) {
-        this.actividad = actividad;
+    public void setDetalle_actividad_id(int detalle_actividad_id) {
         this.detalle_actividad_id = detalle_actividad_id;
+    }
+
+    public int getProyecto_cultivo_id() {
+        return proyecto_cultivo_id;
+    }
+
+    public void setProyecto_cultivo_id(int proyecto_cultivo_id) {
+        this.proyecto_cultivo_id = proyecto_cultivo_id;
+    }
+
+    public DetalleActividad(String actividad, int actividad_id, String inicio, String fin, String estado, int detalle_actividad_id, int proyecto_cultivo_id) {
+        this.actividad = actividad;
         this.actividad_id = actividad_id;
         this.inicio = inicio;
         this.fin = fin;
         this.estado = estado;
+        this.detalle_actividad_id = detalle_actividad_id;
+        this.proyecto_cultivo_id = proyecto_cultivo_id;
     }
 
     public DetalleActividad() {
-    }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(actividad);
-        dest.writeInt(actividad_id);
-        dest.writeString(inicio);
-        dest.writeString(fin);
-        dest.writeString(estado);
     }
 }

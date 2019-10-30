@@ -128,8 +128,9 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
                         String fecha_inicio = detalle.getString("inicio");
                         String fecha_fin = detalle.getString("fin");
                         String estado = detalle.getString("estado");
+                        int proyecto_cultivo_id = detalle.getInt("idproyecto");
 
-                        DetalleActividad detalleActividad = new DetalleActividad(actividad,detalle_actividad_id,actividad_id, fecha_inicio, fecha_fin, estado);
+                        DetalleActividad detalleActividad = new DetalleActividad(actividad,actividad_id,fecha_inicio,fecha_fin,estado,detalle_actividad_id,proyecto_cultivo_id);
 
                         detalleActividadList.add(detalleActividad);
                     }

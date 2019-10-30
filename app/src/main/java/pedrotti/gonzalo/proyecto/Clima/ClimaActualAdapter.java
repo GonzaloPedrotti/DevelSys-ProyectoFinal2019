@@ -87,22 +87,21 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
         SimpleDateFormat dateFormat6 = new SimpleDateFormat(formato6);
         String seg = String.valueOf(dateFormat6.format(dateFecha));
 
-
         holder.tvFecha.setText(""+dia+"-"+mes+"-"+anio + " "+hora+":"+seg+":"+min);
         holder.tvDescripcion.setText(""+climaActual.getDescripcion());
         holder.tvHumedad.setText(""+ climaActual.getHumedad() + " %");
         holder.tvVelocidadViento.setText(""+climaActual.getViento());
         holder.tvLluvia.setText(""+climaActual.getLluvia());
 
-       if(climaActual.getViento()>=0 && climaActual.getViento()<5){
+       if(climaActual.getViento()>=0 && climaActual.getViento()<8){
            holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
        }
 
-       if(climaActual.getViento()>=5 && climaActual.getViento()<20){
+       if(climaActual.getViento()>=8 && climaActual.getViento()<20 ){
                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
        }
 
-       if(climaActual.getViento()>=20){
+       if(climaActual.getViento()>=20 ){
            holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
        }
         Picasso.with(mCtx).load( "https://openweathermap.org/img/wn/"+climaActual.getImagen()+".png").into(holder.ivIcono);

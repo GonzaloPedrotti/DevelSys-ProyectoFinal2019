@@ -356,14 +356,14 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
 
         Actividad actividadSeleccionada = actividadesList.get(position);
         setActividadId(actividadSeleccionada.getActividad_id());
-        Toast.makeText(this, "Id Actividad" + getActividad_seleccionada_id(), Toast.LENGTH_SHORT).show();
-        if(actividadSeleccionada.getActividad_id()== 2){
-            tvVar.setVisibility(View.VISIBLE);
-            spVariedad.setVisibility(View.VISIBLE);
-        }else{
-            tvVar.setVisibility(View.INVISIBLE);
-            spVariedad.setVisibility(View.INVISIBLE);
-        }
+//        Toast.makeText(this, "Id Actividad" + getActividad_seleccionada_id(), Toast.LENGTH_SHORT).show();
+//        if(actividadSeleccionada.getActividad_id()== 2){
+//            tvVar.setVisibility(View.VISIBLE);
+//            spVariedad.setVisibility(View.VISIBLE);
+//        }else{
+//            tvVar.setVisibility(View.INVISIBLE);
+//            spVariedad.setVisibility(View.INVISIBLE);
+//        }
     }
 
     @Override

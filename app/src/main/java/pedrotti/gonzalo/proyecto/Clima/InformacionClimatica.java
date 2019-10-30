@@ -53,7 +53,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         climaActualList = new ArrayList<>();
         findweather();
-
     }
     public void mostrarReferencia(){
         AlertDialog.Builder alerta = new AlertDialog.Builder(InformacionClimatica.this);
@@ -77,7 +76,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
                      //Declaramos el objeto, uno por iteracion. Este objeto contiene el main y todos los demas.
                      //Tenemos que iterar sobre este
                      JSONObject climaActual = list.getJSONObject(i);
-
 
                      //Declaramos el Objeto Main y su contenido
                      JSONObject main = climaActual.getJSONObject("main");
@@ -132,21 +130,14 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     public void OnItemClick(int position) {
         final ClimaActual climaActualSeleccionado = climaActualList.get(position);
         final AlertDialog.Builder alerta = new AlertDialog.Builder(InformacionClimatica.this);
-        alerta.setMessage("Verde: Aplicación Segura \n" + "Amarillo: Precaución al Aplicar \n"+ "Rojo: No es Recomendable Aplicar \n" + "\n" +"¿Desea Seleccionar este momento como inicio de la nueva actividad?").setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+        alerta.setMessage("Verde: Aplicación Segura \n" + "Amarillo: Precaución al Aplicar \n"+ "Rojo: No es Recomendable Aplicar \n" ).setTitle("Recomendación").setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(InformacionClimatica.this, "Se selecciona", Toast.LENGTH_SHORT).show();
-            }
-        }).setTitle("Recomendación").setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(InformacionClimatica.this, "Salir", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(InformacionClimatica.this, "Salir", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         }).setIcon(R.drawable.logo).create().show();
     }
-
-
 
 
 }

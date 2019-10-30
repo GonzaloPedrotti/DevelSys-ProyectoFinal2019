@@ -61,7 +61,7 @@ public class Registro extends AppCompatActivity {
                 nombreUsuario = tvNombreUsuario.getText().toString();
                 apellidoUsuario = tvApellidoUsuario.getText().toString();
                 correoUsuario = tvCorreoUsuario.getText().toString();
-                String telString =(tvTelefonoUsuario.getText().toString());
+                String telString =(tvTelefonoUsuario.getText().toString()).trim();
                 contrasenaUsuario = tvContrasenaUsuario.getText().toString();
                 confirmarContrasenaUsuario = tvConfirmarContrasena.getText().toString();
 

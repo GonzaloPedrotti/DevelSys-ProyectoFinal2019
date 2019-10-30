@@ -33,16 +33,8 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
 
     private static final String url = "http://"+Constantes.ip+"/miCampoWeb/mobile/obtenerCamposDelUsuario.php?usuario_id=";
 
-//    public static final String EXTRA_USUARIO_ID="usuario_id" ;
-//    public static  final String EXTRA_ID="campo_id";
-//    public static final String EXTRA_NOMBRE = "nombre";
-//    public static final String EXTRA_LAT = "lat";
-//    public static final String EXTRA_LONG = "long";
-
     private Usuario user;
     private Campo camponuevo;
-
-    private int cantidadElementos = 0;
     RecyclerView recyclerView;
     List<Campo> campoList;
     CamposAdapter adapter;
@@ -97,7 +89,6 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
                             if(array==null || array.length()==0){
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(TodosLosCampos.this);
                                 alerta.setMessage("No Tiene Campos Registrados. Comience registrando uno!").setPositiveButton("Entendido", null).create().show();
-//                                Toast.makeText(TodosLosCampos.this, "No tiene Campos Registrados.Comience Registrando uno!", Toast.LENGTH_SHORT).show();
                             }
 
                             for (int i = 0; i < array.length(); i++) {

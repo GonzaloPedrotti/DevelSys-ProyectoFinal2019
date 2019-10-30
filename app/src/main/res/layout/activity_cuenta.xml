@@ -4,107 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Cuenta">
+    android:background="#E874CFC8"
+    tools:context=".Bienvenido.Cuenta">
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
-        android:text="Nombre"
+        android:text="Nombre:"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="Apellido"
+        android:text="Apellido:"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
         android:id="@+id/textView26"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="Correo"
+        android:text="Correo:"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
         android:id="@+id/textView28"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="Teléfono"
+        android:text="Teléfono:"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <EditText
         android:id="@+id/etNombre"
-        android:layout_width="140dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="52dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/textView22"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etApellido"
-        android:layout_width="140dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
     <EditText
         android:id="@+id/etCorreo"
-        android:layout_width="140dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/textView26"
         app:layout_constraintTop_toBottomOf="@+id/etApellido" />
 
     <EditText
         android:id="@+id/etTelefono"
-        android:layout_width="140dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/textView28"
         app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
 
     <Button
         android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="166dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_rounded"
         android:text="Cerrar Sesión"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etTelefono" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_rounded"
+        android:text="Modificar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTelefono" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

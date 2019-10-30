@@ -145,8 +145,6 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
     public void OnItemClick(int position) {
         Intent detalleLote = new Intent(this, InformacionDelLote.class);
         Lote loteSeleccionado = loteList.get(position);
-
-
         detalleLote.putExtra("DATOS_LOTE",loteSeleccionado);
         startActivity(detalleLote);
     }

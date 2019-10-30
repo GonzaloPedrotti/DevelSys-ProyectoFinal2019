@@ -1,10 +1,11 @@
-package pedrotti.gonzalo.proyecto;
+package pedrotti.gonzalo.proyecto.Bienvenido;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
+import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class InformacionDeApp extends AppCompatActivity {

@@ -20,8 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Cuenta"></activity>
-        <!-- <activity android:name=".Actividad.ItemActividad"></activity> -->
+        <activity android:name=".Bienvenido.ProyectosUsuario"></activity>
+
+        <activity android:name=".Bienvenido.Cuenta"
+           /> <!-- <activity android:name=".Actividad.ItemActividad"></activity> -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -41,7 +43,7 @@
             android:name=".Actividad.ItemActividad"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".InformacionDeApp"
+            android:name=".Bienvenido.InformacionDeApp"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Clima.InformacionClimatica"

@@ -54,7 +54,6 @@ public class LoteAdapter extends RecyclerView.Adapter<LoteAdapter.LoteViewHolder
 //        holder.tvLoteId.setText(String.valueOf(lote.getLote_id()));
         holder.tvlatitud.setText("Latitud: " + (lote.getLatitud()));
         holder.tvlongitud.setText("Longitud: " + (lote.getLongitud()));
-
     }
 
 

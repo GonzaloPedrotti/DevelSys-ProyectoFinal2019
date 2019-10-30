@@ -22,12 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-import java.util.Calendar;
-
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
-import pedrotti.gonzalo.proyecto.Cuenta;
-import pedrotti.gonzalo.proyecto.InformacionDeApp;
-import pedrotti.gonzalo.proyecto.Login.Login;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.TiposMapas;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
@@ -108,7 +103,10 @@ private Button btnEstadísticas;
         btnProyectosActuales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Bienvenido.this, "Se muestran Proyectos Actuales del Usuario", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Bienvenido.this, "Se muestran Proyectos Actuales del Usuario", Toast.LENGTH_SHORT).show();
+                Intent proyectos = new Intent(getApplicationContext(), ProyectosUsuario.class);
+                proyectos.putExtra("DATOS_USER",user);
+                startActivity(proyectos);
             }
         });
 

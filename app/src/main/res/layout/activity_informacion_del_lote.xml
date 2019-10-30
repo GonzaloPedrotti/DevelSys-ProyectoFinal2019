@@ -13,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         android:text="@string/datos_actuales_del_tiempo_en_el_lote"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/tvLongitud" />
 
@@ -35,7 +35,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/tvTemperatura" />
 
@@ -54,7 +54,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         android:text="@string/temperatura_actual"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -65,7 +65,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         android:text="@string/estado_del_cielo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -96,18 +96,18 @@
         android:layout_height="25sp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         android:text="@string/velocidad_viento"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/tvViento"
-        android:layout_width="40dp"
+        android:layout_width="55dp"
         android:layout_height="25dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -117,6 +117,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/km_h"
         app:layout_constraintStart_toEndOf="@+id/tvViento"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -127,6 +128,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/c"
         app:layout_constraintStart_toEndOf="@+id/tvTemperatura"
         app:layout_constraintTop_toBottomOf="@+id/tvLongitud" />
@@ -137,7 +139,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         android:text="@string/humedad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -148,7 +150,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-black"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/tvViento" />
 
@@ -158,6 +160,7 @@
         android:layout_height="25sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/porcentaje"
         app:layout_constraintStart_toEndOf="@+id/tvHumedad"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
