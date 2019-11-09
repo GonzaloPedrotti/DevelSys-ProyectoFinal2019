@@ -2,6 +2,7 @@ package pedrotti.gonzalo.proyecto.ProyectoCultivo;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,13 +27,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import pedrotti.gonzalo.proyecto.Actividad.ItemActividad;
+import pedrotti.gonzalo.proyecto.Actividad.ReplanificarActividad;
 import pedrotti.gonzalo.proyecto.Actividad.NuevaActividad;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
+import pedrotti.gonzalo.proyecto.ResultadoSiembra;
+import pedrotti.gonzalo.proyecto.Siembra;
 
-public class DetalleProyecto extends AppCompatActivity implements DetalleActividadAdapter.OnItemClickListener {
+public class DetalleProyecto extends AppCompatActivity implements  DetalleActividadAdapter.OnItemClickListener {
 
     private ProyectoCultivo proyecto;
     private TextView tvEstado, tvNombreProyecto, tvFechaRegistro, tvCultivo, tvPeriodo;
@@ -40,13 +43,11 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
     private DetalleActividad detalleActividad;
     private DetalleActividad detalleSeleccionado;
 
-
     //Para la obtencion de las actividades realizadas:
     RecyclerView recyclerView;
     DetalleActividadAdapter adapter;
     List<DetalleActividad> detalleActividadList;
     Lote lote;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +55,8 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
         setContentView(R.layout.activity_detalle_proyecto);
     }
 
-
     protected void onResume() {
         super.onResume();
-
 
         setTitle(R.string.detalleProyecto);
 
@@ -71,8 +70,13 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewActividades);
         recyclerView.setHasFixedSize(true);
+        //se agrega de prueba:
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         detalleActividadList = new ArrayList<>();
+        recyclerView.setItemViewCacheSize(detalleActividadList.size());
 
 
         tvEstado = (TextView)findViewById(R.id.tvEstadoActual);
@@ -88,7 +92,7 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
         tvCultivo.setText(proyecto.getCultivo());
         tvPeriodo.setText(proyecto.getPeriodo());
 
-        loadActividades();
+        cargarActividades();
 
         btnNuevaActividad.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,13 +100,11 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
                 abrirNuevaActividad();
             }
         });
-
     }
 
 
-    public void loadActividades(){
+    public void cargarActividades(){
         String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getDetalleActividad.php?proyecto_cultivo_id="+proyecto.getId();
-
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -165,27 +167,97 @@ public class DetalleProyecto extends AppCompatActivity implements DetalleActivid
 
     @Override
     public void OnItemClick(int position) {
-        detalleSeleccionado  = detalleActividadList.get(position);
-        Toast.makeText(this, "Actividad: " + detalleSeleccionado.getActividad(), Toast.LENGTH_SHORT).show();
 
-        AlertDialog.Builder alerta = new AlertDialog.Builder(DetalleProyecto.this);
-        alerta.setMessage("La Actividad " + detalleSeleccionado.getActividad() + " comienza el día " + detalleSeleccionado.getInicio() + " y finaliza el día " + detalleSeleccionado.getFin())
-                .setNegativeButton("Modificar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent detalleActividad = new Intent(DetalleProyecto.this, ItemActividad.class);
-                        detalleActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
-                        startActivity(detalleActividad);
-                    }
-                })
-                .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        eliminar(detalleSeleccionado.getDetalle_actividad_id());
-                    }
-                })
-                .setTitle("Detalle de Actividad")
-                .setIcon(R.drawable.logo).create().show();
+//        Toast.makeText(this, "Nada", Toast.LENGTH_SHORT).show();
+//
+        try{
+            detalleSeleccionado  = detalleActividadList.get(position);
+        }catch(Exception e){
+
+        }
+
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Lista de Acciones");
+        builder.setIcon(R.drawable.logo);
+        builder.setItems(new CharSequence[]{
+                "Replanificar Actividad", "Ver Recomendación", "Finalizar Actividad", "Volver"
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                Toast.makeText(DetalleProyecto.this, "id actividad:" + detalleSeleccionado.getActividad_id(), Toast.LENGTH_SHORT).show();
+                switch (which) {
+                    case 0:
+                        Intent replanificar = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
+                        replanificar.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                        replanificar.putExtra("DATOS_PROYECTO",proyecto);
+                        replanificar.putExtra("DATOS_LOTE", lote);
+                        startActivity( replanificar);
+
+                        break;
+                    case 1:
+                        if(detalleSeleccionado.getActividad_id()==2){
+                            Intent recomendacion = new Intent(DetalleProyecto.this, Siembra.class);
+                            recomendacion.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                            recomendacion.putExtra("DATOS_PROYECTO",proyecto);
+                            startActivity(recomendacion);
+                        }
+                        else{
+                            Toast.makeText(DetalleProyecto.this, "No hay Recomendaciones para esta Actividad", Toast.LENGTH_SHORT).show();
+                        }
+
+                        break;
+                    case 2:
+                        if(detalleSeleccionado.getActividad_id()==2){
+                            Intent resultado = new Intent(DetalleProyecto.this, ResultadoSiembra.class);
+                            resultado.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                            resultado.putExtra("DATOS_PROYECTO",proyecto);
+                            startActivity(resultado);
+                        }
+                        else{
+                            Toast.makeText(DetalleProyecto.this, "No Implementado para otras actividades Aún", Toast.LENGTH_SHORT).show();
+                        }
+
+                        break;
+                    case 3:
+                        dialog.dismiss();
+
+                        break;
+                }
+            }
+        });
+        builder.create().show();
+
+
+
+
+
+
+//        Intent menuActividad = new Intent(getApplicationContext(), MenuActividad.class);
+//        menuActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+//        menuActividad.putExtra("DATOS_PROYECTO",proyecto);
+//        startActivity(menuActividad);
+//        Toast.makeText(this, "Actividad: " + detalleSeleccionado.getActividad(), Toast.LENGTH_SHORT).show();
+
+//        AlertDialog.Builder alerta = new AlertDialog.Builder(DetalleProyecto.this);
+//        alerta.setMessage("Actividad " + detalleSeleccionado.getActividad())
+//                .setNegativeButton("Otras Acciones", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Intent detalleActividad = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
+//                        detalleActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+//                        detalleActividad.putExtra("DATOS_PROYECTO",proyecto);
+//                        startActivity(detalleActividad);
+//                    }
+//                })
+//                .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        eliminar(detalleSeleccionado.getDetalle_actividad_id());
+//                    }
+//                })
+//                .setTitle("Detalle de Actividad")
+//                .setIcon(R.drawable.logo).create().show();
     }
 
 }

@@ -20,10 +20,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Bienvenido.ProyectosUsuario"></activity>
+
+
+
 
         <activity android:name=".Bienvenido.Cuenta"
-           /> <!-- <activity android:name=".Actividad.ItemActividad"></activity> -->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <!-- <activity android:name=".Actividad.ReplanificarActividad"></activity> -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -36,11 +40,32 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".MenuActividad"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <activity android:name=".Catalogo">
+        </activity>
+
+        <activity android:name=".Siembra"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <activity android:name=".Reporte">
+        </activity>
+
+        <activity android:name=".ResultadoSiembra"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <activity android:name=".Bienvenido.ProyectosUsuario"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
         <activity
             android:name=".Campo.UbicacionCampo"
             android:label="@string/title_activity_ubicacion_campo" />
         <activity
-            android:name=".Actividad.ItemActividad"
+            android:name=".Actividad.ReplanificarActividad"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Bienvenido.InformacionDeApp"
@@ -100,17 +125,21 @@
             android:name=".TiposMapas"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- Actividad de Inicio -->
         <activity
-            android:name=".Login.Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- Splash -->
+            android:name=".Sesion.Sesion"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- Splash -->
         <activity
-            android:name=".Login.SplashScreen"
+            android:name=".Sesion.SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- android:value="@string/google_maps_key" -->
+        </activity>
+
+        <!-- android:value="@string/google_maps_key" -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

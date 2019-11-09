@@ -25,6 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import pedrotti.gonzalo.proyecto.Actividad.Actividad;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
@@ -35,15 +36,17 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     RecyclerView recyclerView;
     ClimaActualAdapter adapter;
     private TextView tvRecomendacion;
+    private Actividad actividad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_climatica);
 
-        //Se recibe desde TodosLosLotes
+        //Se recibe desde TodosLosLotes o Desde Replanificar Actividad
         Bundle bundle = getIntent().getExtras();
         lote = bundle.getParcelable("DATOS_LOTE");
+
 
         setTitle("Datos del lote: " + lote.getNombre());
 
@@ -108,7 +111,8 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
                      climaActualList.add(ca);
 
                  }
-                 adapter = new ClimaActualAdapter(InformacionClimatica.this,climaActualList);
+
+                 adapter = new ClimaActualAdapter(InformacionClimatica.this,climaActualList,2);
                  recyclerView.setAdapter(adapter);
                  adapter.setOnItemClickListener(InformacionClimatica.this);
 

@@ -73,41 +73,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
 
     private Spinner  spActividad, spVariedad;
 
-    public String getHora_inicio_seleccionada() {
-        return hora_inicio_seleccionada;
-    }
 
-    public void setHora_inicio_seleccionada(String hora_inicio_seleccionada) {
-        this.hora_inicio_seleccionada = hora_inicio_seleccionada;
-    }
-
-    public String getFecha_inicio_Seleccionada() {
-        return fecha_inicio_Seleccionada;
-    }
-
-    public void setFecha_inicio_Seleccionada(String fecha_inicio_Seleccionada) {
-        this.fecha_inicio_Seleccionada = fecha_inicio_Seleccionada;
-    }
-
-    public String getHora_fin_seleccionada() {
-        return hora_fin_seleccionada;
-    }
-
-    public void setHora_fin_seleccionada(String hora_fin_seleccionada) {
-        this.hora_fin_seleccionada = hora_fin_seleccionada;
-    }
-
-    public String getFecha_fin_Seleccionada() {
-        return fecha_fin_Seleccionada;
-    }
-
-    public void setFecha_fin_Seleccionada(String fecha_fin_Seleccionada) {
-        this.fecha_fin_Seleccionada = fecha_fin_Seleccionada;
-    }
-
-    public void setActividad_seleccionada_id(int actividad_seleccionada_id) {
-        this.actividad_seleccionada_id = actividad_seleccionada_id;
-    }
 
     ArrayList<Actividad> actividadesList;
     ArrayList<Variedad> variedadesList;
@@ -143,14 +109,14 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
         spActividad = (Spinner) findViewById(R.id.spActividad);
         spActividad.setOnItemSelectedListener(this);
 
-        spVariedad = (Spinner) findViewById(R.id.spVariedad);
-        spVariedad.setVisibility(View.INVISIBLE);
+//        spVariedad = (Spinner) findViewById(R.id.spVariedad);
+//        spVariedad.setVisibility(View.INVISIBLE);
 
-        tvVar = (TextView) findViewById(R.id.tvVar);
-        tvVar.setVisibility(View.INVISIBLE);
+//        tvVar = (TextView) findViewById(R.id.tvVar);
+//        tvVar.setVisibility(View.INVISIBLE);
 
         actividadesList = new ArrayList<>();
-        variedadesList = new ArrayList<>();
+//        variedadesList = new ArrayList<>();
 
         spActividad.setOnItemSelectedListener(this);
 
@@ -174,7 +140,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
         btnRegistrarActividad=(Button)findViewById(R.id.btnRegistrarActividad);
 
         llenarSpinnerActividades();
-        llenarSpinnerVariedades();
+//        llenarSpinnerVariedades();
 
         btnFecha.setOnClickListener(this);
         btnHora.setOnClickListener(this);
@@ -271,6 +237,42 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
 
 
 
+    public String getHora_inicio_seleccionada() {
+        return hora_inicio_seleccionada;
+    }
+
+    public void setHora_inicio_seleccionada(String hora_inicio_seleccionada) {
+        this.hora_inicio_seleccionada = hora_inicio_seleccionada;
+    }
+
+    public String getFecha_inicio_Seleccionada() {
+        return fecha_inicio_Seleccionada;
+    }
+
+    public void setFecha_inicio_Seleccionada(String fecha_inicio_Seleccionada) {
+        this.fecha_inicio_Seleccionada = fecha_inicio_Seleccionada;
+    }
+
+    public String getHora_fin_seleccionada() {
+        return hora_fin_seleccionada;
+    }
+
+    public void setHora_fin_seleccionada(String hora_fin_seleccionada) {
+        this.hora_fin_seleccionada = hora_fin_seleccionada;
+    }
+
+    public String getFecha_fin_Seleccionada() {
+        return fecha_fin_Seleccionada;
+    }
+
+    public void setFecha_fin_Seleccionada(String fecha_fin_Seleccionada) {
+        this.fecha_fin_Seleccionada = fecha_fin_Seleccionada;
+    }
+
+    public void setActividad_seleccionada_id(int actividad_seleccionada_id) {
+        this.actividad_seleccionada_id = actividad_seleccionada_id;
+    }
+
     //Spinner de Actividades
     private void llenarSpinnerActividades(){
         String url ="http://"+ Constantes.ip+"/miCampoWeb/mobile/getActividad.php";
@@ -306,43 +308,43 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
             e.printStackTrace();
         }
     }
+//
+//    private void llenarSpinnerVariedades(){
+//        String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getVariedades.php?cultivo_id="+proyecto.getCultivo_id();
+//
+//        cliente.get(url, new AsyncHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                if(statusCode==200){
+//                    cargarSpinnerVariedades(new String(responseBody));
+//                }
+//            }
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+//
+//            }
+//        });
+//    }
 
-    private void llenarSpinnerVariedades(){
-        String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getVariedades.php?cultivo_id="+proyecto.getCultivo_id();
-
-        cliente.get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if(statusCode==200){
-                    cargarSpinnerVariedades(new String(responseBody));
-                }
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
-    }
-
-    private void cargarSpinnerVariedades(String respuesta){
-        try{
-            JSONArray variedades = new JSONArray(respuesta);
-            for (int i=0;i < variedades.length();i++){
-                Variedad v = new Variedad();
-                v.setCultivo(variedades.getJSONObject(i).getString("Cultivo"));
-                v.setVariedad_id(variedades.getJSONObject(i).getInt("idvariedad"));
-                v.setVariedad(variedades.getJSONObject(i).getString("variedad"));
-                v.setNiveldezona(variedades.getJSONObject(i).getString("niveldezona"));
-                v.setZona(variedades.getJSONObject(i).getString("zona"));
-                v.setDescripcion(variedades.getJSONObject(i).getString("descripcion"));
-                variedadesList.add(v);
-            }
-            ArrayAdapter<Variedad> adapter = new ArrayAdapter<Variedad>(this,android.R.layout.simple_dropdown_item_1line,variedadesList);
-            spVariedad.setAdapter(adapter);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    private void cargarSpinnerVariedades(String respuesta){
+//        try{
+//            JSONArray variedades = new JSONArray(respuesta);
+//            for (int i=0;i < variedades.length();i++){
+//                Variedad v = new Variedad();
+//                v.setCultivo(variedades.getJSONObject(i).getString("Cultivo"));
+//                v.setVariedad_id(variedades.getJSONObject(i).getInt("idvariedad"));
+//                v.setVariedad(variedades.getJSONObject(i).getString("variedad"));
+//                v.setNiveldezona(variedades.getJSONObject(i).getString("niveldezona"));
+//                v.setZona(variedades.getJSONObject(i).getString("zona"));
+//                v.setDescripcion(variedades.getJSONObject(i).getString("descripcion"));
+//                variedadesList.add(v);
+//            }
+//            ArrayAdapter<Variedad> adapter = new ArrayAdapter<Variedad>(this,android.R.layout.simple_dropdown_item_1line,variedadesList);
+//            spVariedad.setAdapter(adapter);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
     public void setActividadId(int id){
         this.actividad_seleccionada_id = id;
@@ -351,6 +353,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
     public int getActividad_seleccionada_id(){
         return actividad_seleccionada_id;
     }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -392,6 +395,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
             //Seteamos fecha mínima al día actual
             datePickerDialog.setTitle("Fecha Estimada de Inicio");
             datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+//            datePickerDialog.getDatePicker().setMaxDate(2020-10-10);
 //            datePickerDialog.getDatePicker().setMaxDate();
             datePickerDialog.show();
         }

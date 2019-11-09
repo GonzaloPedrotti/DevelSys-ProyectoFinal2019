@@ -1,5 +1,8 @@
 package pedrotti.gonzalo.proyecto.Clima;
 
+import android.graphics.Color;
+import android.widget.Switch;
+
 import java.util.List;
 
 public class ClimaActual {
@@ -82,4 +85,46 @@ public class ClimaActual {
     public void setLluvia(double lluvia) {
         this.lluvia = lluvia;
     }
+
+    public int estaPermitidaFumigacion(double temperatura,double viento){
+
+        int valor = 2;
+
+        if(viento>0 && viento <8 ){
+            if(temperatura>12 && temperatura<25){
+                valor= 0;
+            }else{
+                valor=1;
+            }
+        }
+
+        if(viento>=8 && viento <20){
+            valor=1;
+        }
+
+        if(viento>=20){
+            valor=2;
+
+        }
+        return valor;
+
+    }
+
+    public int estaPermitidoArar(int temperatura){
+
+        int valor = 0;
+
+        if(temperatura<25){
+            valor=0;
+        }else{
+            valor=1;
+        }
+        return valor;
+    }
+
+
+
+
+
+
 }

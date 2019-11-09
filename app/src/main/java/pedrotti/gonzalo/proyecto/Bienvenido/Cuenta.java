@@ -1,19 +1,14 @@
 package pedrotti.gonzalo.proyecto.Bienvenido;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import pedrotti.gonzalo.proyecto.Login.Login;
+import pedrotti.gonzalo.proyecto.Sesion.Sesion;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
@@ -31,7 +26,7 @@ public class Cuenta extends AppCompatActivity {
         setTitle(R.string.misdatos);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        Se recibe en el Bienvenido lo enviado desde el Login se comenta para probar el registro de un campo
+//        Se recibe en el Bienvenido lo enviado desde el Sesion se comenta para probar el registro de un campo
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
 
@@ -58,7 +53,7 @@ public class Cuenta extends AppCompatActivity {
     }
 
     public void cerrarSesion(){
-        Intent cerrar = new Intent(getApplicationContext(), Login.class);
+        Intent cerrar = new Intent(getApplicationContext(), Sesion.class);
         startActivity(cerrar);
         finish();
     }

@@ -4,21 +4,20 @@ package pedrotti.gonzalo.proyecto.Variedad;
     private String cultivo;
     private int variedad_id;
     private String variedad;
+    private String descripcion;
+    private int dias;
+    private double profundidad;
     private String niveldezona;
     private String zona;
-    private String descripcion;
+    private String siembra;
+    private double peso;
+    private int densidad;
 
 
-    public Variedad(String cultivo, int variedad_id, String variedad, String niveldezona, String zona, String descripcion) {
-        this.cultivo = cultivo;
-        this.variedad_id = variedad_id;
-        this.variedad = variedad;
-        this.niveldezona = niveldezona;
-        this.zona = zona;
-        this.descripcion = descripcion;
-    }
 
-    public Variedad(){
+
+
+     public Variedad(){
 
     }
 
@@ -74,4 +73,44 @@ package pedrotti.gonzalo.proyecto.Variedad;
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-}
+
+     public int getDias() {
+         return dias;
+     }
+
+     public void setDias(int dias) {
+         this.dias = dias;
+     }
+
+     public double getProfundidad() {
+         return profundidad;
+     }
+
+     public void setProfundidad(double profundidad) {
+         this.profundidad = profundidad;
+     }
+
+     public String getSiembra() {
+         return siembra;
+     }
+
+     public void setSiembra(String siembra) {
+         this.siembra = siembra;
+     }
+
+     public double getPeso() {
+         return peso;
+     }
+
+     public void setPeso(double peso) {
+         this.peso = peso;
+     }
+
+     public int getDensidad() {
+         return densidad;
+     }
+
+     public void setDensidad(int densidad) {
+         this.densidad = densidad;
+     }
+ }

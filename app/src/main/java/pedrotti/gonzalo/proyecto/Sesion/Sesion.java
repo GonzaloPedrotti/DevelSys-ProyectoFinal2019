@@ -1,6 +1,7 @@
-package pedrotti.gonzalo.proyecto.Login;
+package pedrotti.gonzalo.proyecto.Sesion;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,29 +14,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 import pedrotti.gonzalo.proyecto.Bienvenido.Bienvenido;
+import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.NuevoUsuario.Registro;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
-public class Login extends AppCompatActivity {
+public class Sesion extends AppCompatActivity {
 
     private EditText etCorreo, etcontrasena;
     private Usuario usuarioRegistrado;
     private TextView registro;
     private Button btnlogin;
     private String correo, contrasena;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,10 @@ public class Login extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent nuevousuario = new Intent(Login.this, Registro.class);
-                Login.this.startActivity(nuevousuario);
+                Intent nuevousuario = new Intent(Sesion.this, Registro.class);
+                Sesion.this.startActivity(nuevousuario);
             }
         });
-
 
         //Código del evento click del boton para iniciar sesión
         btnlogin.setOnClickListener(new View.OnClickListener() {
@@ -105,14 +107,14 @@ public class Login extends AppCompatActivity {
                                         int telefono = Integer.parseInt(telefonoString);
                                         user.setTelefono(telefono);
 
-                                        Intent irABienvenido = new Intent(Login.this,Bienvenido.class);
+                                        Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
                                         irABienvenido.putExtra("DATOS_USER",user);
                                         startActivity(irABienvenido);
-                                        Login.this.finish();
+                                        Sesion.this.finish();
 
                                         //sino arroja un mensaje de error.
                                     } else {
-                                        AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
+                                        AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
                                         alerta.setMessage("Usuario o Contraseña Incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
                                         etcontrasena.setText("");
                                         btnlogin.setEnabled(true);
@@ -120,14 +122,14 @@ public class Login extends AppCompatActivity {
                                     }
                                 } catch (JSONException e) {
                                     e.getMessage();
-                                    AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
+                                    AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
                                     alerta.setMessage("Ups! Algo ha salido mal").setNegativeButton("Reintentar", null).setTitle("Error en la Conexión").setIcon(R.drawable.logo).create().show();
                                 }
                             }
                         };
                         //Se añade a la variable RequestQueue el resultado de la consulta
-                        LoginRequest r = new LoginRequest(correo,contrasena, respuesta);
-                        RequestQueue cola = Volley.newRequestQueue(Login.this);
+                        SesionRequest r = new SesionRequest(correo,contrasena, respuesta);
+                        RequestQueue cola = Volley.newRequestQueue(Sesion.this);
                         cola.add(r);
                     }
                    else{
@@ -139,7 +141,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
 
     public  boolean haveNetwork(){
         boolean have_WIFI = false;
@@ -160,6 +161,23 @@ public class Login extends AppCompatActivity {
         return have_MobileData || have_WIFI;
 
     }
+  class SesionRequest extends StringRequest{
+
+      private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/mobile/login.php";
+
+      private Map<String,String> parametros;
+      public SesionRequest (String correo, String contrasena, Response.Listener<String> listener){
+          super(Request.Method.POST, ruta, listener, null);
+          parametros = new HashMap<>();
+          parametros.put("correo",  correo+"");
+          parametros.put("contrasena",  contrasena+"");
+      }
+
+      @Override
+      protected Map<String, String> getParams(){
+          return parametros;
+      }
+  }
 
 }
 

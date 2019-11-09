@@ -1,6 +1,6 @@
 package pedrotti.gonzalo.proyecto.Actividad;
 
-class Actividad {
+public class Actividad {
 
     private int actividad_id;
     private String nombre;
@@ -43,5 +43,4 @@ class Actividad {
     public String toString() {
         return nombre;
     }
-
 }

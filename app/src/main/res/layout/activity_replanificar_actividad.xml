@@ -4,39 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actividad.ItemActividad">
+    tools:context=".Actividad.ReplanificarActividad">
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="100dp"
+        android:id="@+id/tvActividadResultado"
+        android:layout_width="200dp"
         android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="Actividad:"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:enabled="true"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etActividad"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
     <Button
         android:id="@+id/btnActualizarActividad"
-        android:layout_width="150dp"
+        android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="20dp"
-        android:text="ACTUALIZAR"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:background="#25B459"
+        android:backgroundTint="#25B459"
+        android:text=" Actualizar Fechas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eth1" />
 
@@ -45,36 +37,36 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#0BBE0E"
         android:src="@drawable/ic_event_white_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado"
         tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/etf1"
         android:layout_width="90dp"
         android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:enabled="false"
         android:hint="Fecha Inicio"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/btnFechaInicioNueva"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
 
     <ImageButton
         android:id="@+id/btnFechaFinNueva"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#303F9F"
         app:layout_constraintStart_toEndOf="@+id/etf1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado"
         app:srcCompat="@drawable/ic_event_white_24dp" />
 
     <ImageButton
@@ -82,7 +74,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#0BBE0E"
         android:src="@drawable/ic_access_time_white_24dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,8 +86,8 @@
         android:id="@+id/btnHoraFinNueva"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#303F9F"
         app:layout_constraintStart_toEndOf="@+id/eth1"
         app:layout_constraintTop_toBottomOf="@+id/btnFechaFinNueva"
@@ -106,21 +98,21 @@
         android:layout_width="90dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:enabled="false"
         android:hint="Fecha Fin"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/btnFechaFinNueva"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
 
     <EditText
         android:id="@+id/eth1"
         android:layout_width="90dp"
         android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:enabled="false"
         android:hint="Hora Inicio"
@@ -134,7 +126,7 @@
         android:layout_width="90dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:enabled="false"
         android:hint="Hora Fin"
@@ -142,5 +134,30 @@
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/btnHoraFinNueva"
         app:layout_constraintTop_toBottomOf="@+id/etf2" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Replanificar Actividad"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRecomendacionMomento"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="#25B459"
+        android:backgroundTint="#25B459"
+        android:text="Ver Recomendación de Momento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnActualizarActividad" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

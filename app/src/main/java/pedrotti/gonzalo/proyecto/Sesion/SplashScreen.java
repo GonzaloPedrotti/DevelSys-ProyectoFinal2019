@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Login;
+package pedrotti.gonzalo.proyecto.Sesion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import pedrotti.gonzalo.proyecto.Login.Login;
 import pedrotti.gonzalo.proyecto.R;
 
 public class SplashScreen extends AppCompatActivity {
@@ -19,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent  = new Intent (getApplicationContext(), Login.class);
+                Intent intent  = new Intent (getApplicationContext(), Sesion.class);
                 startActivity(intent);
                 finish();
             }

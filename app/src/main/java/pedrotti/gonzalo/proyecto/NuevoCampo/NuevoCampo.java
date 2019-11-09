@@ -95,61 +95,7 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
         btnRegistrarCampo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
-    /*
-    * Este if verifica que el param1 haya tomado el valor 1
-    * el valor 1 lo toma solo si el usuario seleccionó un punto en el mapa
-    * si no seleccionó un punto, la variable lat1 y long1 se definen como cero
-    * Entonces: Si es cero, entra al if y muestra el mensaje de completar los campos*/
-                if (param1==1){
-                 j=1;
-                }else{
-                    lat1=0;
-                    long1=0;
-                    j=0;
-                }
-
-                //El trim elimina espacios al principio y al fin
-                String nombre = etNombre.getText().toString().trim();
-
-                //Controles
-                if (nombre.isEmpty() || lat1==0 || long1==0 ) {
-                    Toast.makeText(getApplicationContext(), "Asegúrese de Que Seleccionó un punto y Completó el nombre", Toast.LENGTH_LONG).show();
-                }
-
-                //inicio else
-                else{
-                    Response.Listener<String> respuesta = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Campo campo = new Campo();
-                            try{
-                                JSONObject jsonRespuesta = new JSONObject(response);
-                                boolean ok = jsonRespuesta.getBoolean("success");
-                                if(ok==true){
-                                    AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoCampo.this);
-                                    alerta.setMessage("Campo Registrado con Éxito! Vuelva para ver su nuevo Campo o Continúe Registrando nuevos Campos").setPositiveButton("Aceptar",null).create().show();
-                                    etNombre.setText("");
-                                    marker.remove();
-                                    setToque(0);
-
-                                }else{
-
-                                    AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoCampo.this);
-                                    alerta.setMessage("Fallo en el Registro").setNegativeButton("Reintentar",null).create().show();
-                                }
-                            }
-                            catch(JSONException e){
-                                e.getMessage();
-                                Toast.makeText(getApplicationContext(), "Error al intentar guardar", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    };
-                    NuevoCampoRequest r = new NuevoCampoRequest(user.getUsuario_id(),nombre,lat1,long1, respuesta);
-                    RequestQueue cola = Volley.newRequestQueue(NuevoCampo.this);
-                    cola.add(r);
-                }
-                //fin del else
+                guardarCampo();
             }
         });
 
@@ -161,6 +107,65 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
             }
         });
     }
+
+    public void guardarCampo(){
+
+        /*
+         * Este if verifica que el param1 haya tomado el valor 1
+         * el valor 1 lo toma solo si el usuario seleccionó un punto en el mapa
+         * si no seleccionó un punto, la variable lat1 y long1 se definen como cero
+         * Entonces: Si es cero, entra al if y muestra el mensaje de completar los campos*/
+        if (param1==1){
+            j=1;
+        }else{
+            lat1=0;
+            long1=0;
+            j=0;
+        }
+
+        //El trim elimina espacios al principio y al fin
+        String nombre = etNombre.getText().toString().trim();
+
+        //Controles
+        if (nombre.isEmpty() || lat1==0 || long1==0 ) {
+            Toast.makeText(getApplicationContext(), "Asegúrese de Que Seleccionó un punto y Completó el nombre", Toast.LENGTH_LONG).show();
+        }
+
+        //inicio else
+        else{
+            Response.Listener<String> respuesta = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Campo campo = new Campo();
+                    try{
+                        JSONObject jsonRespuesta = new JSONObject(response);
+                        boolean ok = jsonRespuesta.getBoolean("success");
+                        if(ok==true){
+                            AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoCampo.this);
+                            alerta.setMessage("Campo Registrado con Éxito! Vuelva para ver su nuevo Campo o Continúe Registrando nuevos Campos").setPositiveButton("Aceptar",null).create().show();
+                            etNombre.setText("");
+                            marker.remove();
+                            setToque(0);
+
+                        }else{
+
+                            AlertDialog.Builder alerta = new AlertDialog.Builder(NuevoCampo.this);
+                            alerta.setMessage("Fallo en el Registro").setNegativeButton("Reintentar",null).create().show();
+                        }
+                    }
+                    catch(JSONException e){
+                        e.getMessage();
+                        Toast.makeText(getApplicationContext(), "Error al intentar guardar", Toast.LENGTH_LONG).show();
+                    }
+                }
+            };
+            NuevoCampoRequest r = new NuevoCampoRequest(user.getUsuario_id(),nombre,lat1,long1, respuesta);
+            RequestQueue cola = Volley.newRequestQueue(NuevoCampo.this);
+            cola.add(r);
+        }
+        //fin del else
+    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

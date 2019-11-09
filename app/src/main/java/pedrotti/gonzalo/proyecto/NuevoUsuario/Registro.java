@@ -1,6 +1,5 @@
 package pedrotti.gonzalo.proyecto.NuevoUsuario;
 
-import android.app.Activity;
 import android.content.Intent;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +13,8 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pedrotti.gonzalo.proyecto.Login.Login;
+import pedrotti.gonzalo.proyecto.Sesion.Sesion;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class Registro extends AppCompatActivity {
 
@@ -94,7 +92,7 @@ public class Registro extends AppCompatActivity {
                                         boolean ok = jsonRespuesta.getBoolean("success");
                                         if (ok == true) {
 
-                                            Intent i = new Intent(Registro.this, Login.class);
+                                            Intent i = new Intent(Registro.this, Sesion.class);
 
                                             Toast.makeText(getApplicationContext(), "Registrado con Éxito. Ahora inicia Sesión", Toast.LENGTH_LONG).show();
                                             Registro.this.startActivity(i);
@@ -126,7 +124,7 @@ public class Registro extends AppCompatActivity {
 
 
     public void volver(){
-            Intent volver = new Intent(getApplicationContext(), Login.class);
+            Intent volver = new Intent(getApplicationContext(), Sesion.class);
             startActivity(volver);
     }
 

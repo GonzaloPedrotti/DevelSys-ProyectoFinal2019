@@ -1,10 +1,12 @@
 package pedrotti.gonzalo.proyecto.ProyectoCultivo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,20 +14,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import pedrotti.gonzalo.proyecto.MenuActividad;
 import pedrotti.gonzalo.proyecto.R;
 
 
-public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActividadAdapter.DetalleProyectoViewHolder> {
+public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActividadAdapter.DetalleProyectoViewHolder  >
+
+    //El código comentado en esta clase se utiliza para agregar el onClick a algun elemento dentro de el adaptador
+
+{
+
+    //implements View.OnClickListener
 
     private Context mCtx;
     private List<DetalleActividad> detalleActividadList;
     private View.OnClickListener listener;
     private DetalleActividadAdapter.OnItemClickListener mlistener;
 
+
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
-
 
     public DetalleActividadAdapter(Context mCtx, List<DetalleActividad> detalleActividadList) {
         this.mCtx = mCtx;
@@ -66,39 +75,44 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
         holder.tvFechaFin.setText(detalleActividad.getFin());
         holder.tvEstadoActividad.setText(detalleActividad.getEstado());
 
+
         if(pos== 0){
             holder.tvActividad.setBackgroundColor(Color.parseColor("#FFFFFF"));
             holder.tvFechaInicio.setBackgroundColor(Color.parseColor("#FFFFFF"));
             holder.tvFechaFin.setBackgroundColor(Color.parseColor("#FFFFFF"));
             holder.tvEstadoActividad.setBackgroundColor(Color.parseColor("#FFFFFF"));
-//            holder.tvAccion.setBackgroundColor(Color.parseColor("#FFFFFF"));
-//            if ((holder.tvEstadoActividad.getText().toString())=="FINALIZADA") {
-//                holder.tvAccion.setText("Eliminar");
-//            }else{
-//                holder.tvAccion.setText("Editar");
-//            }
 
         }else{
             holder.tvActividad.setBackgroundColor(Color.parseColor("#00C3FF"));
             holder.tvFechaInicio.setBackgroundColor(Color.parseColor("#00C3FF"));
             holder.tvFechaFin.setBackgroundColor(Color.parseColor("#00C3FF"));
             holder.tvEstadoActividad.setBackgroundColor(Color.parseColor("#00C3FF"));
-//            holder.tvAccion.setBackgroundColor(Color.parseColor("#00C3FF"));s
         }
+
+//      holder.setOnClickListener();
     }
 
-    class DetalleProyectoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvActividad, tvFechaInicio,tvFechaFin,tvEstadoActividad;
+    class DetalleProyectoViewHolder extends RecyclerView.ViewHolder  {
+
+        //implements View.OnClickListener
+
+        TextView tvActividad, tvFechaInicio,tvFechaFin,tvEstadoActividad, tvAccion;
+        Context context;
+
 
         public DetalleProyectoViewHolder(View itemView){
+
             super(itemView);
+           context =  itemView.getContext();
 
             tvActividad = itemView.findViewById(R.id.tvNombreActividad);
             tvFechaInicio = itemView.findViewById(R.id.tvFechaInicio);
             tvFechaFin = itemView.findViewById(R.id.tvFechaFin);
             tvEstadoActividad = itemView.findViewById(R.id.tvEstadoActividad);
+            //Se comenta, ya se quito la implementacion de un tv con opciones
 //            tvAccion = itemView.findViewById(R.id.tvAccion);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,6 +126,22 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
                 }
             });
         }
+
+//        //prueba
+//        void setOnClickListener(){
+//            tvAccion.setOnClickListener(this);
+//        }
+
+//        @Override
+//        public void onClick(View v) {
+//            switch (v.getId()){
+////                case R.id.tvAccion:
+////                    Intent intent = new Intent(context, MenuActividad.class);
+////                    intent.putExtra("headerCode",tvActividad.getText());
+////                    context.startActivity(intent);
+////                break;
+//        }
+//        }
     }
 
     public void setOnItemClickListener (OnItemClickListener listener){

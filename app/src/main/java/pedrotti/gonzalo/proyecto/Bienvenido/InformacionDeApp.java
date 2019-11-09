@@ -18,7 +18,7 @@ public class InformacionDeApp extends AppCompatActivity {
         setContentView(R.layout.activity_informacion_de_app);
 
 
-//        Se recibe en el Bienvenido lo enviado desde el Login se comenta para probar el registro de un campo
+//        Se recibe en el Bienvenido lo enviado desde el Sesion se comenta para probar el registro de un campo
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
 

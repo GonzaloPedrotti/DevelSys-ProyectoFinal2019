@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -29,16 +29,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import pedrotti.gonzalo.proyecto.Clima.InformacionClimatica;
+import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleActividad;
+import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
+import pedrotti.gonzalo.proyecto.Siembra;
 
-public class ItemActividad extends AppCompatActivity implements View.OnClickListener {
+public class ReplanificarActividad extends AppCompatActivity implements View.OnClickListener {
 
     private DetalleActividad detalleActividad;
+    private ProyectoCultivo proyecto;
+    private Lote lote;
 
     private String f1,f2,h1,h2;
-    private EditText etActividad,etf1, etf2, eth1, eth2;
-    private Button btnActualizarActividad;
+    private EditText etf1, etf2, eth1, eth2;
+    private Button btnActualizarActividad , btnRecomendacionMomento ;
+    private TextView etActividad;
 
     private String actividad ;
 
@@ -56,7 +63,6 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
     private String fecha_inicio_Seleccionada;
     private String hora_fin_seleccionada;
     private String fecha_fin_Seleccionada;
-
 
     Date fecha_hora_inicial=null;
     Date fecha_hora_final=null;
@@ -94,7 +100,66 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
 
     private int dia,mes,anio, hora, minutos;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_replanificar_actividad);
 
+        //Se recibe desde DetalleProyecto
+        Bundle bundle = getIntent().getExtras();
+        detalleActividad = bundle.getParcelable("DETALLE_SELECCIONADO");
+
+        //Se recibe desde DetalleProyecto
+        Bundle bundle2 = getIntent().getExtras();
+        proyecto = bundle2.getParcelable("DATOS_PROYECTO");
+
+        //Se recibe desde DetalleProyecto
+        Bundle bundle3 = getIntent().getExtras();
+        lote = bundle3.getParcelable("DATOS_LOTE");
+
+        actividad = detalleActividad.getActividad();
+        etActividad = (TextView)findViewById(R.id.tvActividadResultado);
+        btnActualizarActividad = (Button)findViewById(R.id.btnActualizarActividad);
+        etActividad.setText(detalleActividad.getActividad());
+
+        btnFechaInicioNueva = (ImageButton)findViewById(R.id.btnFechaInicioNueva);
+        btnFechaFinNueva = (ImageButton)findViewById(R.id.btnFechaFinNueva);
+        btnHoraInicioNueva = (ImageButton) findViewById(R.id.btnHoraInicioNueva);
+        btnHoraFinNueva = (ImageButton)findViewById(R.id.btnHoraFinNueva);
+
+        btnFechaInicioNueva.setOnClickListener(this);
+        btnFechaFinNueva.setOnClickListener(this);
+        btnHoraInicioNueva.setOnClickListener(this);
+        btnHoraFinNueva.setOnClickListener(this);
+
+
+        etf1 = (EditText)findViewById(R.id.etf1);
+        etf2 = (EditText)findViewById(R.id.etf2);
+        eth1 = (EditText)findViewById(R.id.eth1);
+        eth2 = (EditText)findViewById(R.id.eth2);
+
+        btnRecomendacionMomento = (Button)findViewById(R.id.btnRecomendacionMomento);
+
+
+
+        btnActualizarActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actualizarActividad();
+            }
+        });
+
+        btnRecomendacionMomento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent siembra  = new Intent(getApplicationContext(), InformacionClimatica.class);
+                siembra.putExtra("DATOS_PROYECTO",proyecto);
+                siembra.putExtra("DATOS_LOTE",lote);
+                startActivity(siembra);
+            }
+        });
+
+    }
 
     public String getHora_inicio_seleccionada() {
         return hora_inicio_seleccionada;
@@ -128,47 +193,6 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
         this.fecha_fin_Seleccionada = fecha_fin_Seleccionada;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_actividad);
-
-        //Se recibe desde TodosLosProyectos
-        Bundle bundle = getIntent().getExtras();
-        detalleActividad = bundle.getParcelable("DETALLE_SELECCIONADO");
-
-        actividad = detalleActividad.getActividad();
-        etActividad = (EditText)findViewById(R.id.etActividad);
-        btnActualizarActividad = (Button)findViewById(R.id.btnActualizarActividad);
-        etActividad.setText(detalleActividad.getActividad());
-
-        btnFechaInicioNueva = (ImageButton)findViewById(R.id.btnFechaInicioNueva);
-        btnFechaFinNueva = (ImageButton)findViewById(R.id.btnFechaFinNueva);
-        btnHoraInicioNueva = (ImageButton) findViewById(R.id.btnHoraInicioNueva);
-        btnHoraFinNueva = (ImageButton)findViewById(R.id.btnHoraFinNueva);
-
-        btnFechaInicioNueva.setOnClickListener(this);
-        btnFechaFinNueva.setOnClickListener(this);
-        btnHoraInicioNueva.setOnClickListener(this);
-        btnHoraFinNueva.setOnClickListener(this);
-
-
-        etf1 = (EditText)findViewById(R.id.etf1);
-        etf2 = (EditText)findViewById(R.id.etf2);
-        eth1 = (EditText)findViewById(R.id.eth1);
-        eth2 = (EditText)findViewById(R.id.eth2);
-
-
-
-        btnActualizarActividad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                actualizarActividad();
-            }
-        });
-
-    }
-
     public void actualizarActividad(){
         f1=etf1.getText().toString();
         f2=etf2.getText().toString();
@@ -193,17 +217,17 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
         }
 
 
-        AlertDialog.Builder alertaReg = new AlertDialog.Builder(ItemActividad.this);
+        AlertDialog.Builder alertaReg = new AlertDialog.Builder(ReplanificarActividad.this);
         alertaReg.setTitle("Modificación")
                 .setMessage("¿Desea Modificar esta Actividad?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if(f1.isEmpty() || f2.isEmpty() || h1.isEmpty() || h2.isEmpty()){
-                            Toast.makeText(ItemActividad.this, "Indique Fechas y Horas de Inicio y Fin", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ReplanificarActividad.this, "Indique Fechas y Horas de Inicio y Fin", Toast.LENGTH_SHORT).show();
                         }else {
                             if (!(fecha_hora_inicial.before(fecha_hora_final))) {
-                                Toast.makeText(ItemActividad.this, "Controle las Fechas de Inicio y Fin", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ReplanificarActividad.this, "Controle las Fechas de Inicio y Fin", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 Response.Listener<String> respuesta = new Response.Listener<String>() {
@@ -215,9 +239,9 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
 //
                                             if (ok == true) {
                                                 Toast.makeText(getApplicationContext(), "Actividad Modificada con éxito", Toast.LENGTH_LONG).show();
-                                                ItemActividad.this.finish();
+                                                ReplanificarActividad.this.finish();
                                             } else {
-                                                Toast.makeText(ItemActividad.this, "Ya existe una actividad para el momento elegido", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(ReplanificarActividad.this, "Ya existe una actividad para el momento elegido", Toast.LENGTH_SHORT).show();
 //                                                        AlertDialog.Builder alerta = new AlertDialog.Builder(NuevaActividad.this);
 //                                                        alerta.setMessage("Ya existe una activida para el momento indicado").setNegativeButton("Entendido", null).setTitle("Información de Registro de Actividad").setIcon(R.drawable.logo).create().show();
                                             }
@@ -228,7 +252,7 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
                                     }
                                 };//End Response
                                 ActualizarActividadRequest r = new ActualizarActividadRequest(detalleActividad.getProyecto_cultivo_id(),detalleActividad.getDetalle_actividad_id(),fecha_hora_inicio,fecha_hora_fin, respuesta);
-                                RequestQueue cola = Volley.newRequestQueue(ItemActividad.this);
+                                RequestQueue cola = Volley.newRequestQueue(ReplanificarActividad.this);
                                 cola.add(r);
                             }//else del Response
                         }
@@ -246,7 +270,6 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
 
     }
 
-
     @Override
     public void onClick(View v) {
         if(v==btnFechaInicioNueva){
@@ -261,7 +284,7 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     etf1.setText(dayOfMonth+"-"+ (month+1) +"-"+year);
                     setFecha_inicio_Seleccionada(year+"-"+(month+1)+"-"+dayOfMonth);
-                    Toast.makeText(ItemActividad.this, "Fecha Inicio Seleccionada es: " + getFecha_inicio_Seleccionada(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReplanificarActividad.this, "Fecha Inicio Seleccionada es: " + getFecha_inicio_Seleccionada(), Toast.LENGTH_SHORT).show();
                 }
             },anio,mes,dia);
 
@@ -284,7 +307,7 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     etf2.setText(dayOfMonth+"-"+ (month+1) +"-"+year);
                     setFecha_fin_Seleccionada(year+"-"+(month+1)+"-"+dayOfMonth);
-                    Toast.makeText(ItemActividad.this, "Fecha Fin Seleccionada es: " + getFecha_fin_Seleccionada(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReplanificarActividad.this, "Fecha Fin Seleccionada es: " + getFecha_fin_Seleccionada(), Toast.LENGTH_SHORT).show();
 
                 }
             },anio,mes,dia);
@@ -307,7 +330,7 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     eth1.setText(hourOfDay+":"+minute + " hs");
                     setHora_inicio_seleccionada(hourOfDay+":"+minute+":00");
-                    Toast.makeText(ItemActividad.this, "Hora Inicio Seleccionada es: " + getHora_inicio_seleccionada(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReplanificarActividad.this, "Hora Inicio Seleccionada es: " + getHora_inicio_seleccionada(), Toast.LENGTH_SHORT).show();
 
                 }
             },hora,minutos,false);
@@ -328,7 +351,7 @@ public class ItemActividad extends AppCompatActivity implements View.OnClickList
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     eth2.setText(hourOfDay+":"+minute + " hs");
                     setHora_fin_seleccionada(hourOfDay+":"+minute+":00");
-                    Toast.makeText(ItemActividad.this, "Hora fin Seleccionada es: " + getHora_fin_seleccionada(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReplanificarActividad.this, "Hora fin Seleccionada es: " + getHora_fin_seleccionada(), Toast.LENGTH_SHORT).show();
 
                 }
             },hora,minutos,false);

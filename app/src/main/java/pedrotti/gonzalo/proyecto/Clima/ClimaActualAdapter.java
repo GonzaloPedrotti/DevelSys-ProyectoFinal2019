@@ -19,6 +19,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+
+import pedrotti.gonzalo.proyecto.Actividad.Actividad;
+import pedrotti.gonzalo.proyecto.Campo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 
 public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.InformacionClimaticaViewHolder> {
@@ -27,15 +31,19 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
     private List<ClimaActual> climaActualList;
     private View.OnClickListener listener;
     private ClimaActualAdapter.OnItemClickListener mlistener;
+    private int actividad_id;
+
+
 
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
 
 
-    public ClimaActualAdapter(Context mCtx, List<ClimaActual> climaActualList) {
+    public ClimaActualAdapter(Context mCtx, List<ClimaActual> climaActualList, int actividad_id) {
         this.mCtx = mCtx;
         this.climaActualList =climaActualList;
+        this.actividad_id=actividad_id;
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -55,7 +63,7 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
 
     //Clase para llenar los TextView
     @Override
-    public void onBindViewHolder(ClimaActualAdapter.InformacionClimaticaViewHolder holder, int position) {
+    public void onBindViewHolder(InformacionClimaticaViewHolder holder, int position) {
 
         ClimaActual climaActual = climaActualList.get(position);
 
@@ -93,17 +101,34 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
         holder.tvVelocidadViento.setText(""+climaActual.getViento());
         holder.tvLluvia.setText(""+climaActual.getLluvia());
 
-       if(climaActual.getViento()>=0 && climaActual.getViento()<8){
-           holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
-       }
+        switch (actividad_id){
+            case 1:
+                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
 
-       if(climaActual.getViento()>=8 && climaActual.getViento()<20 ){
-               holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
-       }
+                break;
+            case 2 :
+                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==0){
+                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
+                }
 
-       if(climaActual.getViento()>=20 ){
-           holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
-       }
+                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==1){
+                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
+                }
+
+                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==2){
+                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
+                }
+            break;
+
+            case 3:
+                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
+                 break;
+
+            case 4:
+                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
+                break;
+        }
+
         Picasso.with(mCtx).load( "https://openweathermap.org/img/wn/"+climaActual.getImagen()+".png").into(holder.ivIcono);
 
     }
@@ -112,7 +137,6 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
 
         TextView tvTemperatura, tvFecha, tvDescripcion, tvHumedad, tvVelocidadViento, tvLluvia, tvRecomendacion;
         ImageView ivIcono;
-
 
         public InformacionClimaticaViewHolder(View itemView){
             super(itemView);

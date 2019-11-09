@@ -8,11 +8,13 @@
 
     <Button
         android:id="@+id/btnRealizarActividad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:background="#25B459"
+        android:backgroundTint="#25B459"
         android:text="Añadir Actividad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
@@ -129,7 +131,7 @@
         android:layout_width="350dp"
         android:layout_height="220dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="24dp"
 
         app:layout_constraintStart_toEndOf="@+id/tvTituloPeriodo"
         app:layout_constraintStart_toStartOf="parent"

@@ -24,6 +24,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.R;
+import pedrotti.gonzalo.proyecto.Reporte;
 import pedrotti.gonzalo.proyecto.TiposMapas;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
@@ -64,10 +65,9 @@ private Button btnEstadísticas;
         btnEstadísticas = (Button)findViewById(R.id.btnEstadisticas);
 
 
-//        Se recibe en el Bienvenido lo enviado desde el Login se comenta para probar el registro de un campo
+//        Se recibe en el Bienvenido lo enviado desde el Sesion se comenta para probar el registro de un campo
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
-
 
         //Metodo para abrir el mapa con los campos registrados(Clase Mapa)
         btnVerCampos.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +94,9 @@ private Button btnEstadísticas;
             @Override
             public void onClick(View v) {
 
-                Intent cuenta = new Intent(getApplicationContext(), Cuenta.class);
-                cuenta.putExtra("DATOS_USER",user);
+//                Intent cuenta = new Intent(getApplicationContext(), Cuenta.class);
+                Intent cuenta = new Intent(getApplicationContext(), Reporte.class);
+//                cuenta.putExtra("DATOS_USER",user);
                 startActivity(cuenta);
             }
         });
