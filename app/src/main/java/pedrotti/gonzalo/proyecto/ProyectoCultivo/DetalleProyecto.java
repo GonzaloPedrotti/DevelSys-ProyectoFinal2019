@@ -198,6 +198,7 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
                             replanificar.putExtra("DATOS_PROYECTO",proyecto);
                             replanificar.putExtra("DATOS_LOTE", lote);
                             startActivity( replanificar);
+                            
                         }else{
                             Toast.makeText(DetalleProyecto.this, "Solo se pueden replanificar actividades que no hayan iniciado aún", Toast.LENGTH_SHORT).show();
                         }
