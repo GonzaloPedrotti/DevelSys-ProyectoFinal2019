@@ -20,14 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-
-
-
-        <activity android:name=".Bienvenido.Cuenta"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <!-- <activity android:name=".Actividad.ReplanificarActividad"></activity> -->
+        <activity android:name=".Fertilizacion.Fertilizacion"></activity>
+        <activity android:name=".Actividad.ResultadoActividad" />
+        <activity
+            android:name=".Bienvenido.Cuenta"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- <activity android:name=".Actividad.ReplanificarActividad"></activity> -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,27 +37,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".MenuActividad"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-
-        <activity android:name=".Catalogo">
-        </activity>
-
-        <activity android:name=".Siembra"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-
-        <activity android:name=".Reporte">
-        </activity>
-
-        <activity android:name=".ResultadoSiembra"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-
-        <activity android:name=".Bienvenido.ProyectosUsuario"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
+        <activity
+            android:name=".Actividad.InicioActividad"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Catalogo.Catalogo" />
+        <activity
+            android:name=".Siembra.Siembra"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Reportes.Reporte" />
+        <activity
+            android:name=".Siembra.ResultadoSiembra"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Bienvenido.ProyectosUsuario"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Campo.UbicacionCampo"
             android:label="@string/title_activity_ubicacion_campo" />
@@ -126,9 +116,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- Actividad de Inicio -->
         <activity
             android:name=".Sesion.Sesion"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <!-- Splash -->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- Splash -->
         <activity
             android:name=".Sesion.SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -137,9 +125,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- android:value="@string/google_maps_key" -->
+        </activity> <!-- android:value="@string/google_maps_key" -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

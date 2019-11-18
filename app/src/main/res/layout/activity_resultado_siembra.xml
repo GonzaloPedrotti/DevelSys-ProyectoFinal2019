@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultadoSiembra">
+    tools:context=".Siembra.ResultadoSiembra">
 
     <TextView
         android:id="@+id/tvActividadResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:enabled="true"
         android:fontFamily="sans-serif-black"
@@ -21,46 +21,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btnf1"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#0E23E6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado"
-        app:srcCompat="@drawable/ic_event_white_24dp" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/btnf1"-->
+        <!--android:layout_width="45dp"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:backgroundTint="#0E23E6"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/editText"-->
+        <!--app:srcCompat="@drawable/ic_event_white_24dp" />-->
 
     <ImageButton
         android:id="@+id/btnf2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#0E9DDF"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#303F9F"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado"
+        app:layout_constraintTop_toBottomOf="@+id/etFechaInicioSiembra"
         app:srcCompat="@drawable/ic_event_white_24dp" />
 
-    <ImageButton
-        android:id="@+id/btnh1"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:backgroundTint="#0E23E6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnf1"
-        app:srcCompat="@drawable/ic_access_time_white_24dp" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/btnh1"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:backgroundTint="#0E23E6"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/btnf1"-->
+        <!--app:srcCompat="@drawable/ic_access_time_white_24dp"-->
+        <!--tools:layout_editor_absoluteX="16dp" />-->
 
     <ImageButton
         android:id="@+id/btnh2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="36dp"
-        android:backgroundTint="#0E9DDF"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#303F9F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnf2"
         app:srcCompat="@drawable/ic_access_time_white_24dp" />
@@ -69,67 +68,67 @@
         android:id="@+id/etDescripcionActividad"
         android:layout_width="310dp"
         android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Ingrese alguna descripción"
         android:inputType="textPersonName"
+        android:maxLength="100"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etHora1Real" />
+        app:layout_constraintTop_toBottomOf="@+id/spVariedadesSiembra" />
 
-    <EditText
-        android:id="@+id/etFecha1Real"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Fecha Inicio"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/btnf1"
-        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
+    <!--<EditText-->
+        <!--android:id="@+id/etFecha1Real"-->
+        <!--android:layout_width="90dp"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:layout_marginStart="12dp"-->
+        <!--android:layout_marginTop="72dp"-->
+        <!--android:ems="10"-->
+        <!--android:enabled="false"-->
+        <!--android:hint="Fecha Inicio"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/btnf1"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />-->
 
-    <EditText
-        android:id="@+id/etHora1Real"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="Hora Inicio"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/btnh1"
-        app:layout_constraintTop_toBottomOf="@+id/etFecha1Real" />
+    <!--<EditText-->
+        <!--android:id="@+id/etHora1Real"-->
+        <!--android:layout_width="235dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:ems="10"-->
+        <!--android:enabled="false"-->
+        <!--android:hint="Hora Inicio"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:textSize="14sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/btnh1"-->
+        <!--tools:layout_editor_absoluteY="158dp" />-->
 
     <EditText
         android:id="@+id/etFecha2Real"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:enabled="false"
-        android:hint="Fecha Fin"
+        android:hint="Fecha de Fin"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/btnf2"
-        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
+        app:layout_constraintTop_toBottomOf="@+id/etFechaInicioSiembra" />
 
     <EditText
         android:id="@+id/etHora2Real"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:enabled="false"
-        android:hint="Hora Fin"
+        android:hint="Hora de Fin"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/btnh2"
@@ -137,26 +136,69 @@
 
     <Button
         android:id="@+id/btnGuardarResultado"
-        android:layout_width="310dp"
+        android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
-        android:background="#25B459"
-        android:text="Guardar"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#25B459"
+        android:text="Guardar Siembra"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescripcionActividad" />
+        app:layout_constraintTop_toBottomOf="@+id/etDosisReal" />
 
     <EditText
         android:id="@+id/etDosisReal"
         android:layout_width="310dp"
         android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Kg de Semillas Utilizados"
         android:inputType="numberDecimal"
+        android:maxLength="9"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDescripcionActividad" />
+
+    <Spinner
+        android:id="@+id/spVariedadesSiembra"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Variedad de Semilla Sembrada"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnh2" />
+
+    <EditText
+        android:id="@+id/etFechaInicioSiembra"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Iniciada:"
+        app:layout_constraintStart_toStartOf="@+id/btnf2"
+        app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

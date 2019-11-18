@@ -1,5 +1,6 @@
 package pedrotti.gonzalo.proyecto.ProyectoCultivo;
 
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -29,11 +30,15 @@ import java.util.List;
 
 import pedrotti.gonzalo.proyecto.Actividad.ReplanificarActividad;
 import pedrotti.gonzalo.proyecto.Actividad.NuevaActividad;
+import pedrotti.gonzalo.proyecto.Actividad.ResultadoActividad;
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.Fertilizacion.Fertilizacion;
+import pedrotti.gonzalo.proyecto.Actividad.InicioActividad;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.ResultadoSiembra;
-import pedrotti.gonzalo.proyecto.Siembra;
+import pedrotti.gonzalo.proyecto.Siembra.ResultadoSiembra;
+import pedrotti.gonzalo.proyecto.Siembra.Siembra;
+
 
 public class DetalleProyecto extends AppCompatActivity implements  DetalleActividadAdapter.OnItemClickListener {
 
@@ -160,10 +165,6 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
         startActivity(nuevaactividad);
     }
 
-    public void eliminar(int id){
-        Toast.makeText(this, "Se Borró  con éxito el detalle: " + id , Toast.LENGTH_SHORT).show();
-        onResume();
-    }
 
     @Override
     public void OnItemClick(int position) {
@@ -175,26 +176,35 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
         }catch(Exception e){
 
         }
-
-
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Lista de Acciones");
         builder.setIcon(R.drawable.logo);
         builder.setItems(new CharSequence[]{
-                "Replanificar Actividad", "Ver Recomendación", "Finalizar Actividad", "Volver"
+                "Replanificar Actividad", "Ver Recomendación", "Iniciar Actividad","Finalizar Actividad","Eliminar Actividad","Anular Actividad", "Volver"
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 //                Toast.makeText(DetalleProyecto.this, "id actividad:" + detalleSeleccionado.getActividad_id(), Toast.LENGTH_SHORT).show();
                 switch (which) {
+
+                    //Replanificar
                     case 0:
-                        Intent replanificar = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
-                        replanificar.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
-                        replanificar.putExtra("DATOS_PROYECTO",proyecto);
-                        replanificar.putExtra("DATOS_LOTE", lote);
-                        startActivity( replanificar);
+                        //Hacer if de si está planificada se puede. sino no
+                        String estadoActividad = detalleActividad.getEstado().trim();
+
+                        if(((estadoActividad.equals("PLANIFICADA")))) {
+                            Intent replanificar = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
+                            replanificar.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                            replanificar.putExtra("DATOS_PROYECTO",proyecto);
+                            replanificar.putExtra("DATOS_LOTE", lote);
+                            startActivity( replanificar);
+                        }else{
+                            Toast.makeText(DetalleProyecto.this, "Solo se pueden replanificar actividades que no hayan iniciado aún", Toast.LENGTH_SHORT).show();
+                        }
 
                         break;
+
+                        //Ver Recomendacion
                     case 1:
                         if(detalleSeleccionado.getActividad_id()==2){
                             Intent recomendacion = new Intent(DetalleProyecto.this, Siembra.class);
@@ -203,61 +213,96 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
                             startActivity(recomendacion);
                         }
                         else{
-                            Toast.makeText(DetalleProyecto.this, "No hay Recomendaciones para esta Actividad", Toast.LENGTH_SHORT).show();
+                            if(detalleSeleccionado.getActividad_id()==4){
+                                Intent recomendacion2 = new Intent(DetalleProyecto.this, Fertilizacion.class);
+                                recomendacion2.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                                recomendacion2.putExtra("DATOS_PROYECTO",proyecto);
+                                startActivity(recomendacion2);
+                            }else{
+                                Toast.makeText(DetalleProyecto.this, "No hay Recomendaciones para esta Actividad", Toast.LENGTH_SHORT).show();
+                            }
                         }
-
                         break;
+
+                    //Iniciar Actividad
+
                     case 2:
-                        if(detalleSeleccionado.getActividad_id()==2){
-                            Intent resultado = new Intent(DetalleProyecto.this, ResultadoSiembra.class);
-                            resultado.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
-                            resultado.putExtra("DATOS_PROYECTO",proyecto);
-                            startActivity(resultado);
+                        String estado1 = detalleSeleccionado.getEstado().trim();
+
+                        if(((estado1.equals("PLANIFICADA")))) {
+//                            Toast.makeText(DetalleProyecto.this, "Iniciar Actividad", Toast.LENGTH_SHORT).show();
+                            Intent iniciarActividad = new Intent(getApplicationContext(), InicioActividad.class);
+                            iniciarActividad.putExtra("DETALLE_SELECCIONADO", detalleSeleccionado);
+                            iniciarActividad.putExtra("DATOS_PROYECTO", proyecto);
+                            startActivity(iniciarActividad);
                         }
-                        else{
-                            Toast.makeText(DetalleProyecto.this, "No Implementado para otras actividades Aún", Toast.LENGTH_SHORT).show();
+
+                        if(((estado1.equals("EN EJECUCIÓN")))){
+                            Toast.makeText(DetalleProyecto.this, "La Actividad se Encuentra Iniciada", Toast.LENGTH_SHORT).show();
+                        }
+
+                        if(((estado1.equals("FINALIZADA")))){
+                            Toast.makeText(DetalleProyecto.this, "La Actividad ya Finalizó", Toast.LENGTH_SHORT).show();
                         }
 
                         break;
-                    case 3:
-                        dialog.dismiss();
 
+                    //Finalizar Actividad
+
+                    case 3:
+                        String estado = detalleSeleccionado.getEstado().trim();
+
+                        if((estado.equals("FINALIZADA"))){
+                            Toast.makeText(DetalleProyecto.this, "La actividad ya se Finalizó", Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            if(estado.equals("EN EJECUCIÓN")){
+                                if((detalleSeleccionado.getActividad_id()==2)){
+                                    //Entonces se abre el resultado de la siembra
+                                    Intent resultado = new Intent(DetalleProyecto.this, ResultadoSiembra.class);
+                                    resultado.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                                    resultado.putExtra("DATOS_PROYECTO",proyecto);
+                                    startActivity(resultado);
+                                }else{
+                                    Intent resultadoActividad = new Intent(DetalleProyecto.this, ResultadoActividad.class);
+                                    resultadoActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                                    resultadoActividad.putExtra("DATOS_PROYECTO",proyecto);
+                                    startActivity(resultadoActividad);
+                                }
+                            }else{
+                                Toast.makeText(DetalleProyecto.this, "Primero debe Iniciar la Actividad", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        break;
+
+                        //Eliminar Actividad
+                    case 4:
+                        eliminarDetalle(detalleSeleccionado.getDetalle_actividad_id(),detalleSeleccionado.getActividad());
+//                        dialog.dismiss();
+                        break;
+
+                        //Anular Actividad
+                    case 5:
+                        if((detalleSeleccionado.getEstado())=="FINALIZADA"){
+                            Toast.makeText(DetalleProyecto.this, "No es posible anular una actividad Finalizada", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(DetalleProyecto.this, "Actividad Anulada con éxito", Toast.LENGTH_SHORT).show();
+                        }
+//                        dialog.dismiss();
+                        break;
+
+                        //Volver
+                    case 6:
+                        dialog.dismiss();
                         break;
                 }
             }
         });
         builder.create().show();
+    }
 
-
-
-
-
-
-//        Intent menuActividad = new Intent(getApplicationContext(), MenuActividad.class);
-//        menuActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
-//        menuActividad.putExtra("DATOS_PROYECTO",proyecto);
-//        startActivity(menuActividad);
-//        Toast.makeText(this, "Actividad: " + detalleSeleccionado.getActividad(), Toast.LENGTH_SHORT).show();
-
-//        AlertDialog.Builder alerta = new AlertDialog.Builder(DetalleProyecto.this);
-//        alerta.setMessage("Actividad " + detalleSeleccionado.getActividad())
-//                .setNegativeButton("Otras Acciones", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Intent detalleActividad = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
-//                        detalleActividad.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
-//                        detalleActividad.putExtra("DATOS_PROYECTO",proyecto);
-//                        startActivity(detalleActividad);
-//                    }
-//                })
-//                .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        eliminar(detalleSeleccionado.getDetalle_actividad_id());
-//                    }
-//                })
-//                .setTitle("Detalle de Actividad")
-//                .setIcon(R.drawable.logo).create().show();
+    void eliminarDetalle(int detalle_actividad,String actividad){
+        Toast.makeText(this, "Se Eliminó con éxito la actividad:" + actividad, Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto;
+package pedrotti.gonzalo.proyecto.Reportes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +25,8 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
+
+import pedrotti.gonzalo.proyecto.R;
 
 public class Reporte extends AppCompatActivity {
 

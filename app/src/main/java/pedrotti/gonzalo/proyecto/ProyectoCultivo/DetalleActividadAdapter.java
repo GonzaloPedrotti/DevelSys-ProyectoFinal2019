@@ -1,7 +1,6 @@
 package pedrotti.gonzalo.proyecto.ProyectoCultivo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import pedrotti.gonzalo.proyecto.MenuActividad;
 import pedrotti.gonzalo.proyecto.R;
 
 
@@ -136,7 +134,7 @@ public class DetalleActividadAdapter extends RecyclerView.Adapter<DetalleActivid
 //        public void onClick(View v) {
 //            switch (v.getId()){
 ////                case R.id.tvAccion:
-////                    Intent intent = new Intent(context, MenuActividad.class);
+////                    Intent intent = new Intent(context, InicioActividad.class);
 ////                    intent.putExtra("headerCode",tvActividad.getText());
 ////                    context.startActivity(intent);
 ////                break;

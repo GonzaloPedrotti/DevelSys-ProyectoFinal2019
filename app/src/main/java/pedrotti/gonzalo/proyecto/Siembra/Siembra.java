@@ -1,9 +1,8 @@
-package pedrotti.gonzalo.proyecto;
+package pedrotti.gonzalo.proyecto.Siembra;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,8 +16,11 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.json.JSONArray;
 import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
+import pedrotti.gonzalo.proyecto.Catalogo.Catalogo;
+import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleActividad;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
+import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Variedad.Variedad;
 
 public class Siembra extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
@@ -61,7 +63,7 @@ public class Siembra extends AppCompatActivity  implements AdapterView.OnItemSel
         etCicloDias = (EditText)findViewById(R.id.etCicloDias);
         etProfundidad = (EditText)findViewById(R.id.etProfundidadSiembra);
         etDensidad = (EditText)findViewById(R.id.etDensidadSiembra);
-        etKgHa =(EditText)findViewById(R.id.etKgHa);
+        etKgHa =(EditText)findViewById(R.id.etDosisUtilizada);
 
         btnLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +126,7 @@ public class Siembra extends AppCompatActivity  implements AdapterView.OnItemSel
 //        startActivity(intent);
 
         //Creamos un intent para ir al Catalogo
-        Intent catalogo = new Intent(getApplicationContext(),Catalogo.class);
+        Intent catalogo = new Intent(getApplicationContext(), Catalogo.class);
         startActivity(catalogo);
     }
 

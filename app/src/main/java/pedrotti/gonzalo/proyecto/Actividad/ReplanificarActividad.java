@@ -34,9 +34,8 @@ import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleActividad;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Siembra;
 
-public class ReplanificarActividad extends AppCompatActivity implements View.OnClickListener {
+public class ReplanificarActividad extends  AppCompatActivity implements View.OnClickListener {
 
     private DetalleActividad detalleActividad;
     private ProyectoCultivo proyecto;
@@ -135,7 +134,7 @@ public class ReplanificarActividad extends AppCompatActivity implements View.OnC
 
         etf1 = (EditText)findViewById(R.id.etf1);
         etf2 = (EditText)findViewById(R.id.etf2);
-        eth1 = (EditText)findViewById(R.id.eth1);
+        eth1 = (EditText)findViewById(R.id.eth1a);
         eth2 = (EditText)findViewById(R.id.eth2);
 
         btnRecomendacionMomento = (Button)findViewById(R.id.btnRecomendacionMomento);
@@ -206,7 +205,6 @@ public class ReplanificarActividad extends AppCompatActivity implements View.OnC
 
         fecha_hora_inicial=null;
         fecha_hora_final=null;
-
 
         try {
             fecha_hora_inicial = sdf.parse(fecha_hora_inicio);

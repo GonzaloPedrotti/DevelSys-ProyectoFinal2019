@@ -1,5 +1,6 @@
 package pedrotti.gonzalo.proyecto.Sesion;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 
 import androidx.appcompat.app.AlertDialog;
@@ -35,7 +36,6 @@ import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 public class Sesion extends AppCompatActivity {
 
     private EditText etCorreo, etcontrasena;
-    private Usuario usuarioRegistrado;
     private TextView registro;
     private Button btnlogin;
     private String correo, contrasena;
@@ -52,10 +52,14 @@ public class Sesion extends AppCompatActivity {
         etCorreo = (EditText)findViewById(R.id.usuarioLogin);
         etcontrasena= (EditText)findViewById(R.id.claveLogin);
 
+
+
         //Codigo del evento click del boton registrar
         registro.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
+
                 Intent nuevousuario = new Intent(Sesion.this, Registro.class);
                 Sesion.this.startActivity(nuevousuario);
             }
@@ -77,6 +81,11 @@ public class Sesion extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Hay Conexión (Conecte Su dispositivo al  Wifi si está depurando)", Toast.LENGTH_SHORT).show();
                         btnlogin.setEnabled(false);
                         btnlogin.setText("INICIANDO");
+
+                        final ProgressDialog progressDialog = new ProgressDialog(Sesion.this);
+                        progressDialog.setIcon(R.mipmap.ic_launcher);
+                        progressDialog.setMessage("Cargando...");
+                        progressDialog.show();
 
                         Response.Listener<String> respuesta = new Response.Listener<String>() {
                             @Override
@@ -107,6 +116,8 @@ public class Sesion extends AppCompatActivity {
                                         int telefono = Integer.parseInt(telefonoString);
                                         user.setTelefono(telefono);
 
+                                        progressDialog.dismiss();
+
                                         Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
                                         irABienvenido.putExtra("DATOS_USER",user);
                                         startActivity(irABienvenido);
@@ -119,6 +130,8 @@ public class Sesion extends AppCompatActivity {
                                         etcontrasena.setText("");
                                         btnlogin.setEnabled(true);
                                         btnlogin.setText("INGRESAR");
+                                        progressDialog.dismiss();
+
                                     }
                                 } catch (JSONException e) {
                                     e.getMessage();

@@ -30,7 +30,7 @@
         android:backgroundTint="#25B459"
         android:text=" Actualizar Fechas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eth1" />
+        app:layout_constraintTop_toBottomOf="@+id/eth1a" />
 
     <ImageButton
         android:id="@+id/btnFechaInicioNueva"
@@ -89,7 +89,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="#303F9F"
-        app:layout_constraintStart_toEndOf="@+id/eth1"
+        app:layout_constraintStart_toEndOf="@+id/eth1a"
         app:layout_constraintTop_toBottomOf="@+id/btnFechaFinNueva"
         app:srcCompat="@drawable/ic_access_time_white_24dp" />
 
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvActividadResultado" />
 
     <EditText
-        android:id="@+id/eth1"
+        android:id="@+id/eth1a"
         android:layout_width="90dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"

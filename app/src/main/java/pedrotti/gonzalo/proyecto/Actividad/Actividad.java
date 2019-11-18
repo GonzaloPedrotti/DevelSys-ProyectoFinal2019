@@ -43,4 +43,5 @@ public class Actividad {
     public String toString() {
         return nombre;
     }
+
 }

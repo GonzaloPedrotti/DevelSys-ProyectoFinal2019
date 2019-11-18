@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pedrotti.gonzalo.proyecto.Actividad.Actividad;
+import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 
@@ -47,7 +49,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
         Bundle bundle = getIntent().getExtras();
         lote = bundle.getParcelable("DATOS_LOTE");
 
-
         setTitle("Datos del lote: " + lote.getNombre());
 
         tvRecomendacion=(TextView)findViewById(R.id.tvRecomendacion);
@@ -65,6 +66,11 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     public void findweather(){
 
         String url="https://api.openweathermap.org/data/2.5/forecast?lat="+lote.getLatitud()+"&lon="+lote.getLongitud()+"&appid=6ce6f121d256afb888c209ead96b5b18&units=metric&lang=es";
+
+        final ProgressDialog progressDialog = new ProgressDialog(InformacionClimatica.this);
+        progressDialog.setIcon(R.mipmap.ic_launcher);
+        progressDialog.setMessage("Cargando Recomendaciones...");
+        progressDialog.show();
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -114,9 +120,12 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
                  adapter = new ClimaActualAdapter(InformacionClimatica.this,climaActualList,2);
                  recyclerView.setAdapter(adapter);
+
+                 progressDialog.dismiss();
                  adapter.setOnItemClickListener(InformacionClimatica.this);
 
                 } catch (JSONException e) {
+                    progressDialog.dismiss();
                     e.printStackTrace();
                 }
             }
@@ -142,7 +151,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
             }
         }).setIcon(R.drawable.logo).create().show();
     }
-
 
 }
 

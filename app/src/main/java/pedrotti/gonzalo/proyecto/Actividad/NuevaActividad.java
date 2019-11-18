@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,6 +38,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
+import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Clima.InformacionClimatica;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
@@ -123,16 +125,12 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
         //Para el Inicio
         btnFecha = (ImageButton) findViewById(R.id.btnFecha);
         btnHora = (ImageButton) findViewById(R.id.btnHora);
+        etFecha = (EditText) findViewById(R.id.etFecha);
+        etHora = (EditText) findViewById(R.id.etHora);
 
         //Para el Fin
         btnFecha2=(ImageButton)findViewById(R.id.btnFecha2);
         btnHora2=(ImageButton)findViewById(R.id.btnHora2);
-
-
-        etFecha = (EditText) findViewById(R.id.etFecha);
-        etHora = (EditText) findViewById(R.id.etHora);
-
-
         etFecha2 = (EditText) findViewById(R.id.etFecha2);
         etHora2 = (EditText) findViewById(R.id.etHora2);
 
@@ -186,6 +184,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
                 alertaReg.setTitle("Registro")
                         .setMessage("¿Desea Registrar esta Actividad?")
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if(f1.isEmpty() || f2.isEmpty() || h1.isEmpty() || h2.isEmpty()){
@@ -195,7 +194,10 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
                                         Toast.makeText(NuevaActividad.this, "Controle las Fechas de Inicio y Fin", Toast.LENGTH_SHORT).show();
                                     }
                                     else{
+
+
                                         Response.Listener<String> respuesta = new Response.Listener<String>() {
+
                                             @Override
                                             public void onResponse(String response) {
                                                 try {
@@ -203,6 +205,13 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
                                                     boolean ok = jsonRespuesta.getBoolean("success");
 //
                                                     if (ok == true) {
+
+                                                        final ProgressDialog progressDialog = new ProgressDialog(NuevaActividad.this);
+                                                        progressDialog.setIcon(R.mipmap.ic_launcher);
+
+                                                        progressDialog.setMessage("Registrando Actividad...");
+                                                        progressDialog.show();
+                                                        progressDialog.dismiss();
                                                         Toast.makeText(getApplicationContext(), "Actividad Registrada con éxito", Toast.LENGTH_LONG).show();
                                                         NuevaActividad.this.finish();
                                                     } else {
@@ -308,43 +317,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
             e.printStackTrace();
         }
     }
-//
-//    private void llenarSpinnerVariedades(){
-//        String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getVariedades.php?cultivo_id="+proyecto.getCultivo_id();
-//
-//        cliente.get(url, new AsyncHttpResponseHandler() {
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-//                if(statusCode==200){
-//                    cargarSpinnerVariedades(new String(responseBody));
-//                }
-//            }
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-//
-//            }
-//        });
-//    }
 
-//    private void cargarSpinnerVariedades(String respuesta){
-//        try{
-//            JSONArray variedades = new JSONArray(respuesta);
-//            for (int i=0;i < variedades.length();i++){
-//                Variedad v = new Variedad();
-//                v.setCultivo(variedades.getJSONObject(i).getString("Cultivo"));
-//                v.setVariedad_id(variedades.getJSONObject(i).getInt("idvariedad"));
-//                v.setVariedad(variedades.getJSONObject(i).getString("variedad"));
-//                v.setNiveldezona(variedades.getJSONObject(i).getString("niveldezona"));
-//                v.setZona(variedades.getJSONObject(i).getString("zona"));
-//                v.setDescripcion(variedades.getJSONObject(i).getString("descripcion"));
-//                variedadesList.add(v);
-//            }
-//            ArrayAdapter<Variedad> adapter = new ArrayAdapter<Variedad>(this,android.R.layout.simple_dropdown_item_1line,variedadesList);
-//            spVariedad.setAdapter(adapter);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
 
     public void setActividadId(int id){
         this.actividad_seleccionada_id = id;

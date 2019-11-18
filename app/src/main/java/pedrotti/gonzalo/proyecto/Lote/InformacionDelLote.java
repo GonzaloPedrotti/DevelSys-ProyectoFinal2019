@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -147,19 +148,24 @@ public class InformacionDelLote extends AppCompatActivity {
 
 //                    tvCiudad.setText(ciudad);
                     tvDescripcion.setText(descripcion);
+                    tvTemp.setText(temperatura+"");
+                    tvViento.setText(viento+"");
+                    tvHumedad.setText(humedad+"");
 
-                    double temp_int = Double.parseDouble(temperatura);
-                    String temprString = String.valueOf(temp_int);
-                    tvTemp.setText(temprString);
-
-                    double viento_int = Double.parseDouble(viento);
-                    double velViento = (viento_int*3.6);
-                    String vientoString = String.valueOf(velViento);
-                    tvViento.setText(vientoString);
-
-                    double humedad_int = Double.parseDouble(humedad);
-                    String humedadString = String.valueOf(humedad_int);
-                    tvHumedad.setText(humedadString);
+//                    double temp_int = Double.parseDouble(temperatura);
+//                    String temprString = String.valueOf(temp_int);
+////                    tvTemp.setText(temprString);
+//                    tvTemp.setText(temperatura+"");
+//
+//                    double viento_int = Double.parseDouble(viento);
+//                    double velViento = (viento_int*3.6);
+//
+//                    String vientoString = String.valueOf(velViento);
+//                    tvViento.setText(vientoString);
+//
+//                    double humedad_int = Double.parseDouble(humedad);
+//                    String humedadString = String.valueOf(humedad_int);
+//                    tvHumedad.setText(humedadString);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

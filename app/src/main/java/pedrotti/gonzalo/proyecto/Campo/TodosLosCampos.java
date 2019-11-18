@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,9 @@ import java.util.List;
 
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
+import pedrotti.gonzalo.proyecto.ProyectoCultivo.TodosLosProyectos;
 import pedrotti.gonzalo.proyecto.R;
+import pedrotti.gonzalo.proyecto.Sesion.Sesion;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.OnItemClickListener {
@@ -74,6 +77,10 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
     }
 
     private void loadCampos() {
+        final ProgressDialog progressDialog = new ProgressDialog(TodosLosCampos.this);
+        progressDialog.setIcon(R.mipmap.ic_launcher);
+        progressDialog.setMessage("Cargando Campos...");
+        progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url+user.getUsuario_id(),
                 new Response.Listener<String>() {
@@ -112,16 +119,19 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
 
                             adapter = new CamposAdapter(TodosLosCampos.this, campoList);
                             recyclerView.setAdapter(adapter);
+                            progressDialog.dismiss();
                             adapter.setOnItemClickListener(TodosLosCampos.this);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            progressDialog.dismiss();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         Toast.makeText(TodosLosCampos.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

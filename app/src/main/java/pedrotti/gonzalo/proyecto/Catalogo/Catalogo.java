@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto;
+package pedrotti.gonzalo.proyecto.Catalogo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import pedrotti.gonzalo.proyecto.R;
 
 public class Catalogo extends AppCompatActivity {
 

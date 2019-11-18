@@ -24,7 +24,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Reporte;
+import pedrotti.gonzalo.proyecto.Reportes.Reporte;
 import pedrotti.gonzalo.proyecto.TiposMapas;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
