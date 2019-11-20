@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Fertilizacion.Fertilizacion"></activity>
+        <activity android:name=".Reportes.ReporteDuraciones"></activity>
+        <activity android:name=".Reportes.ReporteActividad" />
+        <activity android:name=".Fertilizacion.Fertilizacion" />
         <activity android:name=".Actividad.ResultadoActividad" />
         <activity
             android:name=".Bienvenido.Cuenta"

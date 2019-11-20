@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -41,6 +44,8 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
     RecyclerView recyclerView;
     List<Campo> campoList;
     CamposAdapter adapter;
+    private EditText etBuscar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         campoList = new ArrayList<>();
+        etBuscar = (EditText)findViewById(R.id.etBuscar);
 
 
         //Se recibe desde el Bienvenido
@@ -72,6 +78,23 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
                 nuevoCampoMapa.putExtra("campo_id",user.getUsuario_id());
                 startActivity(nuevoCampoMapa);
                 finish();
+            }
+        });
+
+        etBuscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filtrar(etBuscar.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }

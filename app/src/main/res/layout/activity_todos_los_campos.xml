@@ -12,6 +12,17 @@
         android:orientation="vertical">
 
 
+        <EditText
+            android:id="@+id/etBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:backgroundTint="#08E976"
+            android:ems="10"
+            android:hint="Busque el campo por su nombre"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="#151516" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView2"
             android:layout_width="match_parent"

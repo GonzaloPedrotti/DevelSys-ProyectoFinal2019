@@ -3,10 +3,7 @@ package pedrotti.gonzalo.proyecto.Reportes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
-import android.graphics.Xfermode;
 import android.os.Bundle;
-import android.service.autofill.Dataset;
-
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -152,6 +149,8 @@ public class Reporte extends AppCompatActivity {
 
         barDataSet.setBarShadowColor(Color.GRAY);
         BarData barData = new BarData(barDataSet);
+
+        //Ancho de cada barrita: original 0.45f
         barData.setBarWidth(0.45f);
         return barData;
     }
@@ -163,7 +162,6 @@ public class Reporte extends AppCompatActivity {
 
         pieDataSet.setValueFormatter(new PercentFormatter());
         return new PieData(pieDataSet);
-
 
     }
 

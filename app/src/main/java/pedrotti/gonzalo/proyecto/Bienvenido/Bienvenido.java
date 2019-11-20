@@ -25,6 +25,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Reportes.Reporte;
+import pedrotti.gonzalo.proyecto.Reportes.ReporteActividad;
 import pedrotti.gonzalo.proyecto.TiposMapas;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
@@ -95,7 +96,8 @@ private Button btnEstadísticas;
             public void onClick(View v) {
 
 //                Intent cuenta = new Intent(getApplicationContext(), Cuenta.class);
-                Intent cuenta = new Intent(getApplicationContext(), Reporte.class);
+//                Intent cuenta = new Intent(getApplicationContext(), Reporte.class);
+                Intent cuenta = new Intent(getApplicationContext(), ReporteActividad.class);
 //                cuenta.putExtra("DATOS_USER",user);
                 startActivity(cuenta);
             }

@@ -75,8 +75,6 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
 
     private Spinner  spActividad, spVariedad;
 
-
-
     ArrayList<Actividad> actividadesList;
     ArrayList<Variedad> variedadesList;
 

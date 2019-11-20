@@ -190,7 +190,7 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
                     //Replanificar
                     case 0:
                         //Hacer if de si está planificada se puede. sino no
-                        String estadoActividad = detalleActividad.getEstado().trim();
+                        String estadoActividad = detalleSeleccionado.getEstado().trim();
 
                         if(((estadoActividad.equals("PLANIFICADA")))) {
                             Intent replanificar = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
@@ -198,7 +198,7 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
                             replanificar.putExtra("DATOS_PROYECTO",proyecto);
                             replanificar.putExtra("DATOS_LOTE", lote);
                             startActivity( replanificar);
-                            
+
                         }else{
                             Toast.makeText(DetalleProyecto.this, "Solo se pueden replanificar actividades que no hayan iniciado aún", Toast.LENGTH_SHORT).show();
                         }

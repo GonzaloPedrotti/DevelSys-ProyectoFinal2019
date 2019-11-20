@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import pedrotti.gonzalo.proyecto.R;
 
@@ -20,14 +22,37 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
     private View.OnClickListener listener;
     private OnItemClickListener mlistener;
 
+    //Esta se agrega
+    List<Campo> copycampos = new ArrayList<>();
+
+
     public interface OnItemClickListener{
         void OnItemClick(int position);
+    }
+
+
+    //Se crea metodo filtrar
+    public void filtrar(String texto){
+        campoList.clear();
+
+        if(texto.length()==0){
+            campoList.addAll(copycampos);
+        }else{
+            for(Campo campo : copycampos){
+                if(((campo.getNombre().toLowerCase()).trim()).contains((texto.toLowerCase()).trim())){
+                    campoList.add(campo);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 
     public CamposAdapter(Context mCtx, List<Campo> campoList) {
         this.mCtx = mCtx;
         this.campoList = campoList;
+        //esta se agrega
+        this.copycampos.addAll(campoList);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
