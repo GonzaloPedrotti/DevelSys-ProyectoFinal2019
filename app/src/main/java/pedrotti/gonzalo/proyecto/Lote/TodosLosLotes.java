@@ -107,10 +107,11 @@ public class TodosLosLotes extends AppCompatActivity implements LoteAdapter.OnIt
                                double tamano = lotes.getDouble("tamano");
                                double latitud = lotes.getDouble("lat1");
                                double longitud = lotes.getDouble("long1");
+                               String estado = lotes.getString("estado");
 
                                 paramtrosCampo.setCampo_id(campo_id);
 
-                                Lote lote = new Lote(campo_id,lote_id,nombre,tamano,latitud,longitud);
+                                Lote lote = new Lote(campo_id,lote_id,nombre,tamano,latitud,longitud,estado);
 
                                 //adding the product to product list
                                 loteList.add(lote);

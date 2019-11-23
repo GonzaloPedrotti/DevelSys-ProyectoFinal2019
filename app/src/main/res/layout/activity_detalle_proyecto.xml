@@ -11,9 +11,8 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:background="#25B459"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#25B459"
         android:text="Añadir Actividad"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +58,7 @@
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         android:text="Registro"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -71,7 +70,7 @@
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         android:text="Cultivo:"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -83,7 +82,7 @@
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         android:text="Periodo:"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -104,7 +103,7 @@
         android:layout_width="140dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/tvEstadoActual" />
 
@@ -113,7 +112,7 @@
         android:layout_width="140dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/tvFechaRegistroDet" />
 
@@ -122,16 +121,16 @@
         android:layout_width="140dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintStart_toEndOf="@+id/tvTituloPeriodo"
         app:layout_constraintTop_toBottomOf="@+id/tvCultivoDet" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="350dp"
-        android:layout_height="220dp"
+        android:layout_width="349dp"
+        android:layout_height="253dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
 
         app:layout_constraintStart_toEndOf="@+id/tvTituloPeriodo"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,5 +147,16 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnMasAcciones"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#25B459"
+        android:text="Más Acciones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRealizarActividad" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

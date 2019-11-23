@@ -85,6 +85,8 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
 
     private int mes, dia , anio, hora , minutos;
 
+    private int actividad_id;
+
 
 
     @Override
@@ -101,6 +103,9 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
         //Se recibe desde DetalleProyecto
         Bundle bundle2 = getIntent().getExtras();
         lote = bundle2.getParcelable("DATOS_LOTE");
+
+//        //se recibe desde DetalleProyecto. no se necesita
+//        actividad_id = getIntent().getIntExtra("actividad_id",0);
         
         cliente = new AsyncHttpClient();
         cliente2 = new AsyncHttpClient();
@@ -147,7 +152,10 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
                Intent verClima = new Intent(getApplicationContext(), InformacionClimatica.class);
+              getActividad_seleccionada_id();
+               verClima.putExtra("actividad_id",actividad_seleccionada_id);
                verClima.putExtra("DATOS_LOTE",lote);
+               verClima.putExtra("DATOS_PROYECTO",proyecto);
                startActivity(verClima);
             }
         });
@@ -324,6 +332,7 @@ public class NuevaActividad extends AppCompatActivity implements AdapterView.OnI
     public int getActividad_seleccionada_id(){
         return actividad_seleccionada_id;
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

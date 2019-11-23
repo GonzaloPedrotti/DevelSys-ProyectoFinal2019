@@ -66,7 +66,6 @@ private Button btnEstadísticas;
         btnEstadísticas = (Button)findViewById(R.id.btnEstadisticas);
 
 
-//        Se recibe en el Bienvenido lo enviado desde el Sesion se comenta para probar el registro de un campo
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
 
@@ -83,6 +82,16 @@ private Button btnEstadísticas;
             }
         });
 
+        btnProyectosActuales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(Bienvenido.this, "Se muestran Proyectos Actuales del Usuario", Toast.LENGTH_SHORT).show();
+                Intent proyectos = new Intent(getApplicationContext(), ProyectosUsuario.class);
+                proyectos.putExtra("DATOS_USER",user);
+                startActivity(proyectos);
+            }
+        });
+
         btnVerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,23 +104,14 @@ private Button btnEstadísticas;
             @Override
             public void onClick(View v) {
 
-//                Intent cuenta = new Intent(getApplicationContext(), Cuenta.class);
+                Intent cuenta = new Intent(getApplicationContext(), Cuenta.class);
 //                Intent cuenta = new Intent(getApplicationContext(), Reporte.class);
-                Intent cuenta = new Intent(getApplicationContext(), ReporteActividad.class);
-//                cuenta.putExtra("DATOS_USER",user);
+//                Intent cuenta = new Intent(getApplicationContext(), ReporteActividad.class);
+                cuenta.putExtra("DATOS_USER",user);
                 startActivity(cuenta);
             }
         });
 
-        btnProyectosActuales.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(Bienvenido.this, "Se muestran Proyectos Actuales del Usuario", Toast.LENGTH_SHORT).show();
-                Intent proyectos = new Intent(getApplicationContext(), ProyectosUsuario.class);
-                proyectos.putExtra("DATOS_USER",user);
-                startActivity(proyectos);
-            }
-        });
 
         btnServicios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,12 +124,16 @@ private Button btnEstadísticas;
         btnEstadísticas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder estadisticas = new AlertDialog.Builder(Bienvenido.this);
-                estadisticas.setMessage("Proximamente Podrá: \n " + " \n" + "-Ver y Comparar Actividades Realizadas "+"\n" + "-Comparar Dosis Recomendadas Vs Utilizadas" + "\n" + "-Generar Estadísticas e Informes" ).setNegativeButton("Aceptar", null).setTitle("MiCampo Estadísticas").setIcon(R.drawable.logo).create().show();
+//                AlertDialog.Builder estadisticas = new AlertDialog.Builder(Bienvenido.this);
+//                estadisticas.setMessage("Proximamente Podrá: \n " + " \n" + "-Ver y Comparar Actividades Realizadas "+"\n" + "-Comparar Dosis Recomendadas Vs Utilizadas" + "\n" + "-Generar Estadísticas e Informes" ).setNegativeButton("Aceptar", null).setTitle("MiCampo Estadísticas").setIcon(R.drawable.logo).create().show();
+                Intent estadisticas = new Intent(Bienvenido.this,ReporteActividad.class);
+                startActivity(estadisticas);
             }
         });
         checkMapServices();
     }
+
+
 
     //Solicitud de Permisos
 

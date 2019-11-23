@@ -54,11 +54,12 @@ public class LoteAdapter extends RecyclerView.Adapter<LoteAdapter.LoteViewHolder
 //        holder.tvLoteId.setText(String.valueOf(lote.getLote_id()));
         holder.tvlatitud.setText("Latitud: " + (lote.getLatitud()));
         holder.tvlongitud.setText("Longitud: " + (lote.getLongitud()));
+        holder.tvestadoLote.setText("Estado: " + lote.getEstado());
     }
 
 
     class LoteViewHolder extends RecyclerView.ViewHolder{
-        TextView tvid, tvLoteId,tvnombre, tvtamano, tvlatitud , tvlongitud;
+        TextView tvid, tvLoteId,tvnombre, tvtamano, tvlatitud , tvlongitud, tvestadoLote;
         public LoteViewHolder(View itemView){
             super(itemView);
 
@@ -68,6 +69,7 @@ public class LoteAdapter extends RecyclerView.Adapter<LoteAdapter.LoteViewHolder
 //            tvid = itemView.findViewById(R.id.tvCampoId);
             tvlatitud = itemView.findViewById(R.id.tvLatitudLote);
             tvlongitud = itemView.findViewById(R.id.tvLongitudLote);
+            tvestadoLote = itemView.findViewById(R.id.tvEstadoLote);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

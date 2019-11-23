@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleProyecto;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivoAdapter;
 import pedrotti.gonzalo.proyecto.R;
@@ -126,12 +128,11 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
     //Este metodo muestra en una nueva actividad el campo seleccionado
     @Override
     public void OnItemClick(int position) {
-//        Intent detalleProyecto = new Intent(this, DetalleProyecto.class);
-//        ProyectoCultivo itemSeleccionado = proyectoCultivoList.get(position);
-//
-//        detalleProyecto.putExtra("DATOS_PROYECTO", itemSeleccionado);
-//        detalleProyecto.putExtra("DATOS_LOTE",lote);
-//        startActivity(detalleProyecto);
+        Intent detalleProyecto = new Intent(this, DetalleProyecto.class);
+        ProyectoCultivo itemSeleccionado = proyectoCultivoList.get(position);
+
+        detalleProyecto.putExtra("DATOS_PROYECTO", itemSeleccionado);
+        startActivity(detalleProyecto);
     }
 
 

@@ -31,19 +31,16 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
     private List<ClimaActual> climaActualList;
     private View.OnClickListener listener;
     private ClimaActualAdapter.OnItemClickListener mlistener;
-    private int actividad_id;
-
 
 
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
 
-
-    public ClimaActualAdapter(Context mCtx, List<ClimaActual> climaActualList, int actividad_id) {
+    public ClimaActualAdapter(Context mCtx, List<ClimaActual> climaActualList) {
         this.mCtx = mCtx;
         this.climaActualList =climaActualList;
-        this.actividad_id=actividad_id;
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -66,6 +63,7 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
     public void onBindViewHolder(InformacionClimaticaViewHolder holder, int position) {
 
         ClimaActual climaActual = climaActualList.get(position);
+        int recomendacion = climaActual.getRecomendacion();
 
         holder.tvTemperatura.setText(""+climaActual.getTemperatura() + " C°");
 
@@ -101,33 +99,48 @@ public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.
         holder.tvVelocidadViento.setText(""+climaActual.getViento());
         holder.tvLluvia.setText(""+climaActual.getLluvia());
 
-        switch (actividad_id){
+        switch (climaActual.getRecomendacion()){
             case 1:
-                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
-
+                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
                 break;
-            case 2 :
-                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==0){
-                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
-                }
 
-                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==1){
-                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
-                }
-
-                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==2){
-                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
-                }
-            break;
+            case 2:
+                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
+                break;
 
             case 3:
-                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
+                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
                  break;
 
-            case 4:
-                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
-                break;
         }
+
+//        switch (actividad_id){
+//            case 1:
+//                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
+//
+//                break;
+//            case 2 :
+//                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==0){
+//                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#09EB15"));//verde
+//                }
+//
+//                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==1){
+//                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E6F00A"));//amarillo
+//                }
+//
+//                if(climaActual.estaPermitidaFumigacion(climaActual.getTemperatura(),climaActual.getViento())==2){
+//                    holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#E71313"));//rojo
+//                }
+//            break;
+//
+//            case 3:
+//                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
+//                 break;
+//
+//            case 4:
+//                holder.tvRecomendacion.setBackgroundColor(Color.parseColor("#AAAAAA"));//pintado gris
+//                break;
+//        }
 
         Picasso.with(mCtx).load( "https://openweathermap.org/img/wn/"+climaActual.getImagen()+".png").into(holder.ivIcono);
 

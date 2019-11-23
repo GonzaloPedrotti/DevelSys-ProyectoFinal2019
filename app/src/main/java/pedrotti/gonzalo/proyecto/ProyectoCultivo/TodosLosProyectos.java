@@ -87,8 +87,6 @@ public class TodosLosProyectos extends AppCompatActivity implements  ProyectoCul
                                 String periodo = campos.getString("periodo");
                                 String estadoproyecto = campos.getString("estadoproyecto");
 
-
-
                                 proyectonuevo.setId(proyecto_id);
 
                                 //Se crea el constructor para crear el objeto Campo

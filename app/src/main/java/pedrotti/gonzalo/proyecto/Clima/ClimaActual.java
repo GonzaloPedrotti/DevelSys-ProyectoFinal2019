@@ -14,8 +14,9 @@ public class ClimaActual {
     private double humedad;
     private double viento;
     private double lluvia;
+    private int recomendacion;
 
-    public ClimaActual (double temperatura,String imagen, String fecha, String descripcion, double humedad, double viento,double lluvia) {
+    public ClimaActual (double temperatura,String imagen, String fecha, String descripcion, double humedad, double viento,double lluvia,int recomendacion) {
         this.temperatura = temperatura;
         this.imagen = imagen;
         this.fecha = fecha;
@@ -23,6 +24,7 @@ public class ClimaActual {
         this.humedad = humedad;
         this.viento = viento;
         this.lluvia = lluvia;
+        this.recomendacion = recomendacion;
     }
 
     public String getFecha() {
@@ -86,7 +88,15 @@ public class ClimaActual {
         this.lluvia = lluvia;
     }
 
-    public int estaPermitidaFumigacion(double temperatura,double viento){
+    public int getRecomendacion() {
+        return recomendacion;
+    }
+
+    public void setRecomendacion(int recomendacion) {
+        this.recomendacion = recomendacion;
+    }
+
+    public int estaPermitidaFumigacion(double temperatura, double viento){
 
         int valor = 2;
 
@@ -122,9 +132,9 @@ public class ClimaActual {
         return valor;
     }
 
-
-
-
+    public int estaPermitidoSembrar(){
+        return 1;
+    }
 
 
 }

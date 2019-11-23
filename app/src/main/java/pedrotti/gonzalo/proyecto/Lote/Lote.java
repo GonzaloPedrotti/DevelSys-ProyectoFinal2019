@@ -11,18 +11,20 @@ public class Lote implements Parcelable {
     private double tamano;
     private double latitud;
     private double longitud;
+    private String estado;
 
 
     public Lote() {
     }
 
-    public Lote(int campo_id, int lote_id, String nombre, double tamano, double latitud, double longitud) {
+    public Lote(int campo_id, int lote_id, String nombre, double tamano, double latitud, double longitud,String estado) {
         this.campo_id = campo_id;
         this.lote_id = lote_id;
         this.nombre = nombre;
         this.tamano = tamano;
         this.latitud = latitud;
         this.longitud=  longitud;
+        this.estado = estado;
     }
 
     protected Lote(Parcel in) {
@@ -32,6 +34,7 @@ public class Lote implements Parcelable {
         tamano = in.readDouble();
         latitud = in.readDouble();
         longitud = in.readDouble();
+        estado = in.readString();
     }
 
     @Override
@@ -42,6 +45,7 @@ public class Lote implements Parcelable {
         dest.writeDouble(tamano);
         dest.writeDouble(latitud);
         dest.writeDouble(longitud);
+        dest.writeString(estado);
     }
 
     @Override
@@ -109,5 +113,11 @@ public class Lote implements Parcelable {
         this.tamano = tamano;
     }
 
+    public String getEstado() {
+        return estado;
+    }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

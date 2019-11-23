@@ -44,7 +44,7 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
 
     private ProyectoCultivo proyecto;
     private TextView tvEstado, tvNombreProyecto, tvFechaRegistro, tvCultivo, tvPeriodo;
-    private Button btnNuevaActividad;
+    private Button btnNuevaActividad, btnMasAcciones;
     private DetalleActividad detalleActividad;
     private DetalleActividad detalleSeleccionado;
 
@@ -89,7 +89,9 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
         tvFechaRegistro = (TextView)findViewById(R.id.tvFechaRegistroDet);
         tvCultivo = (TextView)findViewById(R.id.tvCultivoDet);
         tvPeriodo = (TextView)findViewById(R.id.tvPeriodoDet);
+
         btnNuevaActividad = (Button)findViewById(R.id.btnRealizarActividad);
+        btnMasAcciones = (Button)findViewById(R.id.btnMasAcciones);
 
         tvEstado.setText(proyecto.getEstado());
         tvNombreProyecto.setText(proyecto.getNombre());
@@ -105,6 +107,17 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
                 abrirNuevaActividad();
             }
         });
+
+        btnMasAcciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                masAcciones();
+            }
+        });
+    }
+
+    public void masAcciones(){
+        Toast.makeText(this, "Botón más Acciones", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -195,6 +208,10 @@ public class DetalleProyecto extends AppCompatActivity implements  DetalleActivi
                         if(((estadoActividad.equals("PLANIFICADA")))) {
                             Intent replanificar = new Intent(DetalleProyecto.this, ReplanificarActividad.class);
                             replanificar.putExtra("DETALLE_SELECCIONADO",detalleSeleccionado);
+                            int actividad_id  = detalleSeleccionado.getActividad_id();
+
+                            //pasamos el id de la actividad a Replanificar Actividad
+                            replanificar.putExtra("actividad_id",actividad_id);
                             replanificar.putExtra("DATOS_PROYECTO",proyecto);
                             replanificar.putExtra("DATOS_LOTE", lote);
                             startActivity( replanificar);

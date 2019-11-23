@@ -99,6 +99,8 @@ public class ReplanificarActividad extends  AppCompatActivity implements View.On
 
     private int dia,mes,anio, hora, minutos;
 
+    private int actividad_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +117,9 @@ public class ReplanificarActividad extends  AppCompatActivity implements View.On
         //Se recibe desde DetalleProyecto
         Bundle bundle3 = getIntent().getExtras();
         lote = bundle3.getParcelable("DATOS_LOTE");
+
+        //se recibe desde DetalleProyecto para ser pasado a InformacionClimática
+         actividad_id = getIntent().getIntExtra("actividad_id",0);
 
         actividad = detalleActividad.getActividad();
         etActividad = (TextView)findViewById(R.id.tvActividadResultado);
@@ -154,6 +159,7 @@ public class ReplanificarActividad extends  AppCompatActivity implements View.On
                 Intent siembra  = new Intent(getApplicationContext(), InformacionClimatica.class);
                 siembra.putExtra("DATOS_PROYECTO",proyecto);
                 siembra.putExtra("DATOS_LOTE",lote);
+                siembra.putExtra("actividad_id",actividad_id);
                 startActivity(siembra);
             }
         });

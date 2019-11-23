@@ -1,6 +1,8 @@
 package pedrotti.gonzalo.proyecto.Reportes;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.graphics.Color;
 
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
+import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.R;
 
@@ -156,6 +159,11 @@ public class ReporteActividad extends AppCompatActivity {
 
    public void cargarDuraciones(){
 
+       final ProgressDialog progressDialog = new ProgressDialog(ReporteActividad.this);
+       progressDialog.setIcon(R.mipmap.ic_launcher);
+       progressDialog.setMessage("Generando Reporte...");
+       progressDialog.show();
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlFecha,
                 new Response.Listener<String>() {
                     @Override
@@ -183,6 +191,7 @@ public class ReporteActividad extends AppCompatActivity {
                             int groupCount = array.length();
 
                             if(groupCount==0){
+                                progressDialog.dismiss();
                                 Toast toast1 = Toast.makeText(getApplicationContext(),"No hay Actividades Finalizadas. \n " + "Vuelva cuando termine alguna actividad",Toast.LENGTH_SHORT);
                                 toast1.setGravity(Gravity.CENTER,0,0);
                                 toast1.show();
@@ -258,15 +267,19 @@ public class ReporteActividad extends AppCompatActivity {
                                 chart.setDragEnabled(true);
                                 //Cantidad maxima que se ve. Despues se tiene que desplazar la ventana
                                 chart.setVisibleXRangeMaximum(3);
+                                progressDialog.dismiss();
                             }
 
                         } catch (JSONException e) {
                 e.printStackTrace();
+                progressDialog.dismiss();
             }
         }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+               progressDialog.dismiss();
+                Toast.makeText(ReporteActividad.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
