@@ -125,6 +125,7 @@ public class Sesion extends AppCompatActivity {
 
                                         //sino arroja un mensaje de error.
                                     } else {
+                                        //El success es false, por lo que no existe el usuario
                                         AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
                                         alerta.setMessage("Usuario o Contraseña Incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
                                         etcontrasena.setText("");
@@ -177,6 +178,7 @@ public class Sesion extends AppCompatActivity {
   class SesionRequest extends StringRequest{
 
       private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/mobile/login.php";
+
 
       private Map<String,String> parametros;
       public SesionRequest (String correo, String contrasena, Response.Listener<String> listener){

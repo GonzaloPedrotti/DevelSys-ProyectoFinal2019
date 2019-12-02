@@ -34,7 +34,9 @@ import java.util.ArrayList;
 
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
+import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 
 public class ReporteActividad extends AppCompatActivity {
@@ -52,7 +54,12 @@ public class ReporteActividad extends AppCompatActivity {
     float barSpace;
     float groupSpace;
 
-    private static final String urlFecha = "http://"+ Constantes.ip+"/miCampoWeb/mobile/Reporte/reporteActividad.php?proyecto_cultivo_id=1";
+    private Usuario user;
+
+    private ProyectoCultivo itemSeleccionado;
+
+    private  String urlFecha = "http://"+ Constantes.ip+"/miCampoWeb/mobile/Reporte/reporteActividad.php?proyecto_cultivo_id=1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,16 @@ public class ReporteActividad extends AppCompatActivity {
         setContentView(R.layout.activity_reporte_actividad);
 
         setTitle("Grafico Comparativo de Actividades");
+
+
+        //Se recibe desde el Menu Reporte
+        Bundle bundle = getIntent().getExtras();
+        user = bundle.getParcelable("DATOS_USER");
+
+
+        //Se recibe desde el Bienvenido
+        Bundle bundle2 = getIntent().getExtras();
+        itemSeleccionado = bundle2.getParcelable("DATOS_PROYECTO");
 
         realLista = new ArrayList<>();
         estimadaLista = new ArrayList<>();
@@ -155,8 +172,6 @@ public class ReporteActividad extends AppCompatActivity {
 
     }
 
-
-
    public void cargarDuraciones(){
 
        final ProgressDialog progressDialog = new ProgressDialog(ReporteActividad.this);
@@ -205,6 +220,13 @@ public class ReporteActividad extends AppCompatActivity {
                                     Integer real = duracion.getInt("difRealDias");
                                     String actividad = duracion.getString("actividad");
 
+                                    if(estimada==0){
+                                        estimada=1;
+                                    }
+                                    if(real==0){
+                                        real=1;
+                                    }
+
                                     realLista.add(real);
                                     estimadaLista.add(estimada);
                                     actividadesList.add(actividad);
@@ -232,7 +254,6 @@ public class ReporteActividad extends AppCompatActivity {
                                 chart.groupBars(0, groupSpace, barSpace);
                                 chart.getData().setHighlightEnabled(false);
                                 chart.invalidate();
-
 
                                 Legend l = chart.getLegend();
                                 l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -298,26 +319,26 @@ public class ReporteActividad extends AppCompatActivity {
 //        longitudVector= longitudVector + valor ;
 //    }
 
-
-    //Entries1
-    private ArrayList<BarEntry> getbarEntries1(){
-        return barEntries1;
-    }
-
-    private void setBarEntries1(int h1, int h2){
-        barEntries1.add(new BarEntry(h1,h2));
-    }
-
-
-    //Entries2
-    private ArrayList<BarEntry> getbarEntries2(){
-        return barEntries2;
-    }
-    private void setBarEntries2(int h1, int h2){
-        barEntries2.add(new BarEntry(h1,h2));
-    }
-
-
 //
+//    //Entries1
+//    private ArrayList<BarEntry> getbarEntries1(){
+//        return barEntries1;
+//    }
+//
+//    private void setBarEntries1(int h1, int h2){
+//        barEntries1.add(new BarEntry(h1,h2));
+//    }
+//
+//
+//    //Entries2
+//    private ArrayList<BarEntry> getbarEntries2(){
+//        return barEntries2;
+//    }
+//    private void setBarEntries2(int h1, int h2){
+//        barEntries2.add(new BarEntry(h1,h2));
+//    }
+//
+//
+////
 
 }

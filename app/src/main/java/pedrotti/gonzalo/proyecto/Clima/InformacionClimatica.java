@@ -53,6 +53,7 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
     public String ruta1Siembra = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getMomentoSiembra.php";
     public String ruta2Fumigacion = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getMomentoFumigacion.php";
+    public String ruta3Arado = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getMomentoArado.php";
 
 
     @Override
@@ -83,7 +84,7 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
         //Si es arado
         if(actividad_id==1){
-            buscarClimaArado();
+            buscarClimaArado(ruta3Arado);
         }
 
         //Si es siembra
@@ -117,8 +118,53 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
     }
 
 
-    public void buscarClimaArado(){
-        Toast.makeText(this, "Se recomienda para Arado ", Toast.LENGTH_SHORT).show();
+    public void buscarClimaArado(String url){
+//        Toast.makeText(this, "Se recomienda para Arado ", Toast.LENGTH_SHORT).show();
+        final ProgressDialog progressDialog = new ProgressDialog(InformacionClimatica.this);
+        progressDialog.setIcon(R.mipmap.ic_launcher);
+        progressDialog.setMessage("Cargando Recomendaciones...");
+        progressDialog.show();
+
+        Response.Listener<String> respuesta = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+
+                    JSONArray array = new JSONArray(response);
+
+                    for (int i = 0; i < array.length(); i++) {
+
+                        JSONObject momento = array.getJSONObject(i);
+
+                        double temperatura = momento.getDouble("temperatura");
+                        double humedad = momento.getDouble("humedad");
+                        double viento = momento.getDouble("viento");
+                        String cielo = momento.getString("cielo");
+                        String icono = momento.getString("icono");
+                        String fecha = momento.getString("momento");
+                        double mm = momento.getDouble("mm");
+                        int recomendacion = momento.getInt("recomendacion");
+
+                        ClimaActual ca = new ClimaActual(temperatura,icono,fecha,cielo,humedad,viento,mm,recomendacion);
+                        climaActualList.add(ca);
+
+                    }
+
+                    adapter = new ClimaActualAdapter(InformacionClimatica.this,climaActualList);
+                    recyclerView.setAdapter(adapter);
+
+                    progressDialog.dismiss();
+
+                    adapter.setOnItemClickListener(InformacionClimatica.this);
+                } catch (JSONException e) {
+                    progressDialog.dismiss();
+                    e.printStackTrace();
+                }
+            }
+        };
+        MomentoRequest r = new MomentoRequest(proyecto.getCultivo_id(),lote.getLatitud(),lote.getLongitud(),url,respuesta);
+        RequestQueue cola = Volley.newRequestQueue(InformacionClimatica.this);
+        cola.add(r);
     }
 
 

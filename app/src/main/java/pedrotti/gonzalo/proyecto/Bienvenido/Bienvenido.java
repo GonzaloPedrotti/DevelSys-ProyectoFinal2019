@@ -23,6 +23,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
+import pedrotti.gonzalo.proyecto.MenuReporte;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Reportes.Reporte;
 import pedrotti.gonzalo.proyecto.Reportes.ReporteActividad;
@@ -127,6 +128,8 @@ private Button btnEstadísticas;
 //                AlertDialog.Builder estadisticas = new AlertDialog.Builder(Bienvenido.this);
 //                estadisticas.setMessage("Proximamente Podrá: \n " + " \n" + "-Ver y Comparar Actividades Realizadas "+"\n" + "-Comparar Dosis Recomendadas Vs Utilizadas" + "\n" + "-Generar Estadísticas e Informes" ).setNegativeButton("Aceptar", null).setTitle("MiCampo Estadísticas").setIcon(R.drawable.logo).create().show();
                 Intent estadisticas = new Intent(Bienvenido.this,ReporteActividad.class);
+//                Intent estadisticas = new Intent(Bienvenido.this, MenuReporte.class);
+                estadisticas.putExtra("DATOS_USER", user);
                 startActivity(estadisticas);
             }
         });

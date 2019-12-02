@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Bienvenido;
+package pedrotti.gonzalo.proyecto;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,16 +22,19 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.Bienvenido.ProyectosUsuario;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleProyecto;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivoAdapter;
-import pedrotti.gonzalo.proyecto.R;
+import pedrotti.gonzalo.proyecto.Reportes.ReporteActividad;
+import pedrotti.gonzalo.proyecto.Reportes.ReporteDuraciones;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
-public class ProyectosUsuario extends AppCompatActivity implements ProyectoCultivoAdapter.OnItemClickListener {
+public class MenuReporte extends AppCompatActivity implements ProyectoCultivoAdapter.OnItemClickListener{
 
-    private static final String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/obtenerProyectosDeUsuario.php?usuario_id=";
+
+
+    private  String url = "http://"+ Constantes.ip+"/miCampoWeb/mobile/obtenerProyectosDeUsuario.php?usuario_id=1";
 
     private int lote_id;
     RecyclerView recyclerView;
@@ -43,18 +46,20 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todos_los_proyectos);
+        setContentView(R.layout.activity_menu_reporte);
 
+        setTitle("Lista de Proyectos");
 
         //Se recibe desde el Bienvenido
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerViewProyectos);
+        Toast.makeText(this, "id: " + user.getUsuario_id(), Toast.LENGTH_SHORT).show();
+
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerProyectos);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         proyectoCultivoList = new ArrayList<>();
-
 
         loadProyectos();
     }
@@ -73,7 +78,7 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
                             JSONArray array = new JSONArray(response);
 
                             if(array==null || array.length()==0){
-                                AlertDialog.Builder alerta = new AlertDialog.Builder(ProyectosUsuario.this);
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(MenuReporte.this);
                                 alerta.setMessage("No Tiene Proyectos Registrados. Comience registrando uno!").setPositiveButton("Entendido", null).create().show();
 //                                Toast.makeText(TodosLosCampos.this, "No tiene Campos Registrados.Comience Registrando uno!", Toast.LENGTH_SHORT).show();
                             }
@@ -103,9 +108,9 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
                                 proyectoCultivoList.add(proyectoCultivo);
                             }
 
-                            adapter = new ProyectoCultivoAdapter(ProyectosUsuario.this, proyectoCultivoList);
+                            adapter = new ProyectoCultivoAdapter(MenuReporte.this, proyectoCultivoList);
                             recyclerView.setAdapter(adapter);
-                            adapter.setOnItemClickListener(ProyectosUsuario.this);
+                            adapter.setOnItemClickListener(MenuReporte.this);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -115,7 +120,7 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ProyectosUsuario.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MenuReporte.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -127,12 +132,10 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
     //Este metodo muestra en una nueva actividad el campo seleccionado
     @Override
     public void OnItemClick(int position) {
-        Intent detalleProyecto = new Intent(this, DetalleProyecto.class);
+        Intent detalleProyecto = new Intent(this, ReporteActividad.class);
         ProyectoCultivo itemSeleccionado = proyectoCultivoList.get(position);
 
         detalleProyecto.putExtra("DATOS_PROYECTO", itemSeleccionado);
         startActivity(detalleProyecto);
     }
-
-
 }
