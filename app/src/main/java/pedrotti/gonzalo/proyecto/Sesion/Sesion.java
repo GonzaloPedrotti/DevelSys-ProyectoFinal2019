@@ -29,6 +29,7 @@ import java.util.Map;
 
 import pedrotti.gonzalo.proyecto.Bienvenido.Bienvenido;
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.Inicio;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.NuevoUsuario.Registro;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
@@ -58,7 +59,6 @@ public class Sesion extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
 
                 Intent nuevousuario = new Intent(Sesion.this, Registro.class);
                 Sesion.this.startActivity(nuevousuario);
@@ -96,9 +96,9 @@ public class Sesion extends AppCompatActivity {
                                     JSONObject jsonrespuesta = new JSONObject(response);
 
                                     //se define una variable booleada llamada ok, la cual toma el valor del resultado de success
-                                    boolean ok = jsonrespuesta.getBoolean("success");
+                                    String respuesta = jsonrespuesta.getString("estado");
                                     //si success es verdadero, ejecuta el siguiente codigo
-                                    if (ok == true) {
+                                    if (respuesta.equals("true")) {
 
                                         int usuario_id = jsonrespuesta.getInt("usuario_id");
                                         user.setUsuario_id(usuario_id);
@@ -118,7 +118,9 @@ public class Sesion extends AppCompatActivity {
 
                                         progressDialog.dismiss();
 
-                                        Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
+//                                        Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
+                                        Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
+
                                         irABienvenido.putExtra("DATOS_USER",user);
                                         startActivity(irABienvenido);
                                         Sesion.this.finish();
@@ -138,6 +140,8 @@ public class Sesion extends AppCompatActivity {
                                     e.getMessage();
                                     AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
                                     alerta.setMessage("Ups! Algo ha salido mal").setNegativeButton("Reintentar", null).setTitle("Error en la Conexión").setIcon(R.drawable.logo).create().show();
+                                    btnlogin.setText("INGRESAR");
+                                    progressDialog.dismiss();
                                 }
                             }
                         };
@@ -175,10 +179,11 @@ public class Sesion extends AppCompatActivity {
         return have_MobileData || have_WIFI;
 
     }
+
+
   class SesionRequest extends StringRequest{
 
-      private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/mobile/login.php";
-
+      private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/vista/validarCode.php";
 
       private Map<String,String> parametros;
       public SesionRequest (String correo, String contrasena, Response.Listener<String> listener){

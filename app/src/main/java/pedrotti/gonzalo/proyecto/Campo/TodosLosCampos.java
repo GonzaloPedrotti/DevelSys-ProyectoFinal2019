@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -26,7 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
@@ -37,7 +40,10 @@ import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.OnItemClickListener {
 
-    private static final String url = "http://"+Constantes.ip+"/miCampoWeb/mobile/obtenerCamposDelUsuario.php?usuario_id=";
+    private static final String url = "http://"+Constantes.ip+"/miCampoWeb/ControladorVista/campoCode.php";
+
+//    private static final String url = "http://"+Constantes.ip+"/miCampoWeb/mobile/obtenerCamposDelUsuario.php?usuario_id=";
+
 
     private Usuario user;
     private Campo camponuevo;
@@ -105,63 +111,72 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
         progressDialog.setMessage("Cargando Campos...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+user.getUsuario_id(),
-                new Response.Listener<String>() {
+        Response.Listener<String> respuesta = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-                    @Override
-                    public void onResponse(String response) {
-                         camponuevo = new Campo();
-                        try {
-                            //converting the string to json array object
+                camponuevo = new Campo();
 
-                            JSONArray array = new JSONArray(response);
+                try {
+                    JSONArray array = new JSONArray(response);
 
-                            if(array==null || array.length()==0){
-                                AlertDialog.Builder alerta = new AlertDialog.Builder(TodosLosCampos.this);
-                                alerta.setMessage("No Tiene Campos Registrados. Comience registrando uno!").setPositiveButton("Entendido", null).create().show();
-                            }
+                    if (array == null || array.length() == 0) {
+                        AlertDialog.Builder alerta = new AlertDialog.Builder(TodosLosCampos.this);
+                        alerta.setMessage("No Tiene Campos Registrados. Comience registrando uno!").setPositiveButton("Entendido", null).create().show();
+                    }
 
-                            for (int i = 0; i < array.length(); i++) {
+                    for (int i = 0; i < array.length(); i++) {
 
-                                JSONObject campos = array.getJSONObject(i);
+                        JSONObject campos = array.getJSONObject(i);
 
-                                int campo_id = campos.getInt("campo_id");
-                                String nombre = campos.getString("nombre");
-                                double lat = campos.getDouble("lat1");
-                                double lon = campos.getDouble("long1");
-                                int usuario_id = campos.getInt("usuario_id");
+                        int campo_id = campos.getInt("campo_id");
+                        int usuario_id = campos.getInt("usuario_id");
+                        String nombre = campos.getString("nombre");
+                        double lat = campos.getDouble("lat1");
+                        double lon = campos.getDouble("long1");
 
-                                camponuevo.setCampo_id(campo_id);
+                        camponuevo.setCampo_id(campo_id);
 
-                                //Se crea el constructor para crear el objeto Campo
-                                Campo campo = new Campo(usuario_id,campo_id,nombre,lat,lon);
+                        //Se crea el constructor para crear el objeto Campo
+                        Campo campo = new Campo(usuario_id, campo_id, nombre, lat, lon);
 
-                                //añadiendo a la lista campoList el objeto Campo recien creado
-                                campoList.add(campo);
-                            }
-
-                            adapter = new CamposAdapter(TodosLosCampos.this, campoList);
+                        //añadiendo a la lista campoList el objeto Campo recien creado
+                        campoList.add(campo);
+                    }
+                    adapter = new CamposAdapter(TodosLosCampos.this, campoList);
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
                             adapter.setOnItemClickListener(TodosLosCampos.this);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    progressDialog.dismiss();
+                }
+            }
+        };
+        CamposRequest r = new CamposRequest(user.getUsuario_id(),respuesta);
+        RequestQueue cola = Volley.newRequestQueue(TodosLosCampos.this);
+        cola.add(r);
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(TodosLosCampos.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        //adding our stringrequest to queue
-        Volley.newRequestQueue(this).add(stringRequest);
     }
+
+
+    class  CamposRequest extends StringRequest {
+
+//        private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getMomentoSiembra.php";
+
+        private Map<String,String> parametros;
+        public CamposRequest (int usuario_id, Response.Listener<String> listener){
+            super(Request.Method.POST, url, listener, null);
+            parametros = new HashMap<>();
+            parametros.put("usuario_id",  usuario_id+"");
+        }
+
+        @Override
+        protected Map<String, String> getParams(){
+            return parametros;
+        }
+    }
+
 
 
     //Este metodo muestra en una nueva actividad el campo seleccionado

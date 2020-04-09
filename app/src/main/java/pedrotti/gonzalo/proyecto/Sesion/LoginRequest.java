@@ -11,7 +11,7 @@ import pedrotti.gonzalo.proyecto.Constantes;
 
 public class LoginRequest  extends StringRequest {
 
-        private static  final String ruta = "http://"+Constantes.ip+"/miCampoWeb/mobile/login.php";
+        private static  final String ruta = "http://"+Constantes.ip+"/miCampo/miCampoWeb/mobile/login.php";
 
 
         private Map<String,String> parametros;

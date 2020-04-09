@@ -22,6 +22,8 @@ public class Registro extends AppCompatActivity {
     private String apellidoUsuario;
     private String correoUsuario;
     private int telefonoUsuario;
+    private String telString;
+    private String telefono;
     private String contrasenaUsuario;
     private String confirmarContrasenaUsuario;
 
@@ -56,20 +58,21 @@ public class Registro extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                nombreUsuario = tvNombreUsuario.getText().toString();
-                apellidoUsuario = tvApellidoUsuario.getText().toString();
-                correoUsuario = tvCorreoUsuario.getText().toString();
-                String telString =(tvTelefonoUsuario.getText().toString()).trim();
-                contrasenaUsuario = tvContrasenaUsuario.getText().toString();
-                confirmarContrasenaUsuario = tvConfirmarContrasena.getText().toString();
+                nombreUsuario = tvNombreUsuario.getText().toString().trim();
+                apellidoUsuario = tvApellidoUsuario.getText().toString().trim();
+                correoUsuario = tvCorreoUsuario.getText().toString().trim();
+//              telefonoUsuario = tvTelefonoUsuario.getText().toString().trim();
+                telString =(tvTelefonoUsuario.getText().toString()).trim();
+                contrasenaUsuario = tvContrasenaUsuario.getText().toString().trim();
+                confirmarContrasenaUsuario = tvConfirmarContrasena.getText().toString().trim();
 
-                if ((telString==null) || (telString.equals(""))) {
-                    telefonoUsuario=0;
-                }else{
-                    telefonoUsuario = Integer.parseInt(telString);
-                }
+//                if ((telString==null) || (telString.equals(""))) {
+//                    telefonoUsuario=0;
+//                }else{
+//                    telefonoUsuario = Integer.parseInt(telString);
+//                }
 
-                if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty()  || telefonoUsuario==0 ||contrasenaUsuario.isEmpty() || confirmarContrasenaUsuario.isEmpty() ) {
+                if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty()  || telString.isEmpty() ||contrasenaUsuario.isEmpty() || confirmarContrasenaUsuario.isEmpty() ) {
                     Toast.makeText(getApplicationContext(), "Complete Todos los Campos.", Toast.LENGTH_LONG).show();
                 }
                 //inicio else
@@ -108,7 +111,7 @@ public class Registro extends AppCompatActivity {
                                     }
                                 }
                             };
-                            RegistroRequest r = new RegistroRequest(nombreUsuario, apellidoUsuario, correoUsuario, telefonoUsuario, contrasenaUsuario, respuesta);
+                            RegistroRequest r = new RegistroRequest(nombreUsuario, apellidoUsuario, correoUsuario, telString, contrasenaUsuario, respuesta);
                             RequestQueue cola = Volley.newRequestQueue(Registro.this);
                             cola.add(r);
                         }//else del Response

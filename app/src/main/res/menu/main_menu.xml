@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/home"
+        android:title="Home"
+        android:icon="@mipmap/ic_home"/>
+
+
+    <item android:id="@+id/campo"
+        android:title="Campos"
+        android:icon="@mipmap/ic_campo"/>
+
+
+    <item android:id="@+id/estadistica"
+        android:title="Reporte"
+        android:icon="@mipmap/ic_estadistica"/>
+
+
+    <item android:id="@+id/cuenta"
+        android:title="Cuenta"
+        android:icon="@mipmap/ic_cuenta"/>
+
+
+
+</menu>
