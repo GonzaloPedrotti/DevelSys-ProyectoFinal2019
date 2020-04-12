@@ -38,13 +38,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
-import pedrotti.gonzalo.proyecto.Campo.TodosLosCampos;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Clima.InformacionClimatica;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
+import pedrotti.gonzalo.proyecto.Modelo.Actividad;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Variedad.Variedad;
+import pedrotti.gonzalo.proyecto.Modelo.Variedad;
 
 public class NuevaActividad extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 

@@ -12,6 +12,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 
 public class UbicacionCampo extends FragmentActivity implements OnMapReadyCallback {

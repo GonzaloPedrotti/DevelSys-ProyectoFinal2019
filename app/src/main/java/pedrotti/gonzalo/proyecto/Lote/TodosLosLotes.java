@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import pedrotti.gonzalo.proyecto.Campo.Campo;
+import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.NuevoLote.NuevoLote;
 import pedrotti.gonzalo.proyecto.R;

@@ -22,12 +22,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import pedrotti.gonzalo.proyecto.Bienvenido.ProyectosUsuario;
-import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleProyecto;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivoAdapter;
 import pedrotti.gonzalo.proyecto.Reportes.ReporteActividad;
-import pedrotti.gonzalo.proyecto.Reportes.ReporteDuraciones;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class MenuReporte extends AppCompatActivity implements ProyectoCultivoAdapter.OnItemClickListener{

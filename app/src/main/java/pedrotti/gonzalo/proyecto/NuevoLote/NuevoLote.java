@@ -28,7 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import pedrotti.gonzalo.proyecto.Campo.Campo;
+import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.Lote.Lote;
 import pedrotti.gonzalo.proyecto.R;
 

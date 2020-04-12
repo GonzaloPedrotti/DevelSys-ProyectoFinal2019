@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,8 +20,6 @@ import java.util.Date;
 import java.util.List;
 
 
-import pedrotti.gonzalo.proyecto.Actividad.Actividad;
-import pedrotti.gonzalo.proyecto.Campo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 
 public class ClimaActualAdapter extends RecyclerView.Adapter<ClimaActualAdapter.InformacionClimaticaViewHolder> {

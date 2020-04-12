@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Variedad;
+package pedrotti.gonzalo.proyecto.Modelo;
 
  public class Variedad {
     private String cultivo;

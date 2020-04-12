@@ -9,11 +9,16 @@
     <!--<color name="colorPrimaryDark">#00796B</color>-->
     <!--<color name="colorAccent">#4CAF50</color>-->
 
-    <color name="colorPrimary">#03A9F4</color>
-    <color name="colorPrimaryDark">#12A6F6</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#7C4DFF</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorHint">#0097A7</color>
+    <color name="ColorActionBarTitle">#F06292</color>
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Campo;
+package pedrotti.gonzalo.proyecto.Modelo;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,11 +1,13 @@
 package pedrotti.gonzalo.proyecto.Sesion;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -40,6 +42,7 @@ public class Sesion extends AppCompatActivity {
     private TextView registro;
     private Button btnlogin;
     private String correo, contrasena;
+    private Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,16 @@ public class Sesion extends AppCompatActivity {
         etCorreo = (EditText)findViewById(R.id.usuarioLogin);
         etcontrasena= (EditText)findViewById(R.id.claveLogin);
 
+        user = new Usuario();
+
+        //SHAREDPREFERENCE
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        etCorreo.setText(preferences.getString("correo", ""));
+        etcontrasena.setText(preferences.getString("contrasena", ""));
+
+//        if(!(etCorreo.getText().toString().isEmpty()) && !(etcontrasena.getText().toString().isEmpty())){
+//            iniciarSesion();
+//        }
 
 
         //Codigo del evento click del boton registrar
@@ -69,95 +82,129 @@ public class Sesion extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                correo = etCorreo.getText().toString().toLowerCase().trim();
-                contrasena = etcontrasena.getText().toString();
-
-                if (correo.isEmpty()||contrasena.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Complete su Correo o Contraseña", Toast.LENGTH_SHORT).show();
-                }else{
-                    //Dentro del método se define la respuesta del LoginRequest
-
-                    if(haveNetwork()){
-                        Toast.makeText(getApplicationContext(), "Hay Conexión (Conecte Su dispositivo al  Wifi si está depurando)", Toast.LENGTH_SHORT).show();
-                        btnlogin.setEnabled(false);
-                        btnlogin.setText("INICIANDO");
-
-                        final ProgressDialog progressDialog = new ProgressDialog(Sesion.this);
-                        progressDialog.setIcon(R.mipmap.ic_launcher);
-                        progressDialog.setMessage("Cargando...");
-                        progressDialog.show();
-
-                        Response.Listener<String> respuesta = new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Usuario user = new Usuario();
-                                try {
-                                    //se define una respuesta del tipo JSONObject
-                                    JSONObject jsonrespuesta = new JSONObject(response);
-
-                                    //se define una variable booleada llamada ok, la cual toma el valor del resultado de success
-                                    String respuesta = jsonrespuesta.getString("estado");
-                                    //si success es verdadero, ejecuta el siguiente codigo
-                                    if (respuesta.equals("true")) {
-
-                                        int usuario_id = jsonrespuesta.getInt("usuario_id");
-                                        user.setUsuario_id(usuario_id);
-
-                                        String nombre = jsonrespuesta.getString("nombre");
-                                        user.setNombre(nombre);
-
-                                        String apellido = jsonrespuesta.getString("apellido");
-                                        user.setApellido(apellido);
-
-                                        String correo = jsonrespuesta.getString("correo");
-                                        user.setCorreo(correo);
-
-                                        String telefonoString = jsonrespuesta.getString("telefono");
-                                        int telefono = Integer.parseInt(telefonoString);
-                                        user.setTelefono(telefono);
-
-                                        progressDialog.dismiss();
-
-//                                        Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
-                                        Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
-
-                                        irABienvenido.putExtra("DATOS_USER",user);
-                                        startActivity(irABienvenido);
-                                        Sesion.this.finish();
-
-                                        //sino arroja un mensaje de error.
-                                    } else {
-                                        //El success es false, por lo que no existe el usuario
-                                        AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
-                                        alerta.setMessage("Usuario o Contraseña Incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
-                                        etcontrasena.setText("");
-                                        btnlogin.setEnabled(true);
-                                        btnlogin.setText("INGRESAR");
-                                        progressDialog.dismiss();
-
-                                    }
-                                } catch (JSONException e) {
-                                    e.getMessage();
-                                    AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
-                                    alerta.setMessage("Ups! Algo ha salido mal").setNegativeButton("Reintentar", null).setTitle("Error en la Conexión").setIcon(R.drawable.logo).create().show();
-                                    btnlogin.setText("INGRESAR");
-                                    progressDialog.dismiss();
-                                }
-                            }
-                        };
-                        //Se añade a la variable RequestQueue el resultado de la consulta
-                        SesionRequest r = new SesionRequest(correo,contrasena, respuesta);
-                        RequestQueue cola = Volley.newRequestQueue(Sesion.this);
-                        cola.add(r);
-                    }
-                   else{
-                        Toast.makeText(getApplicationContext(), "Por favor, verifique su conexion a Internet", Toast.LENGTH_SHORT).show();
-                        btnlogin.setEnabled(true);
-                        btnlogin.setText("INGRESAR");
-                    }
-                }
+                iniciarSesion();
             }
         });
+    }
+
+
+    public void iniciarSesion(){
+
+        correo = etCorreo.getText().toString().toLowerCase().trim();
+        contrasena = etcontrasena.getText().toString();
+
+//        final Usuario user = new Usuario();
+
+
+        if (correo.isEmpty()||contrasena.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Complete su Correo o Contraseña", Toast.LENGTH_SHORT).show();
+        }else{
+            //Dentro del método se define la respuesta del LoginRequest
+
+            if(haveNetwork()){
+//                Toast.makeText(getApplicationContext(), "Hay Conexión (Conecte Su dispositivo al  Wifi si está depurando)", Toast.LENGTH_SHORT).show();
+                btnlogin.setEnabled(false);
+                btnlogin.setText("INICIANDO");
+
+                final ProgressDialog progressDialog = new ProgressDialog(Sesion.this);
+                progressDialog.setIcon(R.mipmap.ic_launcher);
+                progressDialog.setMessage("Cargando...");
+                progressDialog.show();
+
+                Response.Listener<String> respuesta = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Usuario user = new Usuario();
+                        try {
+                            //se define una respuesta del tipo JSONObject
+                            JSONObject jsonrespuesta = new JSONObject(response);
+
+                            //se define una variable booleada llamada ok, la cual toma el valor del resultado de success
+                            String respuesta = jsonrespuesta.getString("estado");
+                            //si success es verdadero, ejecuta el siguiente codigo
+                            if (respuesta.equals("true")) {
+
+
+                                int usuario_id = jsonrespuesta.getInt("usuario_id");
+                                user.setUsuario_id(usuario_id);
+
+                                String nombre = jsonrespuesta.getString("nombre");
+                                user.setNombre(nombre);
+
+                                String apellido = jsonrespuesta.getString("apellido");
+                                user.setApellido(apellido);
+
+                                String correo = jsonrespuesta.getString("correo");
+                                user.setCorreo(correo);
+
+//                                String telefonoString = jsonrespuesta.getString("telefono");
+//                                int telefono = Integer.parseInt(telefonoString);
+//                                user.setTelefono(telefono);
+
+                                progressDialog.dismiss();
+
+                                //GUARDA LAS CREDENCIALES
+                                guardar();
+
+//                                Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
+                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
+
+                                irABienvenido.putExtra("DATOS_USER",user);
+                                startActivity(irABienvenido);
+                                Sesion.this.finish();
+
+                                //sino arroja un mensaje de error.
+                            } else {
+                                //El success es false, por lo que no existe el usuario
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
+                                alerta.setMessage("Usuario o Contraseña Incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
+                                etcontrasena.setText("");
+                                btnlogin.setEnabled(true);
+                                btnlogin.setText("INGRESAR");
+                                progressDialog.dismiss();
+
+                            }
+                        } catch (JSONException e) {
+                            e.getMessage();
+                            AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
+                            alerta.setMessage("Ups! Algo ha salido mal").setNegativeButton("Reintentar", null).setTitle("Error en la Conexión").setIcon(R.drawable.logo).create().show();
+                            btnlogin.setText("INGRESAR");
+                            progressDialog.dismiss();
+                        }
+                    }
+                };
+                //Se añade a la variable RequestQueue el resultado de la consulta
+                SesionRequest r = new SesionRequest(correo,contrasena, respuesta);
+                RequestQueue cola = Volley.newRequestQueue(Sesion.this);
+                cola.add(r);
+            }
+            else{
+                Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
+//                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
+
+                irABienvenido.putExtra("DATOS_USER",user);
+                startActivity(irABienvenido);
+                Sesion.this.finish();
+                Toast.makeText(getApplicationContext(), "Ingresando, Sin conexión a Internet", Toast.LENGTH_SHORT).show();
+//                btnlogin.setEnabled(true);
+//                btnlogin.setText("INGRESAR");
+            }
+        }
+
+    }
+
+    //METODO SHAREDPREFERENCES
+    public void guardar(){
+        SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_editor = preferencias.edit();
+
+        obj_editor.putInt("usuario_id",user.getUsuario_id() );
+        obj_editor.putString("nombre", user.getNombre());
+        obj_editor.putString("apellido", user.getApellido());
+        obj_editor.putString("correo", etCorreo.getText().toString());
+        obj_editor.putString("telefono", String.valueOf(user.getTelefono()));
+        obj_editor.putString("contrasena", etcontrasena.getText().toString());
+        obj_editor.commit();
     }
 
     public  boolean haveNetwork(){

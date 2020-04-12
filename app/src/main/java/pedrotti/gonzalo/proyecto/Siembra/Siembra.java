@@ -21,7 +21,7 @@ import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleActividad;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Variedad.Variedad;
+import pedrotti.gonzalo.proyecto.Modelo.Variedad;
 
 public class Siembra extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
 

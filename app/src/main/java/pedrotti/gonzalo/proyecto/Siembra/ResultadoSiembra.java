@@ -43,7 +43,7 @@ import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.DetalleActividad;
 import pedrotti.gonzalo.proyecto.ProyectoCultivo.ProyectoCultivo;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Variedad.Variedad;
+import pedrotti.gonzalo.proyecto.Modelo.Variedad;
 
 public class ResultadoSiembra extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener{
 

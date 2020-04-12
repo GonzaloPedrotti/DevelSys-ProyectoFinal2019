@@ -12,12 +12,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,10 +30,9 @@ import java.util.List;
 import java.util.Map;
 
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
-import pedrotti.gonzalo.proyecto.ProyectoCultivo.TodosLosProyectos;
 import pedrotti.gonzalo.proyecto.R;
-import pedrotti.gonzalo.proyecto.Sesion.Sesion;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.OnItemClickListener {

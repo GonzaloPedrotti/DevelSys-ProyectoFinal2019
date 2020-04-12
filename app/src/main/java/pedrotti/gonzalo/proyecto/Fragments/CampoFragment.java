@@ -2,12 +2,10 @@ package pedrotti.gonzalo.proyecto.Fragments;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 
 
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,9 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 
@@ -29,8 +28,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-import pedrotti.gonzalo.proyecto.Campo.Campo;
-import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
 import pedrotti.gonzalo.proyecto.R;
 
 /**
@@ -39,8 +36,11 @@ import pedrotti.gonzalo.proyecto.R;
 public class CampoFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
 
     GoogleMap mMap;
-
     SupportMapFragment mapFragment;
+
+    EditText etNombre;
+    Button btnRegistrarCampo;
+    Button btnAyudaRegistro;
 
     public CampoFragment() {
         // Required empty public constructor
@@ -54,6 +54,7 @@ public class CampoFragment extends Fragment implements OnMapReadyCallback, Googl
 
         View v = inflater.inflate(R.layout.fragment_campo, container, false);
 
+
         mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapCampoNuevo);
         if (mapFragment == null) {
             FragmentManager fm = getFragmentManager();
@@ -63,7 +64,25 @@ public class CampoFragment extends Fragment implements OnMapReadyCallback, Googl
         }
         mapFragment.getMapAsync(this);
 
+        
+
+
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        btnAyudaRegistro = getView().findViewById(R.id.btnAyudaRegistro);
+
+
+        btnAyudaRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Boton Seleccionado", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -91,7 +110,6 @@ public class CampoFragment extends Fragment implements OnMapReadyCallback, Googl
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return ;
         }
-
         mMap.setMyLocationEnabled(true);
 
     }

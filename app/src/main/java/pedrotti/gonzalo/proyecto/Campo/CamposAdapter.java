@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 
 public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewHolder>  {

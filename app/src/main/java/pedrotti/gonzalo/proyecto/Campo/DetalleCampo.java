@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import pedrotti.gonzalo.proyecto.Lote.TodosLosLotes;
+import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 

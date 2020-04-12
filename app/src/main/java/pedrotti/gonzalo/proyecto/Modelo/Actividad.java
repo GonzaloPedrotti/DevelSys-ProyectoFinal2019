@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Actividad;
+package pedrotti.gonzalo.proyecto.Modelo;
 
 public class Actividad {
 
