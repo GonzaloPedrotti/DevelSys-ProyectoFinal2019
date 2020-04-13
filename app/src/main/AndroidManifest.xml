@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pedrotti.gonzalo.proyecto">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -20,9 +19,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true">
 
+        <activity android:name=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,212 +36,164 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Inicio"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        <activity
+            android:name=".Inicio"
             android:screenOrientation="portrait"
-            />
-        <activity android:name=".MenuReporte"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".MenuReporte"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Reportes.ReporteActividad"
             android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".Reportes.ReporteActividad"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".Fertilizacion.Fertilizacion"
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".Actividad.ResultadoActividad"
-            android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name=".Fertilizacion.Fertilizacion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Actividad.ResultadoActividad"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Bienvenido.Cuenta"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actividad.InicioActividad"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".Catalogo.Catalogo"
-            android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Catalogo.Catalogo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Siembra.Siembra"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".Reportes.Reporte"
-            android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Reportes.Reporte"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Siembra.ResultadoSiembra"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Bienvenido.ProyectosUsuario"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Campo.UbicacionCampo"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_ubicacion_campo" />
-
+            android:label="@string/title_activity_ubicacion_campo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Actividad.ReplanificarActividad"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Bienvenido.InformacionDeApp"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Clima.InformacionClimatica"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Actividad.NuevaActividad"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ProyectoCultivo.DetalleProyecto"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ProyectoCultivo.ItemProyecto"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ProyectoCultivo.TodosLosProyectos"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".NuevoLote.AyudaRegistrarLote"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ProyectoCultivo.NuevoProyectoCultivo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Lote.TodosLosLotes"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Lote.ItemLote"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Campo.DetalleCampo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Campo.TodosLosCampos"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Lote.InformacionDelLote"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Bienvenido.Bienvenido"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".NuevoUsuario.Registro"
             android:parentActivityName=".Sesion.Sesion"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait" />
 
-            />
-        <meta-data android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Sesion.Sesion"/>
-
-        <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
-
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Sesion.Sesion" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
         <activity
             android:name=".NuevoCampo.AyudaRegistrarCampo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".NuevoCampo.NuevoCampo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".NuevoLote.NuevoLote"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".TiposMapas"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            /> <!-- Actividad de Inicio -->
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- Actividad de Inicio -->
         <activity
             android:name=".Sesion.Sesion"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            /> <!-- Splash -->
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /> <!-- Splash -->
         <activity
             android:name=".Sesion.SplashScreen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- android:value="@string/google_maps_key" -->
+
+
+
+        <!--PRUEBAS -->
+
+        <activity android:name=".CamposActivity"/>
+        <activity android:name=".ActividadesActivity"/>
+        <activity android:name=".ReporteActivity"/>
+        <activity android:name=".CuentaActivity"/>
+
+
+
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

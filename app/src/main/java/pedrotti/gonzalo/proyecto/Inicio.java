@@ -27,6 +27,8 @@ public class Inicio extends AppCompatActivity {
 
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.btnNavigationView);
 
+        showSelectedFragment(new HomeFragment());
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -35,16 +37,16 @@ public class Inicio extends AppCompatActivity {
                     showSelectedFragment(new HomeFragment());
                 }
 
-                if(menuItem.getItemId() == R.id.campo){
+                if(menuItem.getItemId() == R.id.ic_campo){
                     showSelectedFragment(new CampoFragment());
                 }
 
-                if(menuItem.getItemId() == R.id.estadistica){
+                if(menuItem.getItemId() == R.id.ic_estadistica){
                     showSelectedFragment(new EstadisticaFragment());
 
                 }
 
-                if(menuItem.getItemId() == R.id.cuenta){
+                if(menuItem.getItemId() == R.id.ic_cuenta){
                     showSelectedFragment(new CuentaFragment());
                 }
 

@@ -31,6 +31,7 @@ import java.util.Map;
 
 import pedrotti.gonzalo.proyecto.Bienvenido.Bienvenido;
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.HomeActivity;
 import pedrotti.gonzalo.proyecto.Inicio;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.NuevoUsuario.Registro;
@@ -147,7 +148,9 @@ public class Sesion extends AppCompatActivity {
                                 guardar();
 
 //                                Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
-                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
+//                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
+                                Intent irABienvenido = new Intent(Sesion.this, HomeActivity.class);
+
 
                                 irABienvenido.putExtra("DATOS_USER",user);
                                 startActivity(irABienvenido);

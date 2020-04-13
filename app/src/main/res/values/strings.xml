@@ -46,5 +46,9 @@
     <string name="registrarse">¿No tienes cuenta? Regístrate</string>
     <string name="ingresar">Ingresar</string>
     <string name="contrasena">Contraseña</string>
+    <string name="campos">Campos</string>
+    <string name="reporte">Reporte</string>
+    <string name="cuenta">Cuenta</string>
+    <string name="actividades">Actividades</string>
 
 </resources>

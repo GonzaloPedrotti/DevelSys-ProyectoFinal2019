@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!--color de la barra -->
         <item name="colorPrimary">@color/colorHint</item>
@@ -12,30 +12,6 @@
         <item name="android:textColorPrimary">@color/colorWhite</item>
 
 
-
-
     </style>
-    <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
-    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-
-        <!--<item name="colorPrimary">#FF9800</item>-->
-        <!--<item name="colorPrimaryDark">#F57C00</item>-->
-        <!--&lt;!&ndash;<item name="android:background">#ff540e9e</item>&ndash;&gt;-->
-        <!--&lt;!&ndash;<item name="android:textColor">@color/colorWhite</item>&ndash;&gt;-->
-        <!--&lt;!&ndash;<item name="colorPrimary">@color/colorPrimary</item>&ndash;&gt;-->
-        <!--&lt;!&ndash;<item name="colorPrimaryDark">@color/colorPrimaryDark</item>&ndash;&gt;-->
-        <!--&lt;!&ndash;<item name="colorAccent">@color/colorAccent</item>&ndash;&gt;-->
-
-    <!--</style>-->
-
-    <!--<style name="ActionBarStyle" parent="Widget.AppCompat.ActionBar">-->
-        <!--<item name="titleTextStyle">@style/ActionBarTitleTextStyle</item>-->
-        <!--<item name="background">@color/colorPrimary</item>-->
-    <!--</style>-->
-
-    <!--<style name="ActionBarTitleTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">-->
-        <!--<item name="android:textColor">@color/ColorActionBarTitle</item>-->
-    <!--</style>-->
 
 </resources>

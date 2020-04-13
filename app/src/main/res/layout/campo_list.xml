@@ -37,23 +37,6 @@
                 android:background="#90F59A"
                 android:textAlignment="center">
 
-                <!--<TextView-->
-                <!--android:id="@+id/tvIdCampo"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginStart="16dp"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:autoText="false"-->
-                <!--android:background="#3C3D8183"-->
-                <!--android:freezesText="false"-->
-                <!--android:maxLength="25"-->
-                <!--android:text="Id "-->
-                <!--android:textAlignment="center"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:textColor="#0C0C0C"-->
-                <!--android:textSize="16sp"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent" />-->
 
                 <TextView
                     android:id="@+id/tvNombre"
