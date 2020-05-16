@@ -1,23 +1,23 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true">
 
-        <!--<com.google.android.material.appbar.AppBarLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tabs"
-                android:background="@color/colorGrey">
-
+                android:background="@drawable/border_bottom">
             </androidx.appcompat.widget.Toolbar>
-        <!--</com.google.android.material.appbar.AppBarLayout>-->
+
+        </com.google.android.material.appbar.AppBarLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </merge>

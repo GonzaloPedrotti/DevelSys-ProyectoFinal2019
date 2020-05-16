@@ -6,64 +6,97 @@
     tools:context=".Fragments.CampoFragment"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerId"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FFFF"
-        android:backgroundTint="@color/colorWhite"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/btnAyudaRegistro"
-            android:layout_width="7dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Ayuda"
-            android:textColorLink="#0288D1"
-            android:textSize="10dp"
-            android:textColor="@color/colorBlack"
-            android:textColorHighlight="@color/colorBlack"
-            android:background="@drawable/button_rounded2"
-            />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFlotante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="380dp"
+        android:src="@android:drawable/ic_input_add"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="#0B23F0"
+        android:backgroundTint="#F3EFF2"
+        />
 
-        <Button
-            android:id="@+id/btnRegistrar"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:enabled="true"
-            android:text="Registrar"
-            android:textColorLink="@color/colorBlack"
-            android:textColor="@color/colorBlack"
-            android:background="@drawable/button_rounded2"
-            android:textSize="10dp" />
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--android:id="@+id/btnFlotante"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
 
-        <EditText
-            android:id="@+id/txtNombreLote"
-            android:layout_width="85dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Nombre Campo"
-            android:inputType="textPersonName"
-            android:maxLength="50"
-            android:backgroundTint="#0097A7"
-            android:textColorHighlight="@color/colorPrimary"
-            android:textColorHint="#161516"
-            android:textSize="12dp"
-            />
-    </LinearLayout>
+        <!--android:layout_marginStart="232dp"-->
+        <!--android:layout_marginTop="380dp"-->
+        <!--android:tint="#0B23F0"-->
+        <!--android:src="@android:drawable/ic_input_add"-->
+        <!--android:backgroundTint="#F3EFF2"-->
+        <!--/>-->
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/mapCampoNuevo"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="540dp"
-        android:layout_marginTop="50dp"
-        tools:context=".Fragments.CampoFragment" />
+
+
+    <!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="#FFFF"-->
+        <!--android:backgroundTint="@color/colorWhite"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btnAyudaRegistro"-->
+            <!--android:layout_width="7dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Ayuda"-->
+            <!--android:textColorLink="#0288D1"-->
+            <!--android:textSize="10dp"-->
+            <!--android:textColor="@color/colorBlack"-->
+            <!--android:textColorHighlight="@color/colorBlack"-->
+            <!--android:background="@drawable/button_rounded2"-->
+            <!--/>-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btnRegistrar"-->
+            <!--android:layout_width="10dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:enabled="true"-->
+            <!--android:text="Registrar"-->
+            <!--android:textColorLink="@color/colorBlack"-->
+            <!--android:textColor="@color/colorBlack"-->
+            <!--android:background="@drawable/button_rounded2"-->
+            <!--android:textSize="10dp" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/txtNombreLote"-->
+            <!--android:layout_width="85dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Nombre Campo"-->
+            <!--android:inputType="textPersonName"-->
+            <!--android:maxLength="50"-->
+            <!--android:backgroundTint="#0097A7"-->
+            <!--android:textColorHighlight="@color/colorPrimary"-->
+            <!--android:textColorHint="#161516"-->
+            <!--android:textSize="12dp"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
+
+    <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:map="http://schemas.android.com/apk/res-auto"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:id="@+id/mapCampoNuevo"-->
+        <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="540dp"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--tools:context=".Fragments.CampoFragment" />-->
 
 
 </FrameLayout>

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -12,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import org.w3c.dom.Text;
 
 import pedrotti.gonzalo.proyecto.Util.BottomNavigationViewHelper;
 
@@ -21,22 +26,46 @@ public class CuentaActivity extends AppCompatActivity {
     private static final int ACTIVITY_NUM = 4 ;
     private Context mContext = CuentaActivity.this;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-//        setTitle("Gonzalo Pedrotti");
         setupBottomNavigationView();
-//        setupToolbar();
+        setupComponents();
         Log.d(TAG, "onCreate: starting.");
-        Toolbar toolbar = findViewById(R.id.toolbarCuenta);
-        setSupportActionBar(toolbar);
     }
 
-    private void setupToolbar(){
-        Toolbar toolbar =findViewById(R.id.profileToolbar);
-//        setSupportActionBar(toolbar);
+    private void setupComponents(){
+
+        Toolbar toolbar =findViewById(R.id.profileToolBar);
+        TextView tvNombreUsuario = findViewById(R.id.profile_tvNombre);
+        final TextView tvCorreoUsuario = findViewById(R.id.profile_tvCorreo);
+        TextView tvSalir         = findViewById(R.id.tvSalir);
+        final TextView tvProfileNombre = findViewById(R.id.profile_Bar_Nombre);
+
+        tvNombreUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Nombre Seleccionado", Toast.LENGTH_SHORT).show();
+                tvProfileNombre.setText(tvCorreoUsuario.getText().toString());
+            }
+        });
+
+        tvCorreoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Correo Seleccionado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        tvSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Salir Seleccionado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

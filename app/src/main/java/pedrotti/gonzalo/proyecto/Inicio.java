@@ -10,15 +10,25 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+
+import pedrotti.gonzalo.proyecto.Fragments.ActividadesFragment;
 import pedrotti.gonzalo.proyecto.Fragments.CampoFragment;
 import pedrotti.gonzalo.proyecto.Fragments.CuentaFragment;
 import pedrotti.gonzalo.proyecto.Fragments.EstadisticaFragment;
 import pedrotti.gonzalo.proyecto.Fragments.HomeFragment;
-import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
 
-public class Inicio extends AppCompatActivity {
+public class Inicio extends AppCompatActivity  {
 
     BottomNavigationView bottomNavigationView;
+
+    CampoFragment campoFragment;
+
+    Deque<Integer> mStack = new ArrayDeque<>();
+    boolean isBackPressed = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +39,19 @@ public class Inicio extends AppCompatActivity {
 
         showSelectedFragment(new HomeFragment());
 
+        setBottomNavigationView(bottomNavigationView);
+
+    }
+
+
+
+    public void setBottomNavigationView(BottomNavigationView bottomNavigationView) {
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                if(menuItem.getItemId() == R.id.home){
+                if(menuItem.getItemId() == R.id.ic_home){
                     showSelectedFragment(new HomeFragment());
                 }
 
@@ -50,14 +68,42 @@ public class Inicio extends AppCompatActivity {
                     showSelectedFragment(new CuentaFragment());
                 }
 
+                if(menuItem.getItemId() == R.id.ic_actividades){
+                    showSelectedFragment(new ActividadesFragment());
+                }
+
                 return true;
             }
         });
+
     }
 
     private void showSelectedFragment (Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
+//                .addToBackStack(null)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
+
+    @Override
+    public void onBackPressed() {
+        if(bottomNavigationView.getSelectedItemId() != R.id.ic_home)
+        {
+            bottomNavigationView.setSelectedItemId(R.id.ic_home);
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
+
+//
+//    @Override
+//    public void onBackPressed() {
+//        if ( getSupportFragmentManager().getBackStackEntryCount() > 0) {
+//            getSupportFragmentManager().popBackStack();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 }

@@ -12,7 +12,10 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"/>
+        android:layout_above="@id/btnNavigationView"
+    android:layout_marginBottom="58dp"
+
+    />
 
     <!--Barra de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,10 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemBackground="@color/colorBlack"
-        app:itemTextColor="@color/colorWhite"
-        app:itemIconTint="@color/colorWhite"
+        android:background="@drawable/border_top"
+        app:itemTextColor="@color/colorBlack"
+        app:itemIconTint="@color/colorBlack"
         app:menu="@menu/main_menu">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <!--app:itemBackground="@color/colorBlack"-->
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

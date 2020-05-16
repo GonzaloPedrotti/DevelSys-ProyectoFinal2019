@@ -64,9 +64,9 @@ public class Sesion extends AppCompatActivity {
         etCorreo.setText(preferences.getString("correo", ""));
         etcontrasena.setText(preferences.getString("contrasena", ""));
 
-//        if(!(etCorreo.getText().toString().isEmpty()) && !(etcontrasena.getText().toString().isEmpty())){
-//            iniciarSesion();
-//        }
+        if(!(etCorreo.getText().toString().isEmpty()) && !(etcontrasena.getText().toString().isEmpty())){
+            iniciarSesion();
+        }
 
 
         //Codigo del evento click del boton registrar
@@ -147,9 +147,9 @@ public class Sesion extends AppCompatActivity {
                                 //GUARDA LAS CREDENCIALES
                                 guardar();
 
-//                                Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
+                                Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
 //                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
-                                Intent irABienvenido = new Intent(Sesion.this, HomeActivity.class);
+//                                Intent irABienvenido = new Intent(Sesion.this, HomeActivity.class);
 
 
                                 irABienvenido.putExtra("DATOS_USER",user);

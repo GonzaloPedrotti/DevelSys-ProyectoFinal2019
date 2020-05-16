@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--TOP TOOLBAR -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/relLayout1">
+
+        <include layout="@layout/snippet_top_profilebar"/>
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/relLayout1">
+
+        <TextView
+            android:id="@+id/profile_tvNombre"
+            android:layout_width="164dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="40dp"
+            android:text="Gonzalo"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile_tvCorreo"
+            android:layout_width="252dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="28dp"
+            android:text="gonzapedrotti@hotmail.com"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_tvNombre" />
+
+        <TextView
+            android:id="@+id/tvSalir"
+            android:layout_width="200dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="32dp"
+            android:text="Salir"
+            android:textColor="#161515"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_tvCorreo"
+            tools:layout_editor_absoluteX="44dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--MIDDLE SECTION -->
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@id/relLayout1"-->
+        <!--android:id="@+id/relLayout2"-->
+        <!--android:background="@drawable/white_grey_border_bottom">-->
+
+        <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="70dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:id="@+id/conLayout"-->
+            <!--android:weightSum="100">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_marginTop="60dp"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="1.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--android:text="Configuración de Cuenta"-->
+                <!--app:layout_goneMarginTop="15dp"/>-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="25"-->
+                <!--android:layout_marginStart="25dp">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvNombre"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="@string/inicio"-->
+                    <!--android:textColor="@color/colorBlack"/>-->
+            <!--</RelativeLayout>-->
+        <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--</RelativeLayout>-->
+
+</RelativeLayout>

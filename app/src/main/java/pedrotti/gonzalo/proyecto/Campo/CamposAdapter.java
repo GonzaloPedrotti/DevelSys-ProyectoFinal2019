@@ -4,7 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -14,8 +17,7 @@ import java.util.List;
 import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 
-public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewHolder>  {
-
+public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewHolder>  implements View.OnClickListener  {
 
     private Context mCtx;
     private List<Campo> campoList;
@@ -25,11 +27,16 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
     //Esta se agrega
     List<Campo> copycampos = new ArrayList<>();
 
+    @Override
+    public void onClick(View view) {
+        if (listener != null){
+            listener.onClick(view);
+        }
+    }
 
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
-
 
     //Se crea metodo filtrar
     public void filtrar(String texto){
@@ -63,18 +70,18 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
 
 
     @Override
-    public CampoViewHolder onCreateViewHolder(ViewGroup parent,
-                                              int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.campo_list,null);
+    public CampoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.campo_list, parent,false);
+//        LayoutInflater inflater = LayoutInflater.from(mCtx);
+//        View view = inflater.inflate(R.layout.campo_list,null);
+        view.setOnClickListener(this);
         return new CampoViewHolder(view);
     }
-
-
 
     //Clase para llenar los TextView
     @Override
     public void onBindViewHolder(CampoViewHolder holder, int position) {
+
         Campo campo = campoList.get(position);
 
 //        holder.tvid.setText( "Id del Campo:" + campo.getCampo_id());
@@ -82,8 +89,6 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
         holder.tvlon.setText( "Longitud: " + (campo.getLon()));
         holder.tvlat.setText("Latitud: " + (campo.getLat()));
     }
-
-
 
     class CampoViewHolder extends RecyclerView.ViewHolder{
 
@@ -110,6 +115,11 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
                 }
             });
         }
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        listener = listener;
+
     }
 
     public void setOnItemClickListener ( OnItemClickListener listener){
