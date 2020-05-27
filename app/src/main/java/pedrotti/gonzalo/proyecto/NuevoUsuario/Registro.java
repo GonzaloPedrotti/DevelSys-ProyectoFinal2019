@@ -40,7 +40,7 @@ public class Registro extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 
         this.setTitle(R.string.crearcuenta);
 

@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +29,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import pedrotti.gonzalo.proyecto.Campo.CamposAdapter;
 import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
@@ -44,6 +49,8 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
     TextView tvLat1, tvLong1;
     EditText etNombre;
     private int j =0;
+
+    private CamposAdapter adapter;
 
 
     public double getLat1() {
@@ -82,9 +89,20 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
 
        this.setTitle(R.string.crearCampo);
 
+//
+//       Bundle bundle =getIntent().getExtras();
+//
+//       user = bundle.getParcelable("DATOS_USER");
 
-       Bundle bundle =getIntent().getExtras();
-       user = bundle.getParcelable("DATOS_USER");
+        user = new Usuario();
+
+        user.setUsuario_id(1);
+
+        SharedPreferences preferences = getSharedPreferences("datos",  Context.MODE_PRIVATE);
+
+        int id = preferences.getInt("usuario_id", 0);
+
+        user.setUsuario_id(id);
 
        Button btnAyuda = (Button)findViewById(R.id.btnAyuda);
        Button btnRegistrarCampo = (Button)findViewById(R.id.btnProyectosActuales);

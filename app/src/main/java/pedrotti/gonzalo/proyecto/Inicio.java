@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 
 import pedrotti.gonzalo.proyecto.Fragments.ActividadesFragment;

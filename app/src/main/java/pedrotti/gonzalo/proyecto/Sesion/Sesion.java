@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,9 +66,9 @@ public class Sesion extends AppCompatActivity {
         etCorreo.setText(preferences.getString("correo", ""));
         etcontrasena.setText(preferences.getString("contrasena", ""));
 
-        if(!(etCorreo.getText().toString().isEmpty()) && !(etcontrasena.getText().toString().isEmpty())){
-            iniciarSesion();
-        }
+//        if(!(etCorreo.getText().toString().isEmpty()) && !(etcontrasena.getText().toString().isEmpty())){
+//            iniciarSesion();
+//        }
 
 
         //Codigo del evento click del boton registrar
@@ -99,6 +101,7 @@ public class Sesion extends AppCompatActivity {
 
         if (correo.isEmpty()||contrasena.isEmpty()){
             Toast.makeText(getApplicationContext(), "Complete su Correo o Contraseña", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "HOLA", Toast.LENGTH_LONG).show();
         }else{
             //Dentro del método se define la respuesta del LoginRequest
 
@@ -115,16 +118,32 @@ public class Sesion extends AppCompatActivity {
                 Response.Listener<String> respuesta = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-//                        Usuario user = new Usuario();
+
                         try {
                             //se define una respuesta del tipo JSONObject
                             JSONObject jsonrespuesta = new JSONObject(response);
 
                             //se define una variable booleada llamada ok, la cual toma el valor del resultado de success
                             String respuesta = jsonrespuesta.getString("estado");
+
+                            Log.d(jsonrespuesta.toString(), "RESPUESTA");
+
                             //si success es verdadero, ejecuta el siguiente codigo
                             if (respuesta.equals("true")) {
 
+//                                JSONObject usuario = jsonrespuesta.getJSONObject("usuario");
+//
+//                                int user_id = usuario.getInt("usuario_id");
+//                                user.setUsuario_id(user_id);
+//
+//                                String nombre = usuario.getString("nombre");
+//                                user.setNombre(nombre);
+//
+//                                String apellido = usuario.getString("apellido");
+//                                user.setApellido(apellido);
+//
+//                                String correo = usuario.getString("correo");
+//                                user.setCorreo(correo);
 
                                 int usuario_id = jsonrespuesta.getInt("usuario_id");
                                 user.setUsuario_id(usuario_id);
@@ -147,10 +166,9 @@ public class Sesion extends AppCompatActivity {
                                 //GUARDA LAS CREDENCIALES
                                 guardar();
 
-                                Intent irABienvenido = new Intent(Sesion.this,Bienvenido.class);
-//                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
+//                                Intent irABienvenido = new Intent(Sesion.this, Bienvenido.class);
+                                Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
 //                                Intent irABienvenido = new Intent(Sesion.this, HomeActivity.class);
-
 
                                 irABienvenido.putExtra("DATOS_USER",user);
                                 startActivity(irABienvenido);

@@ -1,6 +1,8 @@
 package pedrotti.gonzalo.proyecto.Campo;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import java.util.List;
 import pedrotti.gonzalo.proyecto.Modelo.Campo;
 import pedrotti.gonzalo.proyecto.R;
 
-public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewHolder>  implements View.OnClickListener  {
+public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewHolder>  implements View.OnClickListener, Parcelable {
 
     private Context mCtx;
     private List<Campo> campoList;
@@ -27,11 +29,39 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
     //Esta se agrega
     List<Campo> copycampos = new ArrayList<>();
 
+    protected CamposAdapter(Parcel in) {
+        campoList = in.createTypedArrayList(Campo.CREATOR);
+        copycampos = in.createTypedArrayList(Campo.CREATOR);
+    }
+
+    public static final Creator<CamposAdapter> CREATOR = new Creator<CamposAdapter>() {
+        @Override
+        public CamposAdapter createFromParcel(Parcel in) {
+            return new CamposAdapter(in);
+        }
+
+        @Override
+        public CamposAdapter[] newArray(int size) {
+            return new CamposAdapter[size];
+        }
+    };
+
     @Override
     public void onClick(View view) {
         if (listener != null){
             listener.onClick(view);
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(campoList);
+        dest.writeTypedList(copycampos);
     }
 
     public interface OnItemClickListener{
@@ -124,6 +154,22 @@ public class CamposAdapter extends RecyclerView.Adapter<CamposAdapter.CampoViewH
 
     public void setOnItemClickListener ( OnItemClickListener listener){
         mlistener  = listener;
+    }
+
+    public List<Campo> getList(){
+        return campoList;
+    }
+
+    public void agregarItem(Campo campo, int pos) {
+        this.campoList.add(campo);
+        notifyDataSetChanged();
+        notifyItemInserted(pos);
+    }
+
+    public void limpiarLista() {
+        this.campoList.clear();
+//        notifyDataSetChanged();
+
     }
 
 

@@ -262,7 +262,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
         MomentoRequest r = new MomentoRequest(proyecto.getCultivo_id(),lote.getLatitud(),lote.getLongitud(),url,respuesta);
         RequestQueue cola = Volley.newRequestQueue(InformacionClimatica.this);
         cola.add(r);
-
     }
 
     @Override
@@ -297,11 +296,6 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
             return parametros;
         }
     }
-
-
-
-
-
 
 
 //    public void buscarClimaFumigacion(){

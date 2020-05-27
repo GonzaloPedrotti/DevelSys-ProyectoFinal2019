@@ -153,9 +153,7 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
         CamposRequest r = new CamposRequest(user.getUsuario_id(),respuesta);
         RequestQueue cola = Volley.newRequestQueue(TodosLosCampos.this);
         cola.add(r);
-
     }
-
 
     class  CamposRequest extends StringRequest {
 
@@ -173,7 +171,6 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
             return parametros;
         }
     }
-
 
 
     //Este metodo muestra en una nueva actividad el campo seleccionado

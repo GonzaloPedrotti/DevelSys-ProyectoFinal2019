@@ -1,9 +1,15 @@
 package pedrotti.gonzalo.proyecto.Fragments;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
 import pedrotti.gonzalo.proyecto.R;
 
 /**
@@ -37,8 +44,6 @@ public class HomeFragment extends Fragment {
 
         btnPrueba = vista.findViewById(R.id.btnPrueba);
 
-
-
         btnPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,8 +54,47 @@ public class HomeFragment extends Fragment {
         return vista;
     }
 
+    private int usuario_id = 0;
+    private String correo = "";
+    private String contrasena = "";
+
     void clickBoton() {
-        Toast.makeText(getContext(), "Hola", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("datos", Context.MODE_PRIVATE);
+
+        usuario_id = preferences.getInt("usuario_id", 0);
+        correo = preferences.getString("correo", "");
+        contrasena = preferences.getString("contrasena", "");
+
+        Toast.makeText(getContext(),"ID: "+ usuario_id +  " Correo: " + correo +  " Contraseña: "+ contrasena, Toast.LENGTH_SHORT).show();
+
+
+        //SHAREDPREFERENCE
+//        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+//        etCorreo.setText(preferences.getString("correo", ""));
+//        etcontrasena.setText(preferences.getString("contrasena", ""));
+
+//        if(!(etCorreo.getText().toString().isEmpty()) && !(etcontrasena.getText().toString().isEmpty())){
+//            iniciarSesion();
+//        }
+
+//        Toast.makeText(getContext(), "Hola", Toast.LENGTH_SHORT).show();
+
+//        ABRIR UN FRAGMENT DESDE OTRO FRAGMENT
+
+//        Fragment fragment = new ActividadesFragment();
+//
+//        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//        fragmentTransaction.replace(R.id.container, fragment);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
+
     }
+
+
+
 
 }

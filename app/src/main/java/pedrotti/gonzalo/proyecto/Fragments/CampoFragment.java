@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +51,7 @@ import pedrotti.gonzalo.proyecto.Campo.CamposAdapter;
 import pedrotti.gonzalo.proyecto.Campo.DetalleCampo;
 import pedrotti.gonzalo.proyecto.Constantes;
 import pedrotti.gonzalo.proyecto.Modelo.Campo;
+import pedrotti.gonzalo.proyecto.NuevoCampo.NuevoCampo;
 import pedrotti.gonzalo.proyecto.R;
 
 /**
@@ -62,8 +65,10 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
     SupportMapFragment mapFragment;
 
     EditText etNombre;
+    EditText etBuscar;
     Button btnRegistrarCampo;
     Button btnAyudaRegistro;
+    FloatingActionButton btnFlotanteNuevoCampo;
 
     View view;
     RecyclerView recyclerCampos;
@@ -88,17 +93,41 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
         recyclerCampos.setHasFixedSize(true);
         recyclerCampos.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FloatingActionButton btnFlotanteNuevoCampo = (FloatingActionButton)view.findViewById(R.id.btnFlotante);
+        etBuscar = (EditText)view.findViewById(R.id.etBuscar);
+        btnFlotanteNuevoCampo = (FloatingActionButton)view.findViewById(R.id.btnFlotante);
 
         btnFlotanteNuevoCampo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "FAB SELECTED", Toast.LENGTH_SHORT).show();
+                Intent nuevoCampo = new Intent(getContext(), NuevoCampo.class);
+
+                nuevoCampo.putExtra("adapter", adapter);
+
+                startActivity(nuevoCampo);
+
             }
         });
 
 
         llenarLista();
+
+        etBuscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filtrar(etBuscar.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 //        adapter = new CamposAdapter(getContext(),listaCampos);
 //        recyclerCampos.setAdapter(adapter);
@@ -165,6 +194,7 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
                         //añadiendo a la lista campoList el objeto Campo recien creado
                         listaCampos.add(campo);
                     }
+
                     adapter = new CamposAdapter(getContext(), listaCampos);
                     recyclerCampos.setAdapter(adapter);
                     progressDialog.dismiss();
@@ -183,8 +213,6 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
     class  CamposRequest extends StringRequest {
         private static final String url = "http://"+ Constantes.ip+"/miCampoWeb/ControladorVista/campoCode.php";
 
-//        private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/mobile/getMomentoSiembra.php";
-
         private Map<String,String> parametros;
         public CamposRequest (int usuario_id, Response.Listener<String> listener){
             super(Request.Method.POST, url, listener, null);
@@ -198,20 +226,20 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
         }
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-//
-//        btnAyudaRegistro = getView().findViewById(R.id.btnAyudaRegistro);
-//
-//
-//        btnAyudaRegistro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getContext(), "Boton Seleccionado", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-    }
+//    @Override
+//    public void onViewCreated(View view, Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+////
+////        btnAyudaRegistro = getView().findViewById(R.id.btnAyudaRegistro);
+////
+////
+////        btnAyudaRegistro.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                Toast.makeText(getContext(), "Boton Seleccionado", Toast.LENGTH_SHORT).show();
+////            }
+////        });
+//    }
 
     @Override
     public void OnItemClick(int position) {
