@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -69,12 +70,14 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
     Button btnRegistrarCampo;
     Button btnAyudaRegistro;
     FloatingActionButton btnFlotanteNuevoCampo;
+    CheckBox btnCheck;
 
     View view;
     RecyclerView recyclerCampos;
     ArrayList<Campo> listaCampos;
     CamposAdapter adapter;
     Campo campo;
+
 
     public CampoFragment() {
         // Required empty public constructor
@@ -89,26 +92,32 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
         view = inflater.inflate(R.layout.fragment_campo, container, false);
 
         listaCampos = new ArrayList<>();
+
         recyclerCampos= (RecyclerView)view.findViewById(R.id.recyclerId);
+
         recyclerCampos.setHasFixedSize(true);
-        recyclerCampos.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false);
+
+        recyclerCampos.setLayoutManager(layoutManager);
+
+//        recyclerCampos.setLayoutManager(new LinearLayoutManager(getContext()));
 
         etBuscar = (EditText)view.findViewById(R.id.etBuscar);
+
         btnFlotanteNuevoCampo = (FloatingActionButton)view.findViewById(R.id.btnFlotante);
 
         btnFlotanteNuevoCampo.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "FAB SELECTED", Toast.LENGTH_SHORT).show();
                 Intent nuevoCampo = new Intent(getContext(), NuevoCampo.class);
 
                 nuevoCampo.putExtra("adapter", adapter);
 
                 startActivity(nuevoCampo);
-
             }
         });
-
 
         llenarLista();
 
@@ -170,7 +179,6 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
 
                 try {
                     JSONArray array = new JSONArray(response);
-
                     if (array == null || array.length() == 0) {
                         AlertDialog.Builder alerta = new AlertDialog.Builder(getContext());
                         alerta.setMessage("No Tiene Campos Registrados. Comience registrando uno!").setPositiveButton("Entendido", null).create().show();
@@ -199,8 +207,11 @@ public class CampoFragment extends Fragment implements CamposAdapter.OnItemClick
                     recyclerCampos.setAdapter(adapter);
                     progressDialog.dismiss();
                     adapter.setOnItemClickListener(CampoFragment.this);
+
                 } catch (JSONException e) {
+
                     e.printStackTrace();
+
                     progressDialog.dismiss();
                 }
             }

@@ -126,6 +126,7 @@ public class Sesion extends AppCompatActivity {
                             //se define una variable booleada llamada ok, la cual toma el valor del resultado de success
                             String respuesta = jsonrespuesta.getString("estado");
 
+
                             Log.d(jsonrespuesta.toString(), "RESPUESTA");
 
                             //si success es verdadero, ejecuta el siguiente codigo
@@ -145,17 +146,18 @@ public class Sesion extends AppCompatActivity {
 //                                String correo = usuario.getString("correo");
 //                                user.setCorreo(correo);
 
-                                int usuario_id = jsonrespuesta.getInt("usuario_id");
-                                user.setUsuario_id(usuario_id);
-
-                                String nombre = jsonrespuesta.getString("nombre");
-                                user.setNombre(nombre);
-
-                                String apellido = jsonrespuesta.getString("apellido");
-                                user.setApellido(apellido);
-
-                                String correo = jsonrespuesta.getString("correo");
-                                user.setCorreo(correo);
+                                /*
+//                                int usuario_id = jsonrespuesta.getInt("usuario_id");
+//                                user.setUsuario_id(usuario_id);
+//
+//                                String nombre = jsonrespuesta.getString("nombre");
+//                                user.setNombre(nombre);
+//
+//                                String apellido = jsonrespuesta.getString("apellido");
+//                                user.setApellido(apellido);
+//
+//                                String correo = jsonrespuesta.getString("correo");
+//                                user.setCorreo(correo);
 
 //                                String telefonoString = jsonrespuesta.getString("telefono");
 //                                int telefono = Integer.parseInt(telefonoString);
@@ -173,6 +175,9 @@ public class Sesion extends AppCompatActivity {
                                 irABienvenido.putExtra("DATOS_USER",user);
                                 startActivity(irABienvenido);
                                 Sesion.this.finish();
+
+
+                                */
 
                                 //sino arroja un mensaje de error.
                             } else {
@@ -253,12 +258,14 @@ public class Sesion extends AppCompatActivity {
 
       private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/vista/validarCode.php";
 
+      private static final String url = Constantes.url+"validarCode.php";
+
       private Map<String,String> parametros;
       public SesionRequest (String correo, String contrasena, Response.Listener<String> listener){
-          super(Request.Method.POST, ruta, listener, null);
+          super(Request.Method.POST, url, listener, null);
           parametros = new HashMap<>();
-          parametros.put("correo",  correo+"");
-          parametros.put("contrasena",  contrasena+"");
+          parametros.put("usu_email",  correo+"");
+          parametros.put("usu_pass",  contrasena+"");
       }
 
       @Override

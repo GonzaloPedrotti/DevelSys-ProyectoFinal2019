@@ -22,7 +22,7 @@
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="@color/colorBlack" />
-        <!--android:ems="10" -->
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerId"

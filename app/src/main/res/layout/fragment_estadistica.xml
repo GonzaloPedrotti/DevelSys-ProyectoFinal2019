@@ -23,10 +23,10 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            >
+            android:background="@color/colorWhite">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
@@ -37,14 +37,12 @@
                 >
             </com.google.android.material.tabs.TabLayout>
 
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPagerReporte"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </androidx.viewpager.widget.ViewPager>
+            android:layout_width="80dp"
+            android:layout_height="80dp"></androidx.viewpager.widget.ViewPager>
 
 
     </LinearLayout>
