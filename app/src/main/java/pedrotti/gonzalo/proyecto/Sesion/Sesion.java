@@ -256,9 +256,11 @@ public class Sesion extends AppCompatActivity {
 
   class SesionRequest extends StringRequest{
 
-      private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/vista/validarCode.php";
+//      private static  final String ruta = "http://"+ Constantes.ip+"/miCampoWeb/vista/validarCode.php";
+//
+//      private static final String url = Constantes.url+"validarCode.php";
 
-      private static final String url = Constantes.url+"validarCode.php";
+      private static final String url = "http://"+Constantes.ip+"/miCampoWeb/vista/validarCode.php";
 
       private Map<String,String> parametros;
       public SesionRequest (String correo, String contrasena, Response.Listener<String> listener){
