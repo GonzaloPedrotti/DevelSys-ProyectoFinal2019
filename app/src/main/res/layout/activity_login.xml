@@ -10,9 +10,8 @@
 
     <EditText
         android:id="@+id/usuarioLogin"
-        android:layout_width="295dp"
+        android:layout_width="300dp"
         android:layout_height="65dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="204dp"
         android:backgroundTint="@color/colorHint"
         android:ems="10"
@@ -21,14 +20,14 @@
         android:maxLength="25"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/claveLogin"
-        android:layout_width="295dp"
+        android:layout_width="300dp"
         android:layout_height="65dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/colorHint"
         android:ems="10"
@@ -37,45 +36,49 @@
         android:maxLength="30"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuarioLogin" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="97dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="24sp"
+        android:layout_width="300dp"
+        android:layout_height="54dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/button_rounded"
         android:text="@string/ingresar"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/claveLogin" />
+
 
     <TextView
         android:id="@+id/registroLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
+        android:lineSpacingExtra="8sp"
         android:text="@string/registrarse"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/claveLogin" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <ImageView
         android:id="@+id/titulo"
-        android:layout_width="153dp"
-        android:layout_height="128dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorHint"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/usuarioLogin"
-        app:layout_constraintEnd_toEndOf="@+id/usuarioLogin"
-        app:layout_constraintStart_toStartOf="@+id/usuarioLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.711" />
 

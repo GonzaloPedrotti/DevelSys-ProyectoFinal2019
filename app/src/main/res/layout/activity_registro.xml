@@ -4,15 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NuevoUsuario.Registro"
-    android:background="#202732">
+    android:background="#202732"
+    tools:context=".Registro.Registro">
 
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_rounded"
+        android:text="Registrarme"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvConfirmarContrasena" />
+
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_rounded2"
+        android:text="Iniciar Sesión"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.114" />
 
     <EditText
         android:id="@+id/tvNombreUsuario"
-        android:layout_width="270dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="92dp"
         android:backgroundTint="#0097A7"
         android:ems="10"
@@ -21,15 +51,15 @@
         android:maxLength="25"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/tvApellidoUsuario"
-        android:layout_width="270dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#0097A7"
         android:ems="10"
         android:hint="Apellido"
@@ -37,17 +67,16 @@
         android:maxLength="25"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario" />
 
     <EditText
         android:id="@+id/tvContrasenaUsuario"
-        android:layout_width="270dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#0097A7"
         android:ems="10"
         android:hint="Contraseña"
@@ -55,22 +84,55 @@
         android:maxLength="30"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTelefono"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="130dp"
+    <EditText
+        android:id="@+id/tvConfirmarContrasena"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_rounded"
-        android:text="Registrarme"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#0097A7"
+        android:ems="10"
+        android:hint="Confirmar Contraseña"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/tvConfirmarContrasena"
-        app:layout_constraintStart_toStartOf="@+id/tvConfirmarContrasena"
-        app:layout_constraintTop_toBottomOf="@+id/tvConfirmarContrasena" />
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContrasenaUsuario" />
+
+    <EditText
+        android:id="@+id/tvCorreoUsuario"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#0097A7"
+        android:ems="10"
+        android:hint="Correo Electrónico"
+        android:inputType="textNoSuggestions"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvApellidoUsuario" />
+
+    <EditText
+        android:id="@+id/tvTelefono"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#0097A7"
+        android:ems="10"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCorreoUsuario" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -86,86 +148,23 @@
         android:id="@+id/txtIngresarDatos"
         android:layout_width="161dp"
         android:layout_height="28dp"
-        android:layout_marginStart="96dp"
         android:layout_marginTop="40dp"
         android:text="Registra tus Datos:"
         android:textColor="#FFFFFF"
         android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="270dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/button_rounded2"
-        android:text="Iniciar Sesión"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#FFFF"
-        android:textColorHint="#FFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrasenaUsuario" />
-
-    <EditText
-        android:id="@+id/tvConfirmarContrasena"
-        android:layout_width="270dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#0097A7"
-        android:ems="10"
-        android:hint="Confirmar Contraseña"
-        android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrasenaUsuario" />
-
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="223dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="32dp"
         android:text="¿Ya tienes una cuenta? Inicia sesión"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegistrar"
-        app:layout_constraintHorizontal_bias="0.695"
-        app:layout_constraintStart_toStartOf="@+id/btnRegistrar"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar"
-        android:textColor="#FFFFFF"/>
-
-    <EditText
-        android:id="@+id/tvCorreoUsuario"
-        android:layout_width="270dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#0097A7"
-        android:ems="10"
-        android:hint="Correo Electrónico"
-        android:inputType="textNoSuggestions"
         android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvApellidoUsuario"
-        />
-
-    <EditText
-        android:id="@+id/tvTelefono"
-        android:layout_width="270dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#0097A7"
-        android:ems="10"
-        android:hint="Teléfono"
-        android:inputType="phone"
-        android:maxLength="11"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCorreoUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -124,6 +124,7 @@ public class InformacionClimatica extends AppCompatActivity implements ClimaActu
 
                     for (int i = 0; i < array.length(); i++) {
 
+
                         JSONObject momento = array.getJSONObject(i);
 
                         double temperatura = momento.getDouble("temperatura");

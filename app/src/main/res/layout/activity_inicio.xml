@@ -13,9 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btnNavigationView"
-    android:layout_marginBottom="58dp"
-
-    />
+        android:layout_marginBottom="58dp"/>
 
     <!--Barra de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
