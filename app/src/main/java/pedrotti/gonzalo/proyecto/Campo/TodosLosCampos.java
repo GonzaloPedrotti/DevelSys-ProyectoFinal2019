@@ -78,7 +78,7 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
 
                 Intent nuevoCampoMapa = new Intent(TodosLosCampos.this,NuevoCampo.class);
                 nuevoCampoMapa.putExtra("DATOS_USER",user);
-                nuevoCampoMapa.putExtra("campo_id",user.getUsuario_id());
+                nuevoCampoMapa.putExtra("campo_id",user.getUsu_id());
                 startActivity(nuevoCampoMapa);
                 finish();
             }
@@ -150,7 +150,7 @@ public class TodosLosCampos extends AppCompatActivity implements CamposAdapter.O
                 }
             }
         };
-        CamposRequest r = new CamposRequest(user.getUsuario_id(),respuesta);
+        CamposRequest r = new CamposRequest(user.getUsu_id(),respuesta);
         RequestQueue cola = Volley.newRequestQueue(TodosLosCampos.this);
         cola.add(r);
     }

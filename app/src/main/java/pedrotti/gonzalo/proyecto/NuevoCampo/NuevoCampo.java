@@ -95,14 +95,14 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
 //       user = bundle.getParcelable("DATOS_USER");
 
         user = new Usuario();
+//
+        user.setUsu_id(1);
 
-        user.setUsuario_id(1);
-
-        SharedPreferences preferences = getSharedPreferences("datos",  Context.MODE_PRIVATE);
-
-        int id = preferences.getInt("usuario_id", 0);
-
-        user.setUsuario_id(id);
+//        SharedPreferences preferences = getSharedPreferences("datos",  Context.MODE_PRIVATE);
+//
+//        int id = preferences.getInt("usuario_id", 0);
+//
+//        user.setUsu_id(1);
 
        Button btnAyuda = (Button)findViewById(R.id.btnAyuda);
        Button btnRegistrarCampo = (Button)findViewById(R.id.btnProyectosActuales);
@@ -177,7 +177,7 @@ public class NuevoCampo extends AppCompatActivity implements OnMapReadyCallback,
                     }
                 }
             };
-            NuevoCampoRequest r = new NuevoCampoRequest(user.getUsuario_id(),nombre,lat1,long1, respuesta);
+            NuevoCampoRequest r = new NuevoCampoRequest(user.getUsu_id(),nombre,lat1,long1, respuesta);
             RequestQueue cola = Volley.newRequestQueue(NuevoCampo.this);
             cola.add(r);
         }

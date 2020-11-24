@@ -18,30 +18,29 @@ import pedrotti.gonzalo.proyecto.Fragments.CampoFragment;
 import pedrotti.gonzalo.proyecto.Fragments.CuentaFragment;
 import pedrotti.gonzalo.proyecto.Fragments.EstadisticaFragment;
 import pedrotti.gonzalo.proyecto.Fragments.HomeFragment;
+import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class Inicio extends AppCompatActivity  {
 
+    FragmentTransaction transaction;
+
+    private Usuario usuario;
     BottomNavigationView bottomNavigationView;
-
-    CampoFragment campoFragment;
-
-    Deque<Integer> mStack = new ArrayDeque<>();
-    boolean isBackPressed = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
 
+        Bundle bundle = getIntent().getExtras();
+        usuario = bundle.getParcelable("DATOS_USER");
+
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.btnNavigationView);
 
         showSelectedFragment(new HomeFragment());
 
         setBottomNavigationView(bottomNavigationView);
-
     }
-
 
 
     public void setBottomNavigationView(BottomNavigationView bottomNavigationView) {
@@ -78,7 +77,7 @@ public class Inicio extends AppCompatActivity  {
     }
 
     private void showSelectedFragment (Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragments,fragment)
 //                .addToBackStack(null)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();

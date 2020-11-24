@@ -51,7 +51,7 @@ public class MenuReporte extends AppCompatActivity implements ProyectoCultivoAda
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
 
-        Toast.makeText(this, "id: " + user.getUsuario_id(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "id: " + user.getUsu_id(), Toast.LENGTH_SHORT).show();
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerProyectos);
         recyclerView.setHasFixedSize(true);
@@ -63,7 +63,7 @@ public class MenuReporte extends AppCompatActivity implements ProyectoCultivoAda
 
     public void loadProyectos(){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+user.getUsuario_id(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+user.getUsu_id(),
                 new Response.Listener<String>() {
 
                     @Override

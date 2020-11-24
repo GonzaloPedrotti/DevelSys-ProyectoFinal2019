@@ -61,7 +61,7 @@ public class ProyectosUsuario extends AppCompatActivity implements ProyectoCulti
 
     public void loadProyectos(){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+user.getUsuario_id(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url+user.getUsu_id(),
                 new Response.Listener<String>() {
 
                     @Override

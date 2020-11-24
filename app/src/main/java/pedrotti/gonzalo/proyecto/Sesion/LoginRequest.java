@@ -11,10 +11,10 @@ import pedrotti.gonzalo.proyecto.Constantes;
 
 public class LoginRequest  extends StringRequest {
 
-//    private static final String url_api = "http://"+Constantes.ip+"/miCampo/miCampoWeb/ControladorVista/Sesion.php";
     private static final String url_api = Constantes.url + "Sesion.php";
 
     private Map<String,String> parametros;
+
     public LoginRequest (String usu_email, String usu_pass, Response.Listener<String> listener){
         super(Request.Method.POST, url_api, listener, null);
             parametros = new HashMap<>();

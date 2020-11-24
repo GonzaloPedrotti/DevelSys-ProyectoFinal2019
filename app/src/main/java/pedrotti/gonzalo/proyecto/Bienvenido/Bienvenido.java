@@ -78,7 +78,7 @@ private Button btnEstadísticas;
                 Intent verCampos = new Intent(getApplicationContext(), TodosLosCampos.class);
                 //Se comenta para el registro de un campo
                 verCampos.putExtra("DATOS_USER",user);
-                verCampos.putExtra("usuario_id",user.getUsuario_id());
+                verCampos.putExtra("usuario_id",user.getUsu_id());
                 startActivity(verCampos);
             }
         });

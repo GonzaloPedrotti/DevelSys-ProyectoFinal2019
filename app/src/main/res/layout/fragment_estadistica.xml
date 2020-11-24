@@ -41,8 +41,9 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPagerReporte"
-            android:layout_width="80dp"
-            android:layout_height="80dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         </androidx.viewpager.widget.ViewPager>
 
 

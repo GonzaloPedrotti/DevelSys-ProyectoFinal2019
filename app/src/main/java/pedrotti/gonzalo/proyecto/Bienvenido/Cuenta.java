@@ -36,10 +36,10 @@ public class Cuenta extends AppCompatActivity {
         etTelefono= (EditText)findViewById(R.id.etTelefono);
         btnCerrarSesion= (Button)findViewById(R.id.btnCerrarSesion);
 
-        etNombre.setText(user.getNombre());
-        etApellido.setText(user.getApellido());
-        etCorreo.setText(user.getCorreo());
-        etTelefono.setText(""+user.getTelefono());
+        etNombre.setText(user.getUsu_nombre());
+        etApellido.setText(user.getUsu_apellido());
+        etCorreo.setText(user.getUsu_email());
+        etTelefono.setText(""+user.getUsu_telefono());
 
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override

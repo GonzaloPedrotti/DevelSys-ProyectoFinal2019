@@ -3,25 +3,38 @@ package pedrotti.gonzalo.proyecto.Usuario;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import pedrotti.gonzalo.proyecto.UsuarioSesion.UsuarioSesion;
+
 public class Usuario implements Parcelable {
 
-    public static  final String TAG = Usuario.class.getSimpleName();
+    private int usu_id;
+    private String usu_nombre;
+    private String usu_apellido;
+    private String usu_email;
+    private String usu_telefono;
+    private String usu_pass;
 
-    private int usuario_id;
-    private String nombre;
-    private String apellido;
-    private String correo;
-    private int telefono;
-    private String contrasena;
+
+    public Usuario(int usu_id, String usu_nombre, String usu_apellido, String usu_email, String usu_telefono, String usu_pass) {
+        this.usu_id = usu_id;
+        this.usu_nombre = usu_nombre;
+        this.usu_apellido = usu_apellido;
+        this.usu_email = usu_email;
+        this.usu_telefono = usu_telefono;
+        this.usu_pass = usu_pass;
+    }
+
+    public Usuario() {
+    }
 
 
     protected Usuario(Parcel in) {
-        usuario_id = in.readInt();
-        nombre = in.readString();
-        apellido = in.readString();
-        correo = in.readString();
-        telefono = in.readInt();
-        contrasena = in.readString();
+        usu_id = in.readInt();
+        usu_nombre = in.readString();
+        usu_apellido = in.readString();
+        usu_email = in.readString();
+        usu_telefono = in.readString();
+        usu_pass = in.readString();
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
@@ -34,82 +47,69 @@ public class Usuario implements Parcelable {
         public Usuario[] newArray(int size) {
             return new Usuario[size];
         }
-
     };
 
-    public Usuario(int usuario_id, String nombre, String apellido, String correo, int telefono, String contrasena) {
-        this.usuario_id = usuario_id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.contrasena = contrasena;
+    public int getUsu_id() {
+        return usu_id;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    public void setUsu_id(int usu_id) {
+        this.usu_id = usu_id;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public String getUsu_nombre() {
+        return usu_nombre;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setUsu_nombre(String usu_nombre) {
+        this.usu_nombre = usu_nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getUsu_apellido() {
+        return usu_apellido;
     }
 
-    public String getApellido() {
-        return apellido;
+    public void setUsu_apellido(String usu_apellido) {
+        this.usu_apellido = usu_apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public String getUsu_email() {
+        return usu_email;
     }
 
-    public String getCorreo() {
-        return correo;
+    public void setUsu_email(String usu_email) {
+        this.usu_email = usu_email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public String getUsu_telefono() {
+        return usu_telefono;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public void setUsu_telefono(String usu_telefono) {
+        this.usu_telefono = usu_telefono;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public String getUsu_pass() {
+        return usu_pass;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public void setUsu_pass(String usu_pass) {
+        this.usu_pass = usu_pass;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
 
     @Override
     public int describeContents() {
         return 0;
     }
 
-    public Usuario(){
-
-    }
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(usuario_id);
-        parcel.writeString(nombre);
-        parcel.writeString(apellido);
-        parcel.writeString(correo);
-        parcel.writeInt(telefono);
-        parcel.writeString(contrasena);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(usu_id);
+        dest.writeString(usu_nombre);
+        dest.writeString(usu_apellido);
+        dest.writeString(usu_email);
+        dest.writeString(usu_telefono);
+        dest.writeString(usu_pass);
     }
-
 }

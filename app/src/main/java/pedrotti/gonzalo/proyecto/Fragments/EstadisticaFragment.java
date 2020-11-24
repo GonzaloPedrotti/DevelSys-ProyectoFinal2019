@@ -29,7 +29,6 @@ import pedrotti.gonzalo.proyecto.R;
  */
 public class EstadisticaFragment extends Fragment {
 
-
     View v;
     ViewPager viewPager;
     TabLayout tableLayout;
