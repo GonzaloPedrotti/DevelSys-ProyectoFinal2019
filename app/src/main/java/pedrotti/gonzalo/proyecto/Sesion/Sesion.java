@@ -30,6 +30,7 @@ import org.json.JSONObject;
 
 import pedrotti.gonzalo.proyecto.Bienvenido.Bienvenido;
 import pedrotti.gonzalo.proyecto.Constantes;
+import pedrotti.gonzalo.proyecto.HomeActivity;
 import pedrotti.gonzalo.proyecto.Inicio;
 import pedrotti.gonzalo.proyecto.R;
 import pedrotti.gonzalo.proyecto.Registro.Registro;
@@ -51,9 +52,6 @@ public class Sesion extends AppCompatActivity {
     private UsuarioSesion userSesion;
 
     private ProgressDialog progressDialog;
-
-
-    //Respuesta de la request de Sesion
 
     private static final String url_api = Constantes.url + "Sesion.php";
 
@@ -116,13 +114,9 @@ public class Sesion extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Complete su Correo o Contraseña", Toast.LENGTH_SHORT).show();
     }
 
-    public void irAlInicio() {
-//        Intent irABienvenido = new Intent(Sesion.this, Bienvenido.class);
-//        Intent irABienvenido = new Intent(Sesion.this, HomeActivity.class);
-        Intent irABienvenido = new Intent(Sesion.this, Inicio.class);
-        irABienvenido.putExtra("DATOS_USER", usuario);
-        startActivity(irABienvenido);
-        Sesion.this.finish();
+    public void setEstadoBotones(boolean estado, String texto) {
+        btnlogin.setEnabled(estado);
+        btnlogin.setText(texto);
     }
 
     public void iniciarSesion() {
@@ -131,8 +125,8 @@ public class Sesion extends AppCompatActivity {
             if(haveNetwork()) {
 
                 Toast.makeText(getApplicationContext(), "Hay Conexión (Conecte Su dispositivo al  Wifi si está depurando)", Toast.LENGTH_SHORT).show();
-                btnlogin.setEnabled(false);
-                btnlogin.setText("Iniciando...");
+
+                setEstadoBotones(false, "Iniciando...");
 
                 //Mostrar efecto cargando
                 progressDialog.setIcon(R.mipmap.ic_launcher);
@@ -148,6 +142,7 @@ public class Sesion extends AppCompatActivity {
                 usuario.setUsu_email(correo);
                 usuario.setUsu_pass(contrasena);
 
+//                Gson permite generar un JSON a partir de un objeto
                 Gson gson = new Gson();
                 final String rep_json = gson.toJson(usuario);
 
@@ -158,69 +153,71 @@ public class Sesion extends AppCompatActivity {
                                 //Respuesta
                                 try {
 
-//                                    JSONObject jsonrespuesta = new JSONObject(response);
-//                                    String usu_email = jsonrespuesta.getString("usu_email");
-//                                    String usu_pass = jsonrespuesta.getString("usu_pass");
-//                                    JSONArray usuarios = jsonrespuesta.getJSONArray("usuario");
-//                                    int longitud = usuarios.length();
-////                                  String resp = jsonrespuesta.toString();
-//                                    Toast.makeText(Sesion.this, usu_email + " " + usu_pass + ". Logitud es : " + longitud, Toast.LENGTH_SHORT).show();
+                                    JSONObject jsonRespuesta = new JSONObject(response);
 
-                            JSONObject jsonRespuesta = new JSONObject(response);
+                                    boolean estadoSesion = jsonRespuesta.getBoolean("estadoSesion");
 
-                            boolean estadoSesion = jsonRespuesta.getBoolean("estadoSesion");
+                                    //Los datos son correctos
+                                    if (estadoSesion) {
 
-                            if (estadoSesion) { //Los datos son correctos
+                                        JSONObject usuarioSesion = jsonRespuesta.getJSONObject("usuarioSesion");
 
-                                JSONObject usuarioSesion = jsonRespuesta.getJSONObject("usuarioSesion");
+                                        int usu_id = usuarioSesion.getInt("usu_id");
+                                        String usu_nombre = usuarioSesion.getString("usu_nombre");
+                                        String usu_apellido = usuarioSesion.getString("usu_apellido");
+                                        String usu_email = usuarioSesion.getString("usu_email");
+                                        String ses_token = usuarioSesion.getString("ses_token");
+                                        String ses_fechaAlta = usuarioSesion.getString("ses_fechaAlta");
+                                        String ses_expiracion_date = usuarioSesion.getString("ses_expiracion_date");
 
-                                int usu_id = usuarioSesion.getInt("usu_id");
-                                String usu_nombre = usuarioSesion.getString("usu_nombre");
-                                String usu_apellido = usuarioSesion.getString("usu_apellido");
-                                String usu_email = usuarioSesion.getString("usu_email");
-                                String ses_token = usuarioSesion.getString("ses_token");
-                                String ses_fechaAlta = usuarioSesion.getString("ses_fechaAlta");
-                                String ses_expiracion_date = usuarioSesion.getString("ses_expiracion_date");
+                                        usuario.setUsu_id(usu_id);
+                                        usuario.setUsu_nombre(usu_nombre);
+                                        usuario.setUsu_apellido(usu_apellido);
+                                        usuario.setUsu_email(usu_email);
 
-                                usuario.setUsu_id(usu_id);
-                                usuario.setUsu_nombre(usu_nombre);
-                                usuario.setUsu_apellido(usu_apellido);
-                                usuario.setUsu_email(usu_email);
+                                        userSesion.setSes_token(ses_token);
+                                        userSesion.setSes_fechaAlta(ses_fechaAlta);
+                                        userSesion.setSes_expiracion_date(ses_expiracion_date);
+                                        userSesion.setUsuario(usuario);
 
-                                userSesion.setSes_token(ses_token);
-                                userSesion.setSes_fechaAlta(ses_fechaAlta);
-                                userSesion.setSes_expiracion_date(ses_expiracion_date);
-                                userSesion.setUsuario(usuario);
+                                        guardarCredenciales();
 
-                                guardarCredenciales();
+                                        //Redirigir Inicio
+                                        progressDialog.dismiss();
 
-                                //Redirigir Inicio
-                                progressDialog.dismiss();
-                                guardarCredenciales();
-                                irAlInicio();
-                            } else { //Los datos son incorrectos
-//                                Toast.makeText(Sesion.this, "El correo o la contraseña son incorrectos.", Toast.LENGTH_SHORT).show();
+                                        guardarCredenciales();
 
-                                AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
-                                alerta.setMessage("Correo o Contraseña incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
-                                etcontrasena.setText("");
-                                btnlogin.setEnabled(true);
-                                btnlogin.setText("INGRESAR");
-                                progressDialog.dismiss();
-                            }
+                                        irAlInicio();
+
+                                    } else { //Los datos son incorrectos
+
+                                        progressDialog.dismiss();
+
+                                        AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
+                                        alerta.setMessage("Correo o Contraseña incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
+                                        etcontrasena.setText("");
+
+                                        setEstadoBotones(true, "Ingresar");
+
+                                    }
 
                                 } catch (Exception e) {
 
                                     AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
                                     alerta.setMessage("Ups, Algo ha salido mal. Intente de nuevo más tarde.").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
                                     etcontrasena.setText("");
-                                    btnlogin.setEnabled(true);
-                                    btnlogin.setText("INGRESAR");
-                                    progressDialog.dismiss();                                }
+//                                    btnlogin.setEnabled(true);
+//                                    btnlogin.setText("INGRESAR");
+                                    setEstadoBotones(true, "Ingresar");
+                                    progressDialog.dismiss();
+                                }
                             }
                         }, new Response.ErrorListener() {
+
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+                        Log.d("ERROR DE CONEXIÓN", "SE PRODUJO UN ERROR AL CONECTAR CON EL SERVIDOR");
 
                     }
                 }){
@@ -235,6 +232,14 @@ public class Sesion extends AppCompatActivity {
         }
     }
 
+    public void irAlInicio() {
+        Intent irABienvenido = new Intent(Sesion.this, Bienvenido.class); //Inicio original con el menu de opciones centrado
+//        Intent irABienvenido = new Intent(Sesion.this, HomeActivity.class); //Contiene BottomNavigationView con Activities vacias
+//        Intent irABienvenido = new Intent(Sesion.this, Inicio.class); //Contiene BottomNavigationView con Fragments
+        irABienvenido.putExtra("DATOS_USER", usuario);
+        startActivity(irABienvenido);
+        Sesion.this.finish();
+    }
 
     public void guardarCredenciales(){
         SharedPreferences preferencias = getSharedPreferences("usuario", Context.MODE_PRIVATE);
@@ -268,102 +273,4 @@ public class Sesion extends AppCompatActivity {
 
     }
 
-//    public void iniciarSesion() {
-//
-//        if (validarCredenciales()) {
-//
-//            if (haveNetwork()) {
-//                Toast.makeText(getApplicationContext(), "Hay Conexión (Conecte Su dispositivo al  Wifi si está depurando)", Toast.LENGTH_SHORT).show();
-//                btnlogin.setEnabled(false);
-//                btnlogin.setText("Iniciando...");
-//
-//                //Mostrar efecto cargando
-//                progressDialog.setIcon(R.mipmap.ic_launcher);
-//                progressDialog.setMessage("Cargando...");
-//                progressDialog.show();
-//
-//                Response.Listener<String> respuesta = new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//
-//                            Log.d("VALIDANDO DATOS", "VALIDACION");
-//
-//                            JSONObject jsonRespuesta = new JSONObject(response);
-//
-//                            boolean estado = jsonRespuesta.getBoolean("estadoSesion");
-//
-//                            if (estado) { //Los datos son correctos
-//                                Toast.makeText(Sesion.this, "Accediendo al Perfil...", Toast.LENGTH_SHORT).show();
-//
-//                                JSONObject usuarioSesion = jsonRespuesta.getJSONObject("usuarioSesion");
-//
-//                                Log.d(usuarioSesion.toString(), "usuarioSesion");
-//
-//                                int usu_id = usuarioSesion.getInt("usu_id");
-//                                String usu_nombre = usuarioSesion.getString("usu_nombre");
-//                                String usu_apellido = usuarioSesion.getString("usu_apellido");
-//                                String usu_email = usuarioSesion.getString("usu_email");
-//                                String ses_token = usuarioSesion.getString("ses_token");
-//                                String ses_fechaAlta = usuarioSesion.getString("ses_fechaAlta");
-//                                String ses_expiracion_date = usuarioSesion.getString("ses_expiracion_date");
-//
-//                                user.setUsu_id(usu_id);
-//                                user.setUsu_nombre(usu_nombre);
-//                                user.setUsu_apellido(usu_apellido);
-//                                user.setUsu_email(usu_email);
-//
-//                                userSesion.setSes_token(ses_token);
-//                                userSesion.setSes_fechaAlta(ses_fechaAlta);
-//                                userSesion.setSes_expiracion_date(ses_expiracion_date);
-//                                userSesion.setUsuario(user);
-//
-//                                guardarCredenciales();
-//
-//
-//                                //Redirigir Inicio
-//                                progressDialog.dismiss();
-//                                guardarCredenciales();
-//                                irAlInicio();
-//                            } else { //Los datos son incorrectos
-////                                Toast.makeText(Sesion.this, "El correo o la contraseña son incorrectos.", Toast.LENGTH_SHORT).show();
-//
-//                                AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
-//                                alerta.setMessage("Correo o Contraseña incorrectos").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
-//                                etcontrasena.setText("");
-//                                btnlogin.setEnabled(true);
-//                                btnlogin.setText("INGRESAR");
-//                                progressDialog.dismiss();
-//                            }
-//
-//                        } catch (Exception e) {
-//
-//                            AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
-//                            alerta.setMessage("Ups, Algo ha salido mal. Intente de nuevo más tarde.").setNegativeButton("Reintentar", null).setTitle("Datos Inválidos").setIcon(R.drawable.logo).create().show();
-//                            etcontrasena.setText("");
-//                            btnlogin.setEnabled(true);
-//                            btnlogin.setText("INGRESAR");
-//                            progressDialog.dismiss();
-//                        }
-//                    }
-//                };
-//
-//                LoginRequest loginRequest = new LoginRequest(correo, contrasena, respuesta);
-//                RequestQueue cola = Volley.newRequestQueue(Sesion.this);
-//                cola.add(loginRequest);
-//            } else {
-//                AlertDialog.Builder alerta = new AlertDialog.Builder(Sesion.this);
-//                alerta.setTitle("Error")
-//                        .setMessage("Error al intentar conectar. Verifique su conexión a Internet")
-//                        .setPositiveButton("Aceptar", null)
-//                        .setIcon(R.drawable.logo)
-//                        .create()
-//                        .show();
-//            }
-//        } else {
-//            alertaDatos();
-//        }
-//    }
-
 }
-

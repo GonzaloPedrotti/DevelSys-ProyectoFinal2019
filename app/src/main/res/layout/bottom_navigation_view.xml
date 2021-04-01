@@ -14,8 +14,6 @@
         app:itemIconTint="@color/colorBlack"
         app:menu="@menu/main_menu"
         >
-
-
     </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 
 </RelativeLayout>

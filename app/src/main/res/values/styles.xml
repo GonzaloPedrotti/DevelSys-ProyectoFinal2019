@@ -1,17 +1,29 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        &lt;!&ndash;color de la barra &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorHint</item>-->
+<!--        &lt;!&ndash;color superior a la barra (hora, bateria, etc &ndash;&gt;-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimary</item>-->
+<!--        <item name="android:textColor">@color/colorWhite</item>-->
+<!--        <item name="android:textColorPrimary">@color/colorWhite</item>-->
+<!--    </style>-->
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--color de la barra -->
         <item name="colorPrimary">@color/colorHint</item>
-
         <!--color superior a la barra (hora, bateria, etc -->
         <item name="colorPrimaryDark">@color/colorPrimary</item>
+<!--        color del texto  -->
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack</item>
 
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textColorPrimary">@color/colorWhite</item>
+    </style>
 
-
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>

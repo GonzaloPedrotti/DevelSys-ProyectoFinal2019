@@ -10,14 +10,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
-import pedrotti.gonzalo.proyecto.Fragments.ActividadesFragment;
-import pedrotti.gonzalo.proyecto.Fragments.CampoFragment;
-import pedrotti.gonzalo.proyecto.Fragments.CuentaFragment;
-import pedrotti.gonzalo.proyecto.Fragments.EstadisticaFragment;
-import pedrotti.gonzalo.proyecto.Fragments.HomeFragment;
+import pedrotti.gonzalo.proyecto.Fragments.MainFragments.ActividadesFragment;
+import pedrotti.gonzalo.proyecto.Fragments.MainFragments.CampoFragment;
+import pedrotti.gonzalo.proyecto.Fragments.MainFragments.CuentaFragment;
+import pedrotti.gonzalo.proyecto.Fragments.MainFragments.EstadisticaFragment;
+import pedrotti.gonzalo.proyecto.Fragments.MainFragments.HomeFragment;
 import pedrotti.gonzalo.proyecto.Usuario.Usuario;
 
 public class Inicio extends AppCompatActivity  {

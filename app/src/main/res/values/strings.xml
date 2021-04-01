@@ -52,5 +52,9 @@
     <string name="actividades">Actividades</string>
 
     <string name="buscar">Buscar campo</string>
+    <string name="principal">Principal</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
 </resources>

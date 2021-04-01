@@ -1,4 +1,4 @@
-package pedrotti.gonzalo.proyecto.Fragments;
+package pedrotti.gonzalo.proyecto.Fragments.MainFragments;
 
 
 import android.content.Context;
